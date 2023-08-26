@@ -20,23 +20,7 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     @Published var lastSessionTotalReps: Int?
     
    
-//
-//    init(trainingSessionsKey: String) {
-//
-//        self.trainingSessionsKey = trainingSessionsKey // Use the correct variable name here
-//        self.reps = UserDefaults.standard.integer(forKey: "reps")
-//
-//        if let savedSessions = UserDefaults.standard.array(forKey: trainingSessionsKey) as? [[String:Any]] {
-//            self.trainingSessions = savedSessions.compactMap { sessionData in
-//                if let date = sessionData["date"] as? String,
-//                   let reps = sessionData["reps"] as? [Int],
-//                    let totalReps = sessionData["totalReps"] as? Int {
-//                    return TrainingSession(date: date, reps: reps, totalReps: totalReps)
-//                }
-//                return nil
-//            }
-//        }
-//    }
+
     init(storage: TrainingSessionStorage, trainingSessionsKey: String) {
         self.storage = storage
         self.trainingSessionsKey = trainingSessionsKey

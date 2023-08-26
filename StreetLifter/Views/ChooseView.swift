@@ -29,7 +29,7 @@ struct ChooseView: View {
                                 
                             
                             
-                            Text("Reps: \(pullupsViewModel.lastSessionTotalReps ?? 0)")
+                            Text("Reps:")
                                 .font(.subheadline)
                                 
                                 .foregroundColor(.secondary)
@@ -45,7 +45,7 @@ struct ChooseView: View {
                             
                             Text("Dips")
                             
-                            Text("Reps: \(dipsViewModel.lastSessionTotalReps ?? 0)")
+                            Text("Reps: ")
                                 .font(.subheadline)
                                 
                                 .foregroundColor(.secondary)
@@ -57,9 +57,7 @@ struct ChooseView: View {
                         }
                     }
                 }
-                .onAppear{ pullupsViewModel.updateMostRecentTotalReps()
-                    dipsViewModel.updateMostRecentTotalReps()
-                }
+    
                 
                 .padding()
                 .frame(width: .infinity, height: 150)
