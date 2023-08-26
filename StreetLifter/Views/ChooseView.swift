@@ -9,7 +9,7 @@ struct ChooseView: View {
     
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             
             VStack {
                 Spacer()
@@ -29,7 +29,7 @@ struct ChooseView: View {
                                 
                             
                             
-                            Text("Reps: 55")
+                            Text("Reps: \(pullupsViewModel.totalReps)")
                                 .font(.subheadline)
                                 
                                 .foregroundColor(.secondary)
@@ -88,8 +88,8 @@ struct ChooseView: View {
                 
             }
             .padding(.horizontal, 10)
-            .navigationBarHidden(true)
-        }
+            
+        }.navigationBarHidden(true)
         
     }
 

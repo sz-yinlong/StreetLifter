@@ -20,7 +20,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                     Image(systemName: "trophy")
                         .font(Font.system(size: 50))
                         .padding()
-                    Text("Good job!\n You've done \(viewModel.totalReps) reps.")
+                    Text("Good job!\n You've done \(viewModel.totalReps) reps")
                         .font(.title)
                         .multilineTextAlignment(.center)
                     Spacer()
@@ -135,12 +135,12 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                         }
                         .background(Color.primary)
                         .cornerRadius(10)
-                    } .navigationBarBackButtonHidden(true)
+                    }
                     
-                } .navigationBarBackButtonHidden(true)
+                }
                 .padding()
             }
-        } .navigationBarBackButtonHidden(true)
+        } 
     }
 }
 

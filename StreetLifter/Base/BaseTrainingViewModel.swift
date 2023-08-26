@@ -12,18 +12,26 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     
     @Published var showExerciseView = false
     @Published var reps: Int
-    @Published var trainingSessions: [[Int]] = []
+    @Published var trainingSessions: [TrainingSession] = []
     @Published var currentSessionReps: [Int] = []
     @Published var trainingCompleted = false
+    @Published var trainingDate: [Int] = []
+    
+    struct TrainingSession: Hashable {
+        let date: String
+        let reps: [Int]
+    }
     
     init(trainingSessionsKey: String) {
+        
         self.trainingSessionsKey = trainingSessionsKey // Use the correct variable name here
         self.reps = UserDefaults.standard.integer(forKey: "reps")
         
         if let savedSessions = UserDefaults.standard.array(forKey: trainingSessionsKey) as? [[String:Any]] {
             self.trainingSessions = savedSessions.compactMap { sessionData in
-                if let reps = sessionData["reps"] as? [Int] {
-                    return reps
+                if let date = sessionData["date"] as? String,
+                let reps = sessionData["reps"] as? [Int] {
+                    return TrainingSession(date: date, reps: reps)
                 }
                 return nil
             }
@@ -31,7 +39,12 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     }
     
     func saveTrainingSession() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM.dd"
+        let date = dateFormatter.string(from: Date())
+        
         let sessionDictionary: [String: Any] = [
+            "date": date,
             "reps": currentSessionReps
         ]
         

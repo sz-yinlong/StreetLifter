@@ -25,6 +25,7 @@
 		FAF7B6122A97551C00249317 /* ExerciseTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7B6112A97551C00249317 /* ExerciseTypeProtocol.swift */; };
 		FAF7B6142A976C2200249317 /* ExerciseTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7B6132A976C2200249317 /* ExerciseTypeEnum.swift */; };
 		FAF7B6162A988A9400249317 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7B6152A988A9400249317 /* ProgressView.swift */; };
+		FAF7B6182A98DA2A00249317 /* SharedTrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7B6172A98DA2A00249317 /* SharedTrainingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		FAF7B6112A97551C00249317 /* ExerciseTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeProtocol.swift; sourceTree = "<group>"; };
 		FAF7B6132A976C2200249317 /* ExerciseTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeEnum.swift; sourceTree = "<group>"; };
 		FAF7B6152A988A9400249317 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		FAF7B6172A98DA2A00249317 /* SharedTrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTrainingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		FAA22AAE2A9487BD00D138AB = {
 			isa = PBXGroup;
 			children = (
+				FAF7B6172A98DA2A00249317 /* SharedTrainingViewModel.swift */,
 				FAA22AB92A9487BD00D138AB /* StreetLifter */,
 				FAA22AB82A9487BD00D138AB /* Products */,
 			);
@@ -232,6 +235,7 @@
 				FAF7B6032A96566400249317 /* DipsTrainingViewModel.swift in Sources */,
 				FAA22ABB2A9487BD00D138AB /* StreetLifterApp.swift in Sources */,
 				FA5849DA2A948D8A004EF41D /* ChooseView.swift in Sources */,
+				FAF7B6182A98DA2A00249317 /* SharedTrainingViewModel.swift in Sources */,
 				FAF7B6162A988A9400249317 /* ProgressView.swift in Sources */,
 				FAF7B6082A96751900249317 /* BaseTrainingView.swift in Sources */,
 				FAF7B60C2A967BA200249317 /* BaseExcerciseView.swift in Sources */,
