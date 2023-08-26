@@ -15,12 +15,13 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
         
         NavigationStack {
             if viewModel.trainingCompleted {
+                
                 VStack {
                     Spacer()
                     Image(systemName: "trophy")
                         .font(Font.system(size: 50))
                         .padding()
-                    Text("Good job!\n You've done \(viewModel.totalReps) reps")
+                    Text("Good job!\n You've done \(viewModel.lastSessionTotalReps ?? 0) reps.")
                         .font(.title)
                         .multilineTextAlignment(.center)
                     Spacer()
@@ -146,8 +147,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
 
 struct BaseTrainingView_Previews: PreviewProvider {
     static var previews: some View {
-        // Create an instance of the appropriate view model
-        let viewModel = BaseTrainingViewModel(trainingSessionsKey: "yourKeyHere")
+        let storage = TrainingSessionStorage()
+        let viewModel = BaseTrainingViewModel(storage: storage, trainingSessionsKey: "yourKeyHere")
         
         // Pass the view model instance to the BaseTrainingView preview
         BaseTrainingView<BaseTrainingViewModel, Any>(viewModel: viewModel)

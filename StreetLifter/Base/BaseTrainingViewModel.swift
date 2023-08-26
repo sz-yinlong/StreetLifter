@@ -3,6 +3,7 @@ import SwiftUI
 
 class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     
+    private let storage: TrainingSessionStorage// injected
   
     
     var trainingSessionsKey: String
@@ -16,53 +17,83 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     @Published var currentSessionReps: [Int] = []
     @Published var trainingCompleted = false
     @Published var trainingDate: [Int] = []
+    @Published var lastSessionTotalReps: Int?
     
-    struct TrainingSession: Hashable {
-        let date: String
-        let reps: [Int]
-    }
-    
-    init(trainingSessionsKey: String) {
-        
-        self.trainingSessionsKey = trainingSessionsKey // Use the correct variable name here
+   
+//
+//    init(trainingSessionsKey: String) {
+//
+//        self.trainingSessionsKey = trainingSessionsKey // Use the correct variable name here
+//        self.reps = UserDefaults.standard.integer(forKey: "reps")
+//
+//        if let savedSessions = UserDefaults.standard.array(forKey: trainingSessionsKey) as? [[String:Any]] {
+//            self.trainingSessions = savedSessions.compactMap { sessionData in
+//                if let date = sessionData["date"] as? String,
+//                   let reps = sessionData["reps"] as? [Int],
+//                    let totalReps = sessionData["totalReps"] as? Int {
+//                    return TrainingSession(date: date, reps: reps, totalReps: totalReps)
+//                }
+//                return nil
+//            }
+//        }
+//    }
+    init(storage: TrainingSessionStorage, trainingSessionsKey: String) {
+        self.storage = storage
+        self.trainingSessionsKey = trainingSessionsKey
         self.reps = UserDefaults.standard.integer(forKey: "reps")
-        
-        if let savedSessions = UserDefaults.standard.array(forKey: trainingSessionsKey) as? [[String:Any]] {
-            self.trainingSessions = savedSessions.compactMap { sessionData in
-                if let date = sessionData["date"] as? String,
-                let reps = sessionData["reps"] as? [Int] {
-                    return TrainingSession(date: date, reps: reps)
-                }
-                return nil
-            }
-        }
+        self.trainingSessions = storage.retrieveSessions(forKey: trainingSessionsKey)
     }
+    
+
     
     func saveTrainingSession() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM.dd"
         let date = dateFormatter.string(from: Date())
         
-        let sessionDictionary: [String: Any] = [
-            "date": date,
-            "reps": currentSessionReps
-        ]
+        let newSession = TrainingSession(date: date, reps: currentSessionReps, totalReps: totalReps)
+        trainingSessions.append(newSession)
         
-       
+//        let sessionDictionary: [String: Any] = [
+//            "date": date,
+//            "reps": currentSessionReps,
+//            "totalReps": totalReps
+//        ]
         
-        var savedSessions = UserDefaults.standard.array(forKey: trainingSessionsKey) as? [[String: Any]] ?? []
-        savedSessions.append(sessionDictionary)
+        lastSessionTotalReps = totalReps
+        storage.saveSession(session: trainingSessions, forKey: trainingSessionsKey)
         
-        UserDefaults.standard.set(savedSessions, forKey: trainingSessionsKey)
-        print("Training session saved: \(savedSessions)")
+//
+//
+//        var savedSessions = UserDefaults.standard.array(forKey: trainingSessionsKey) as? [[String: Any]] ?? []
+//        savedSessions.append(sessionDictionary)
+//
+//        UserDefaults.standard.set(savedSessions, forKey: trainingSessionsKey)
+//        print("Training session saved: \(savedSessions)")
+    }
+    
+    func mostRecentTotalReps(for exerciseType: ExerciseType) -> Int? {
+        // Filtering based on ExerciseType if necessary
+        return trainingSessions.last?.totalReps
+    }
+    
+    func updateMostRecentTotalReps() {
+        self.lastSessionTotalReps = trainingSessions.last?.totalReps
     }
     
     var canAddSet: Bool {
         currentSessionReps.count < 5
     }
     
+    var mostRecentTotalReps: Int? {
+        return trainingSessions.last?.totalReps
+    }
+    
     var totalReps: Int {
-        return currentSessionReps.reduce(0, +)
+        let total = currentSessionReps.reduce(0, +)
+        
+    print("Total reps updated: \(total)")
+        return total
     }
     func decrementReps() {
         if reps > 1 {

@@ -4,8 +4,8 @@ import SwiftUI
 
 struct ChooseView: View {
     
-    @ObservedObject var pullupsViewModel = PullupsTrainingViewModel()
-    @ObservedObject var dipsViewModel = DipsTrainingViewModel()
+    @EnvironmentObject var pullupsViewModel: PullupsTrainingViewModel
+    @EnvironmentObject var dipsViewModel: DipsTrainingViewModel
     
     var body: some View {
         
@@ -29,7 +29,7 @@ struct ChooseView: View {
                                 
                             
                             
-                            Text("Reps: \(pullupsViewModel.totalReps)")
+                            Text("Reps: \(pullupsViewModel.lastSessionTotalReps ?? 0)")
                                 .font(.subheadline)
                                 
                                 .foregroundColor(.secondary)
@@ -45,7 +45,7 @@ struct ChooseView: View {
                             
                             Text("Dips")
                             
-                            Text("Reps: 35")
+                            Text("Reps: \(dipsViewModel.lastSessionTotalReps ?? 0)")
                                 .font(.subheadline)
                                 
                                 .foregroundColor(.secondary)
@@ -57,6 +57,10 @@ struct ChooseView: View {
                         }
                     }
                 }
+                .onAppear{ pullupsViewModel.updateMostRecentTotalReps()
+                    dipsViewModel.updateMostRecentTotalReps()
+                }
+                
                 .padding()
                 .frame(width: .infinity, height: 150)
                 
@@ -132,8 +136,11 @@ struct ChooseView: View {
 }
 
 
-struct ChooseView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChooseView()
-    }
-}
+//struct ChooseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let pullupsVM = PullupsTrainingViewModel()
+//                let dipsVM = DipsTrainingViewModel()
+//
+//        ChooseView()
+//    }
+//}
