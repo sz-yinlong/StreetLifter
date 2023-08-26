@@ -45,10 +45,6 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
   print("Training session saved: ")
     }
     
-    func mostRecentTotalReps(for exerciseType: ExerciseType) -> Int? {
-        // Filtering based on ExerciseType if necessary
-        return trainingSessions.last?.totalReps
-    }
     
     func updateMostRecentTotalReps() {
         self.lastSessionTotalReps = trainingSessions.last?.totalReps

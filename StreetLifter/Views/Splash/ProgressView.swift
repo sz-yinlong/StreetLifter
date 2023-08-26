@@ -67,10 +67,13 @@ struct ProgressView: View {
         .shadow(radius: 5)
     }
 }
-
-struct ProgressView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChooseView()
-    }
-}
-
+//
+//struct ProgressView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let storage = TrainingSessionStorage()
+//        let pullupsViewModel = PullupsTrainingViewModel(storage: storage)
+//        let dipsViewModel = DipsTrainingViewModel(storage: storage)
+//
+//        ChooseView(pullupsViewModel: pullupsViewModel, dipsViewModel: dipsViewModel)
+//    }
+//}

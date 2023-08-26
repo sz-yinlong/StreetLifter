@@ -8,15 +8,20 @@ struct SplashView: View {
      private var cancellable: Set<AnyCancellable> = []
     
     private let storage = TrainingSessionStorage()
-    private let pullupsViewModel = PullupsTrainingViewModel(storage: TrainingSessionStorage())
-    private let dipsViewModel = DipsTrainingViewModel(storage: TrainingSessionStorage())
+    private let pullupsViewModel: PullupsTrainingViewModel
+    private let dipsViewModel: DipsTrainingViewModel
+    
+    init() {
+        self.pullupsViewModel = PullupsTrainingViewModel(storage: storage)
+        self.dipsViewModel = DipsTrainingViewModel(storage: storage)
+    }
     
     var body: some View
     {
         
         Group {
             if showNextView {
-                ChooseView()
+                ChooseView(viewModel: pullupsViewModel)
             } else {
                 VStack {
                     Text("STREETLIFTER")

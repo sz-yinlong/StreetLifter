@@ -25,7 +25,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                         .font(.title)
                         .multilineTextAlignment(.center)
                     Spacer()
-                    NavigationLink(destination: ChooseView()) {
+                    NavigationLink(destination: ChooseView(viewModel: viewModel)) {
                         Color.black
                             .frame(maxWidth: 250, maxHeight: 50)
                             .cornerRadius(10)
