@@ -1,15 +1,18 @@
 
+
 import SwiftUI
 
 class DipsTrainingViewModel: BaseTrainingViewModel {
     
-    init() {
-        super.init(trainingSessionsKey: "dipstrainingSessions")
+    init(storage: TrainingSessionStorage) {
+        super.init(storage: storage, trainingSessionsKey: "dipstrainingSessions")
         self.reps = UserDefaults.standard.integer(forKey: "reps")
-    }
-     override func trainingViewType() -> ExerciseType? {
-        return .dips
         
     }
-}
+    
+    override func trainingViewType() -> ExerciseType? {
+        return .pullups
+        }
+ 
+    }
 

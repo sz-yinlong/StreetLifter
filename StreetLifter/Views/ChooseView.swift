@@ -4,8 +4,9 @@ import SwiftUI
 
 struct ChooseView: View {
     
-    @EnvironmentObject var pullupsViewModel: PullupsTrainingViewModel
-    @EnvironmentObject var dipsViewModel: DipsTrainingViewModel
+    @ObservedObject var viewModel: BaseTrainingViewModel
+    
+    
     
     var body: some View {
         
@@ -25,15 +26,20 @@ struct ChooseView: View {
                         
                         VStack (alignment: .leading) {
                           
+                          
                             Text("Pullups")
                                 
-                            
-                            
-                            Text("Reps: \(pullupsViewModel.lastSessionTotalReps ?? 0)")
-                                .font(.subheadline)
+                            if let lastTotalReps = viewModel.lastSessionTotalReps {
                                 
-                                .foregroundColor(.secondary)
-                            
+                                
+                                
+                                Text("Reps: \(lastTotalReps)")
+                            } else {
+                                Text("no recetn")
+                                    .font(.subheadline)
+                                
+                                    .foregroundColor(.secondary)
+                            }
                             Text("Weight: ~20kg")
                                 .font(.subheadline)
                               
@@ -45,7 +51,7 @@ struct ChooseView: View {
                             
                             Text("Dips")
                             
-                            Text("Reps: \(dipsViewModel.lastSessionTotalReps ?? 0)")
+                            Text("Reps: ")
                                 .font(.subheadline)
                                 
                                 .foregroundColor(.secondary)
@@ -57,9 +63,7 @@ struct ChooseView: View {
                         }
                     }
                 }
-                .onAppear{ pullupsViewModel.updateMostRecentTotalReps()
-                    dipsViewModel.updateMostRecentTotalReps()
-                }
+    
                 
                 .padding()
                 .frame(width: .infinity, height: 150)

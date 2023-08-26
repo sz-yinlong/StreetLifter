@@ -1,16 +1,19 @@
+
+
 import SwiftUI
 
 struct DipsTrainingView: View {
-    @StateObject private var viewModel = DipsTrainingViewModel()
+    
+    @StateObject private var viewModel: DipsTrainingViewModel
+    
+    init() {
+        let storage = TrainingSessionStorage()
+        _viewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
+    }
     
     var body: some View {
         BaseTrainingView<DipsTrainingViewModel, Any>(viewModel: viewModel)
             .navigationBarBackButtonHidden()
     }
-
-    struct DipsTrainingView_Previews: PreviewProvider {
-        static var previews: some View {
-            DipsTrainingView()
-        }
-    }
 }
+

@@ -7,6 +7,10 @@ struct SplashView: View {
     @State private var showNextView = false
      private var cancellable: Set<AnyCancellable> = []
     
+    private let storage = TrainingSessionStorage()
+    private let pullupsViewModel = PullupsTrainingViewModel(storage: TrainingSessionStorage())
+    private let dipsViewModel = DipsTrainingViewModel(storage: TrainingSessionStorage())
+    
     var body: some View
     {
         
