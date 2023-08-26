@@ -29,7 +29,14 @@ struct ChooseView: View {
                           
                             Text("Pullups")
                                 
+<<<<<<< HEAD
                             if let lastTotalReps = viewModel.lastSessionTotalReps {
+=======
+                            
+                            
+                            Text("Reps:")
+                                .font(.subheadline)
+>>>>>>> f8ce99770ce0ed79cea099a2026ee6c394f52c48
                                 
                                 
                                 
