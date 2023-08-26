@@ -65,7 +65,6 @@
 		FAA22AAE2A9487BD00D138AB = {
 			isa = PBXGroup;
 			children = (
-				FAF7B6172A98DA2A00249317 /* SharedTrainingViewModel.swift */,
 				FAA22AB92A9487BD00D138AB /* StreetLifter */,
 				FAA22AB82A9487BD00D138AB /* Products */,
 			);
@@ -107,6 +106,7 @@
 				FAF7B6132A976C2200249317 /* ExerciseTypeEnum.swift */,
 				FAF7B5FE2A94D0E800249317 /* PullupsTrainingViewModel.swift */,
 				FAF7B6022A96566400249317 /* DipsTrainingViewModel.swift */,
+				FAF7B6172A98DA2A00249317 /* SharedTrainingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
