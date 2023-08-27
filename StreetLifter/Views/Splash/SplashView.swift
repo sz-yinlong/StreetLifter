@@ -14,6 +14,7 @@ struct SplashView: View {
     init() {
         self.pullupsViewModel = PullupsTrainingViewModel(storage: storage)
         self.dipsViewModel = DipsTrainingViewModel(storage: storage)
+        s 
     }
     
     var body: some View

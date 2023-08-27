@@ -3,8 +3,9 @@ import SwiftUI
 
 
 struct ChooseView: View {
+    @ObservedObject var pullupsViewmodel: PullupsTrainingViewModel
     
-    @ObservedObject var viewModel: BaseTrainingViewModel
+    @ObservedObject var dipsViewModel: DipsTrainingViewModel
     
     
     
@@ -30,24 +31,16 @@ struct ChooseView: View {
                             Text("Pullups")
                                 
 
-                            if let lastTotalReps = viewModel.lastSessionTotalReps {
+                            if let lastTotalRepsPullups = pullupsViewmodel.lastSessionTotalReps {
 
-                            
-                            Text("Reps:")
-                                .font(.subheadline)
-
-                                
-                                
-                                Text("Reps: \(lastTotalReps)")
+                                Text("Reps: \(lastTotalRepsPullups)")
                             } else {
-                                Text("no recetn")
+                                Text("Reps")
                                     .font(.subheadline)
-                                
                                     .foregroundColor(.secondary)
                             }
                             Text("Weight: ~20kg")
                                 .font(.subheadline)
-                              
                                 .foregroundColor(.secondary)
                         }
                     
@@ -56,10 +49,17 @@ struct ChooseView: View {
                             
                             Text("Dips")
                             
-                            Text("Reps: ")
-                                .font(.subheadline)
+                            if let lastTotalRepsDips = dipsViewModel.lastSessionTotalReps {
+                                Text("Rps: \(lastTotalRepsDips)")
+                            } else {
                                 
-                                .foregroundColor(.secondary)
+                                
+                                
+                                Text("Reps: ")
+                                    .font(.subheadline)
+                                
+                                    .foregroundColor(.secondary)
+                            }
                             
                             Text("Weight: ~25kg")
                                 .font(.subheadline)

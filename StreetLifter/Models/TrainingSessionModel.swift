@@ -4,3 +4,5 @@ struct TrainingSession: Hashable {
     let reps: [Int]
     let totalReps: Int
 }
+
+
