@@ -163,4 +163,4 @@ struct BaseTrainingView_Previews: PreviewProvider {
         BaseTrainingView<BaseTrainingViewModel, Any>(viewModel: viewModel)
     }
 }
-
+//fixed
