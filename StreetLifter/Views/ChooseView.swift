@@ -5,10 +5,7 @@ import SwiftUI
 struct ChooseView: View {
     
     @ObservedObject var pullupsViewmodel: PullupsTrainingViewModel
-    
     @ObservedObject var dipsViewModel: DipsTrainingViewModel
-    
-    
     
     var body: some View {
         
@@ -16,16 +13,10 @@ struct ChooseView: View {
             
             VStack {
                 Spacer()
-                
                 VStack(alignment: .center, spacing: 40) {
-                    
-                    
                     Text("Previous Training")
                         .font(.headline)
-                 
-                    
                     HStack {
-                        
                         VStack (alignment: .leading) {
                           
                           

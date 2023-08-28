@@ -2,7 +2,7 @@
 
 import Foundation
 
-class TrainingSessionStorage {
+class TrainingSessionStorage: ObservableObject {
     
     func saveSession(session:[TrainingSession], forKey key: String) {
         let sessionData: [[String: Any]] = session.map { ["date": $0.date, "reps": $0.reps, "totalReps": $0.totalReps] }

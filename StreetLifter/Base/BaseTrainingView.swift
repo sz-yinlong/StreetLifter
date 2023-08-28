@@ -4,12 +4,20 @@ import SwiftUI
 
 struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtocol>: View {
     
-    @StateObject private var viewModel: ViewModel
+    @StateObject var pullupsViewModel: PullupsTrainingViewModel
+    @StateObject var dipsViewModel: DipsTrainingViewModel
+    @StateObject var viewModel: BaseTrainingViewModel
+    @StateObject var storage = TrainingSessionStorage()
+    
     @State private var selectedWeightIndex = 0
   
     init(viewModel: ViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+            let storage = TrainingSessionStorage()
+            
+            _viewModel = StateObject(wrappedValue: viewModel)
+            _pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
+            _dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
+        }
     
     var body: some View {
         
@@ -25,20 +33,20 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                                       .font(.title)
                                       .multilineTextAlignment(.center)
                                   Spacer()
-                                  NavigationLink(destination: ChooseView() {
-                                      Color.black
-                                          .frame(maxWidth: 250, maxHeight: 50)
-                                          .cornerRadius(10)
-                                          .overlay(
-                                              Text("Main")
-                                                  .foregroundColor(.white)
-                                                  .font(.headline)
-                                                  .padding(8)
-                                          )
-                                  }
-                              }
-               
-            }  else {
+                    NavigationLink(destination: ChooseView(pullupsViewmodel: pullupsViewModel, dipsViewModel: dipsViewModel)) {
+                        Color.black
+                            .frame(maxWidth: 250, maxHeight: 50)
+                            .cornerRadius(10)
+                            .overlay(
+                                Text("Main")
+                                    .foregroundColor(.white)
+                                    .font(.headline)
+                                    .padding(8)
+                            )
+                    }
+                    }
+         
+            } else {
                 VStack {
                     Text("Progress:")
                         .font(.title)
