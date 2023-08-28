@@ -3,6 +3,7 @@ import SwiftUI
 
 
 struct ChooseView: View {
+    
     @ObservedObject var pullupsViewmodel: PullupsTrainingViewModel
     
     @ObservedObject var dipsViewModel: DipsTrainingViewModel

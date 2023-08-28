@@ -17,26 +17,26 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
             if viewModel.trainingCompleted {
                 
                 VStack {
-                    Spacer()
-                    Image(systemName: "trophy")
-                        .font(Font.system(size: 50))
-                        .padding()
-                    Text("Good job!\n You've done \(viewModel.lastSessionTotalReps ?? 0) reps.")
-                        .font(.title)
-                        .multilineTextAlignment(.center)
-                    Spacer()
-                    NavigationLink(destination: ChooseView(viewModel: viewModel)) {
-                        Color.black
-                            .frame(maxWidth: 250, maxHeight: 50)
-                            .cornerRadius(10)
-                            .overlay(
-                                Text("Main")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
-                                    .padding(8)
-                            )
-                    }
-                }
+                                  Spacer()
+                                  Image(systemName: "trophy")
+                                      .font(Font.system(size: 50))
+                                      .padding()
+                                  Text("Good job!\n You've done \(viewModel.lastSessionTotalReps ?? 0) reps.")
+                                      .font(.title)
+                                      .multilineTextAlignment(.center)
+                                  Spacer()
+                                  NavigationLink(destination: ChooseView() {
+                                      Color.black
+                                          .frame(maxWidth: 250, maxHeight: 50)
+                                          .cornerRadius(10)
+                                          .overlay(
+                                              Text("Main")
+                                                  .foregroundColor(.white)
+                                                  .font(.headline)
+                                                  .padding(8)
+                                          )
+                                  }
+                              }
                
             }  else {
                 VStack {
@@ -141,9 +141,10 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                 }
                 .padding()
             }
-        } 
-    }
+        }
 }
+}
+
 
 struct BaseTrainingView_Previews: PreviewProvider {
     static var previews: some View {

@@ -14,7 +14,7 @@ struct SplashView: View {
     init() {
         self.pullupsViewModel = PullupsTrainingViewModel(storage: storage)
         self.dipsViewModel = DipsTrainingViewModel(storage: storage)
-        s 
+    
     }
     
     var body: some View
@@ -22,7 +22,8 @@ struct SplashView: View {
         
         Group {
             if showNextView {
-                ChooseView(viewModel: pullupsViewModel)
+                ChooseView(pullupsViewmodel: pullupsViewModel
+                           , dipsViewModel: dipsViewModel)
             } else {
                 VStack {
                     Text("STREETLIFTER")
