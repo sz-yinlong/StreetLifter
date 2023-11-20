@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AC06ABC576263924E12A7C9 /* Pods_StreetLifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7593B0D4CD92B7B03DC35D /* Pods_StreetLifter.framework */; };
 		FA5849DA2A948D8A004EF41D /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5849D92A948D8A004EF41D /* ChooseView.swift */; };
 		FA5849DC2A949312004EF41D /* PullupsExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5849DB2A949312004EF41D /* PullupsExerciseView.swift */; };
 		FA5849DE2A949ACD004EF41D /* PullupsTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5849DD2A949ACD004EF41D /* PullupsTrainingView.swift */; };
@@ -31,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A72B71ECF0D4BF0B92E315B8 /* Pods-StreetLifter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetLifter.release.xcconfig"; path = "Target Support Files/Pods-StreetLifter/Pods-StreetLifter.release.xcconfig"; sourceTree = "<group>"; };
+		B669771CE6AC6FE53F0B6D08 /* Pods-StreetLifter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetLifter.debug.xcconfig"; path = "Target Support Files/Pods-StreetLifter/Pods-StreetLifter.debug.xcconfig"; sourceTree = "<group>"; };
+		BF7593B0D4CD92B7B03DC35D /* Pods_StreetLifter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreetLifter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5849D92A948D8A004EF41D /* ChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseView.swift; sourceTree = "<group>"; };
 		FA5849DB2A949312004EF41D /* PullupsExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullupsExerciseView.swift; sourceTree = "<group>"; };
 		FA5849DD2A949ACD004EF41D /* PullupsTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullupsTrainingView.swift; sourceTree = "<group>"; };
@@ -60,17 +64,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC06ABC576263924E12A7C9 /* Pods_StreetLifter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD079395901922C4A5C979AA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B669771CE6AC6FE53F0B6D08 /* Pods-StreetLifter.debug.xcconfig */,
+				A72B71ECF0D4BF0B92E315B8 /* Pods-StreetLifter.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E709279EA0CE44D5D1BB4F9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF7593B0D4CD92B7B03DC35D /* Pods_StreetLifter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FAA22AAE2A9487BD00D138AB = {
 			isa = PBXGroup;
 			children = (
 				FAA22AB92A9487BD00D138AB /* StreetLifter */,
 				FAA22AB82A9487BD00D138AB /* Products */,
+				AD079395901922C4A5C979AA /* Pods */,
+				E709279EA0CE44D5D1BB4F9A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAA22AC52A9487BF00D138AB /* Build configuration list for PBXNativeTarget "StreetLifter" */;
 			buildPhases = (
+				B38A4CB1B9F8441D3F7906A8 /* [CP] Check Pods Manifest.lock */,
 				FAA22AB32A9487BD00D138AB /* Sources */,
 				FAA22AB42A9487BD00D138AB /* Frameworks */,
 				FAA22AB52A9487BD00D138AB /* Resources */,
@@ -230,6 +256,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B38A4CB1B9F8441D3F7906A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StreetLifter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FAA22AB32A9487BD00D138AB /* Sources */ = {
@@ -377,6 +428,7 @@
 		};
 		FAA22AC62A9487BF00D138AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B669771CE6AC6FE53F0B6D08 /* Pods-StreetLifter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -406,6 +458,7 @@
 		};
 		FAA22AC72A9487BF00D138AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A72B71ECF0D4BF0B92E315B8 /* Pods-StreetLifter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
