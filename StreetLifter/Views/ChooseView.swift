@@ -1,114 +1,72 @@
-
 import SwiftUI
 
-
 struct ChooseView: View {
-    
+    // MARK: - Properties
     @ObservedObject var pullupsViewmodel: PullupsTrainingViewModel
     @ObservedObject var dipsViewModel: DipsTrainingViewModel
-    
+
+    // MARK: - Body
     var body: some View {
-        
         NavigationStack {
-            
             VStack {
                 Spacer()
-                VStack(alignment: .center, spacing: 40) {
-                    Text("Previous Training")
-                        .font(.headline)
-                    HStack {
-                        VStack (alignment: .leading) {
-                          
-                          
-                            Text("Pullups")
-                                
-
-                            if let lastTotalRepsPullups = pullupsViewmodel.lastSessionTotalReps {
-
-                                Text("Reps: \(lastTotalRepsPullups)")
-                            } else {
-                                Text("Reps")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                            }
-                            Text("Weight: ~20kg")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                    
-                        
-                        VStack (alignment: .leading) {
-                            
-                            Text("Dips")
-                            
-                            if let lastTotalRepsDips = dipsViewModel.lastSessionTotalReps {
-                                Text("Rps: \(lastTotalRepsDips)")
-                            } else {
-                                
-                                
-                                
-                                Text("Reps: ")
-                                    .font(.subheadline)
-                                
-                                    .foregroundColor(.secondary)
-                            }
-                            
-                            Text("Weight: ~25kg")
-                                .font(.subheadline)
-                                
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                }
-    
-                
-                .padding()
-                .frame(width: .infinity, height: 150)
-                
-                .background(Color.white)
-                .cornerRadius(12)
-                .shadow(radius: 10)
-                .padding(.top) // Adds some space above the section
-                
+                previousTrainingView
                 Spacer()
-                
-                Text("Choose your Exercise")
-                    .font(.headline)
-                    .fontWeight(.regular)
-                    .padding(.bottom)
-              
+                chooseExerciseText
                 exerciseButton(destination: PullupsExerciseView(), image: "pull-ups", title: "Pull-ups")
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    
-                
+                    .standardExerciseButtonStyle()
                 exerciseButton(destination: DipsExerciseView(), image: "dips", title: "Dips")
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    
-                
-                // Last Training Info Section
-                
+                    .standardExerciseButtonStyle()
             }
             .padding(.horizontal, 10)
-            
-        }.navigationBarHidden(true)
-        
+        }
+        .navigationBarHidden(true)
     }
 
-    
-    
-    
+    // MARK: - Subviews
+    private var previousTrainingView: some View {
+        VStack(alignment: .center, spacing: 40) {
+            Text("Previous Training")
+                .font(.headline)
+            HStack {
+                previousTrainingColumn(title: "Pullups", lastTotalReps: pullupsViewmodel.lastSessionTotalReps, weight: "~20kg")
+                previousTrainingColumn(title: "Dips", lastTotalReps: dipsViewModel.lastSessionTotalReps, weight: "~25kg")
+            }
+        }
+        .padding()
+        .frame(width: .infinity, height: 150)
+        .background(Color.white)
+        .cornerRadius(12)
+        .shadow(radius: 10)
+        .padding(.top)
+    }
+
+    private var chooseExerciseText: some View {
+        Text("Choose your Exercise")
+            .font(.headline)
+            .fontWeight(.regular)
+            .padding(.bottom)
+    }
+
+    private func previousTrainingColumn(title: String, lastTotalReps: Int?, weight: String) -> some View {
+        VStack(alignment: .leading) {
+            Text(title)
+            if let lastTotalReps = lastTotalReps {
+                Text("Reps: \(lastTotalReps)")
+            } else {
+                Text("Reps")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            Text("Weight: \(weight)")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+        }
+    }
+
     private func exerciseButton<Destination: View>(destination: Destination, image: String, title: String) -> some View {
-        
         NavigationLink(destination: destination) {
-            
-            
-            
             VStack(alignment: .leading) {
-                
                 HStack {
                     Image(image)
                         .resizable()
@@ -119,24 +77,28 @@ struct ChooseView: View {
                     Spacer()
                     Image(systemName: "chevron.right")
                         .foregroundColor(.gray)
-                    
                 }
                 .padding()
                 .background(Color.black.opacity(1))
                 .cornerRadius(12)
                 .navigationBarBackButtonHidden(true)
-               
-               
             }
-           // Increased frame height to accommodate the text
-            
         }
         .buttonStyle(PlainButtonStyle())
     }
-    
 }
 
+// MARK: - View Modifiers
+extension View {
+    func standardExerciseButtonStyle() -> some View {
+        self
+            .padding()
+            .background(Color.white)
+            .cornerRadius(12)
+    }
+}
 
+// MARK: - Previews
 struct ChooseView_Previews: PreviewProvider {
     static var previews: some View {
         let storage = TrainingSessionStorage()
