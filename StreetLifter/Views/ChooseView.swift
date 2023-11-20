@@ -137,11 +137,12 @@ struct ChooseView: View {
 }
 
 
-//struct ChooseView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let pullupsVM = PullupsTrainingViewModel()
-//                let dipsVM = DipsTrainingViewModel()
-//
-//        ChooseView()
-//    }
-//}
+struct ChooseView_Previews: PreviewProvider {
+    static var previews: some View {
+        let storage = TrainingSessionStorage()
+        let pullupsVM = PullupsTrainingViewModel(storage: storage)
+        let dipsVM = DipsTrainingViewModel(storage: storage)
+
+        ChooseView(pullupsViewmodel: pullupsVM, dipsViewModel: dipsVM)
+    }
+}

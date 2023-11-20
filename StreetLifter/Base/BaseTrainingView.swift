@@ -10,14 +10,14 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
     @StateObject var storage = TrainingSessionStorage()
     
     @State private var selectedWeightIndex = 0
-  
+    
     init(viewModel: ViewModel) {
-            let storage = TrainingSessionStorage()
-            
-            _viewModel = StateObject(wrappedValue: viewModel)
-            _pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
-            _dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
-        }
+        let storage = TrainingSessionStorage()
+        
+        _viewModel = StateObject(wrappedValue: viewModel)
+        _pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
+        _dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
+    }
     
     var body: some View {
         
@@ -25,14 +25,14 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
             if viewModel.trainingCompleted {
                 
                 VStack {
-                                  Spacer()
-                                  Image(systemName: "trophy")
-                                      .font(Font.system(size: 50))
-                                      .padding()
-                                  Text("Good job!\n You've done \(viewModel.lastSessionTotalReps ?? 0) reps.")
-                                      .font(.title)
-                                      .multilineTextAlignment(.center)
-                                  Spacer()
+                    Spacer()
+                    Image(systemName: "trophy")
+                        .font(Font.system(size: 50))
+                        .padding()
+                    Text("Good job!\n You've done \(viewModel.lastSessionTotalReps ?? 0) reps.")
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                    Spacer()
                     NavigationLink(destination: ChooseView(pullupsViewmodel: pullupsViewModel, dipsViewModel: dipsViewModel)) {
                         Color.black
                             .frame(maxWidth: 250, maxHeight: 50)
@@ -44,8 +44,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                                     .padding(8)
                             )
                     }
-                    }
-         
+                }
+                
             } else {
                 VStack {
                     Text("Progress:")
@@ -150,7 +150,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                 .padding()
             }
         }
-}
+    }
 }
 
 
