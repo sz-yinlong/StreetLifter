@@ -14,6 +14,11 @@ StreetLifter is an iOS application designed for street workout enthusiasts. It f
 - **Progress Monitoring:** View your progress over time with session history.
 - **Customizable Workouts:** Adjust reps, sets and weights according to your training needs.
 
+## Stack 
+-Architecture: **MVVM**
+
+-Built with **SwiftUI**/**Combine**
+
 ## Installation
 
 To run StreetLifter on your local machine, clone the repository and open it in Xcode.
