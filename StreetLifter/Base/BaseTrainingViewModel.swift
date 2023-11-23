@@ -7,7 +7,7 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
   
     
     var trainingSessionsKey: String
-    let availableWeights: [Int] = [10, 15, 20, 25,30]
+    let availableWeights = Array(1...30)
     
    
     
