@@ -153,7 +153,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
     }
 }
 
-
 struct BaseTrainingView_Previews: PreviewProvider {
     static var previews: some View {
         let storage = TrainingSessionStorage()
@@ -163,4 +162,4 @@ struct BaseTrainingView_Previews: PreviewProvider {
         BaseTrainingView<BaseTrainingViewModel, Any>(viewModel: viewModel)
     }
 }
-//fixed
+

@@ -11,7 +11,7 @@ class DipsTrainingViewModel: BaseTrainingViewModel {
     }
     
     override func trainingViewType() -> ExerciseType? {
-        return .pullups
+        return .dips
         }
  
     }

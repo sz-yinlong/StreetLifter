@@ -11,7 +11,6 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
     var body: some View {
         NavigationStack {
             VStack {
-                
                 List {
                     Section(header:
                                 HStack {
@@ -19,7 +18,8 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
                         Text("Previous sessions")
                         Spacer()
                     }
-                    ) {
+                    )
+                    {
                         ForEach(viewModel.trainingSessions, id: \.self) { session in
                             HStack(spacing: 5) {
                                 Text(session.date)
@@ -29,12 +29,12 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
                                         .font(.system(size: 14))
                                         .padding(.vertical, 4)
                                         .padding(.horizontal, 8)
-                                        .frame(width: 35)
+                                        .frame(width: 40)
                                         .background(Color.secondary.opacity(0.1))
                                         .cornerRadius(8)
                                 }
                             }
-                            .padding(.horizontal, 16)
+                            .padding(.horizontal)
                         }
                     }
                 }
@@ -73,5 +73,13 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
                 }
             }
         )
+    }
+}
+
+struct BaseExcerciseView_Previews: PreviewProvider {
+    static var previews: some View {
+        let storage = TrainingSessionStorage()
+        let viewModel = DipsTrainingViewModel(storage: storage)
+        BaseExerciseView(viewModel: viewModel)
     }
 }

@@ -5,7 +5,7 @@ import Foundation
 class TrainingSessionStorage: ObservableObject {
     
     func saveSession(session:[TrainingSession], forKey key: String) {
-        let sessionData: [[String: Any]] = session.map { ["date": $0.date, "reps": $0.reps, "totalReps": $0.totalReps] }
+        let sessionData: [[String: Any]] = session.map { ["date": $0.date, "reps": $0.reps, "weight": $0.weight, "totalReps": $0.totalReps] }
         UserDefaults.standard.set(sessionData, forKey: key)
     }
     
@@ -14,8 +14,9 @@ class TrainingSessionStorage: ObservableObject {
             return savedSessions.compactMap { sessionData in
                 if let date = sessionData["date"] as? String,
                    let reps = sessionData["reps"] as? [Int],
+                   let weight = sessionData["weight"] as? [Int],
                    let totalReps = sessionData["totalReps"] as? Int {
-                    return TrainingSession(date: date, reps: reps, totalReps: totalReps)
+                    return TrainingSession(date: date, reps: reps, weight: weight, totalReps: totalReps)
                 }
                 return nil
             }

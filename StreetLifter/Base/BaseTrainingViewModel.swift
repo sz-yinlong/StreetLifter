@@ -13,8 +13,10 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     
     @Published var showExerciseView = false
     @Published var reps: Int
+    @Published var weight: Int
     @Published var trainingSessions: [TrainingSession] = []
     @Published var currentSessionReps: [Int] = []
+    @Published var currenSessionWeight: [Int] = []
     @Published var trainingCompleted = false
     @Published var trainingDate: [Int] = []
     @Published var lastSessionTotalReps: Int?
@@ -25,20 +27,16 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
         self.storage = storage
         self.trainingSessionsKey = trainingSessionsKey
         self.reps = UserDefaults.standard.integer(forKey: "reps")
+        self.weight = UserDefaults.standard.integer(forKey: "weight")
         self.trainingSessions = storage.retrieveSessions(forKey: trainingSessionsKey)
     }
-    
-
     
     func saveTrainingSession() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM.dd"
         let date = dateFormatter.string(from: Date())
-        
-        let newSession = TrainingSession(date: date, reps: currentSessionReps, totalReps: totalReps)
+        let newSession = TrainingSession(date: date, reps: currentSessionReps, weight: currenSessionWeight, totalReps: totalReps)
         trainingSessions.append(newSession)
-        
-     
         lastSessionTotalReps = totalReps
         storage.saveSession(session: trainingSessions, forKey: trainingSessionsKey)
         
@@ -48,6 +46,7 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     
     func updateMostRecentTotalReps() {
         self.lastSessionTotalReps = trainingSessions.last?.totalReps
+
     }
     
     var canAddSet: Bool {
@@ -92,6 +91,4 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     func trainingViewType() -> ExerciseType? {
        return nil
        }
-   
-  
 }
