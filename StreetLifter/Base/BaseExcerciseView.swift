@@ -9,35 +9,51 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
     }
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                List {
-                    Section(header:
+            NavigationStack {
+                VStack {
+                    List {
+                        Section(header: Text("Previous sessions")
+                            .font(.subheadline)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        ) {
+                            ForEach(viewModel.trainingSessions, id: \.self) { session in
                                 HStack {
-                        Spacer()
-                        Text("Previous sessions")
-                        Spacer()
-                    }
-                    )
-                    {
-                        ForEach(viewModel.trainingSessions, id: \.self) { session in
-                            HStack(spacing: 5) {
-                                Text(session.date)
-                                Spacer()
-                                ForEach(session.reps, id: \.self) { reps in
-                                    Text("\(reps)")
-                                        .font(.system(size: 14))
-                                        .padding(.vertical, 4)
-                                        .padding(.horizontal, 8)
-                                        .frame(width: 40)
-                                        .background(Color.secondary.opacity(0.1))
-                                        .cornerRadius(8)
+                                    Text(session.date)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                        .frame(width: 80, alignment: .leading) 
+                                    Spacer()
+
+                                    HStack(alignment: .top, spacing: 4) {
+                                        ForEach(Array(zip(session.reps, session.weight)), id: \.0) { reps, weight in
+                                            VStack {
+                                                Text("\(reps)")
+                                                    .font(.system(size: 16))
+                                                    .fontWeight(.medium)
+                                                    .frame(alignment: .leading)
+                                                Text("\(weight) kg")
+                                                    .font(.system(size: 12))
+                                                    .foregroundColor(.secondary)
+                                            }
+                                            .frame(width: 34)
+                                            .padding(.vertical, 4)
+                                            .padding(.horizontal, 8)
+                                            .background(Color.secondary.opacity(0.1))
+                                            .cornerRadius(8)
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 }
+                                .padding(.vertical, 4)
                             }
-                            .padding(.horizontal)
                         }
+                        .listSectionSeparator(.hidden)
+                        .alignmentGuide(.listRowSeparatorTrailing) { viewDimensions in
+                                            return 350
+                                        }
                     }
-                }
+                    .listStyle(.plain)
+                    
                 
                 VStack {
                     if let exerciseType = viewModel.trainingViewType() {

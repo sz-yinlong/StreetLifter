@@ -29,6 +29,7 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
         self.reps = UserDefaults.standard.integer(forKey: "reps")
         self.weight = UserDefaults.standard.integer(forKey: "weight")
         self.trainingSessions = storage.retrieveSessions(forKey: trainingSessionsKey)
+        self.lastSessionTotalReps = trainingSessions.last?.totalReps
     }
     
     func saveTrainingSession() {
@@ -39,8 +40,8 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
         trainingSessions.append(newSession)
         lastSessionTotalReps = totalReps
         storage.saveSession(session: trainingSessions, forKey: trainingSessionsKey)
-        
-  print("Training session saved: ")
+        print("total reps\(totalReps)")
+
     }
     
     
@@ -49,20 +50,15 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
 
     }
     
-    var canAddSet: Bool {
-        currentSessionReps.count < 5
-    }
-    
-    var mostRecentTotalReps: Int? {
-        return trainingSessions.last?.totalReps
-    }
+    var canAddSet: Bool { currentSessionReps.count < 5 }
+    var mostRecentTotalReps: Int? { return trainingSessions.last?.totalReps }
     
     var totalReps: Int {
         let total = currentSessionReps.reduce(0, +)
-        
-    print("Total reps updated: \(total)")
+        print("Total reps updated: \(total)")
         return total
     }
+    
     func decrementReps() {
         if reps > 1 {
             reps -= 1
@@ -86,6 +82,9 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
         if currentSessionReps.count < 5 {
             currentSessionReps.append(reps)
         }
+    }
+    func saveWeightForCurrentSession(weight: Int) {
+        currenSessionWeight.append(weight)
     }
     
     func trainingViewType() -> ExerciseType? {

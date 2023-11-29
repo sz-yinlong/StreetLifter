@@ -132,6 +132,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                                 
                             }
                             viewModel.saveRepsForCurrentSession()
+                            viewModel.saveWeightForCurrentSession(weight: viewModel.availableWeights[selectedWeightIndex])
                         }) {
                             Text("Done")
                                 .foregroundColor(.white)

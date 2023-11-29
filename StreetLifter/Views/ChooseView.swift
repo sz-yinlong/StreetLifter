@@ -25,42 +25,45 @@ struct ChooseView: View {
 
     // MARK: - Subviews
     private var previousTrainingView: some View {
-        VStack(alignment: .center, spacing: 40) {
-            Text("Previous Training")
+        VStack(alignment: .leading, spacing: 20) {
+            Text("Previous Session")
                 .font(.headline)
-            HStack {
-                previousTrainingColumn(title: "Pullups", lastTotalReps: pullupsViewmodel.lastSessionTotalReps, weight: "~20kg")
-                previousTrainingColumn(title: "Dips", lastTotalReps: dipsViewModel.lastSessionTotalReps, weight: "~25kg")
+                .fontWeight(.medium)
+            VStack {
+                previousTrainingColumn(title: "Pull-ups:", lastTotalReps: pullupsViewmodel.lastSessionTotalReps)
+                previousTrainingColumn(title: "Dips:", lastTotalReps: dipsViewModel.lastSessionTotalReps)
             }
         }
         .padding()
-        .frame(width: .infinity, height: 150)
+        .frame(width: .infinity, height: 100)
         .background(Color.white)
         .cornerRadius(12)
         .shadow(radius: 10)
-        .padding(.top)
     }
 
     private var chooseExerciseText: some View {
-        Text("Choose your Exercise")
-            .font(.headline)
-            .fontWeight(.regular)
-            .padding(.bottom)
+        Text("Exercise")
+            .font(.body)
+            .fontWeight(.light)
+            .padding(.top)
+        
     }
 
-    private func previousTrainingColumn(title: String, lastTotalReps: Int?, weight: String) -> some View {
-        VStack(alignment: .leading) {
+    private func previousTrainingColumn(title: String, lastTotalReps: Int?) -> some View {
+        HStack {
             Text(title)
+                .font(.subheadline)
+                .frame(width: 100, alignment: .leading)
+            
             if let lastTotalReps = lastTotalReps {
-                Text("Reps: \(lastTotalReps)")
+                Text("\(lastTotalReps)")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             } else {
                 Text("Reps")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
-            Text("Weight: \(weight)")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
         }
     }
 
