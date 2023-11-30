@@ -13,9 +13,9 @@ struct ChooseView: View {
                 previousTrainingView
                 Spacer()
                 chooseExerciseText
-                exerciseButton(destination: PullupsExerciseView(), image: "pull-ups", title: "Pull-ups")
+                exerciseButton(destination: PullupsExerciseView(), image: "pull-ups", title: R.string.localizable.pullups())
                     .standardExerciseButtonStyle()
-                exerciseButton(destination: DipsExerciseView(), image: "dips", title: "Dips")
+                exerciseButton(destination: DipsExerciseView(), image: "dips", title: R.string.localizable.dips)
                     .standardExerciseButtonStyle()
             }
             .padding(.horizontal, 10)

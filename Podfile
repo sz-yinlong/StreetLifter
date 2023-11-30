@@ -7,5 +7,6 @@ target 'StreetLifter' do
 
   # Pods for StreetLifter
 	pod 'SwiftLint'
+  pod 'R.swift'
 
 end
