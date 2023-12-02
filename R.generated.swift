@@ -50,7 +50,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 10 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 14 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -82,12 +82,33 @@ struct _R {
       /// Locales: en
       var exercise: RswiftResources.StringResource { .init(key: "exercise", tableName: "Localizable", source: source, developmentValue: "Exercise", comment: nil) }
 
+      /// en translation: Good job!  You've done %d reps.
+      ///
+      /// Key: goodJobMessage
+      ///
+      /// Locales: en, ru
+      var goodJobMessage: RswiftResources.StringResource1<Int> { .init(key: "goodJobMessage", tableName: "Localizable", source: source, developmentValue: "Good job!\n You've done %d reps.", comment: nil) }
+
+      /// en translation: Main
+      ///
+      /// Key: main
+      ///
+      /// Locales: en, ru
+      var main: RswiftResources.StringResource { .init(key: "main", tableName: "Localizable", source: source, developmentValue: "Main", comment: nil) }
+
       /// en translation: No data available
       ///
       /// Key: noData
       ///
       /// Locales: en, ru
       var noData: RswiftResources.StringResource { .init(key: "noData", tableName: "Localizable", source: source, developmentValue: "No data available", comment: nil) }
+
+      /// en translation: Previous sessions
+      ///
+      /// Key: previousSessions
+      ///
+      /// Locales: en, ru
+      var previousSessions: RswiftResources.StringResource { .init(key: "previousSessions", tableName: "Localizable", source: source, developmentValue: "Previous sessions", comment: nil) }
 
       /// en translation: Progress
       ///
@@ -123,6 +144,13 @@ struct _R {
       ///
       /// Locales: en, ru
       var sets: RswiftResources.StringResource { .init(key: "sets", tableName: "Localizable", source: source, developmentValue: "Sets", comment: nil) }
+
+      /// en translation: Start Exercise
+      ///
+      /// Key: startExercise
+      ///
+      /// Locales: en, ru
+      var startExercise: RswiftResources.StringResource { .init(key: "startExercise", tableName: "Localizable", source: source, developmentValue: "Start Exercise", comment: nil) }
     }
   }
 
