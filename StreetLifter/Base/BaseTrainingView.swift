@@ -45,7 +45,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                             )
                     }
                 }
-                
             } else {
                 VStack {
                     Text(R.string.localizable.progress())
@@ -60,19 +59,15 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                                     .padding(20)
                                     .background(Color.secondary.opacity(0.1))
                                     .cornerRadius(8)
-                                
                             }
                         }
                         .padding(.horizontal, 16)
                     }
-                    
                     Spacer()
-                    
                     Text("\(viewModel.reps)")
                         .font(.system(size: 70))
                         .bold()
-                    
-                    
+
                     Spacer()
                     
                     HStack (alignment: .center){

@@ -103,12 +103,12 @@ struct _R {
       /// Locales: en, ru
       var noData: RswiftResources.StringResource { .init(key: "noData", tableName: "Localizable", source: source, developmentValue: "No data available", comment: nil) }
 
-      /// en translation: Previous sessions
+      /// en translation: Previous session
       ///
-      /// Key: previousSessions
+      /// Key: previousSession
       ///
       /// Locales: en, ru
-      var previousSessions: RswiftResources.StringResource { .init(key: "previousSessions", tableName: "Localizable", source: source, developmentValue: "Previous sessions", comment: nil) }
+      var previousSession: RswiftResources.StringResource { .init(key: "previousSession", tableName: "Localizable", source: source, developmentValue: "Previous session", comment: nil) }
 
       /// en translation: Progress
       ///

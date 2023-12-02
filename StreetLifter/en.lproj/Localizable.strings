@@ -16,7 +16,7 @@
 "progress" = "Progress";
 "addWeight" = "Add Weight";
 "done" = "Done";
-"previousSessions" = "Previous sessions";
+"previousSession" = "Previous session";
 "goodJobMessage" = "Good job!\n You've done %d reps.";
 "main" = "Main";
 "startExercise" = "Start Exercise";

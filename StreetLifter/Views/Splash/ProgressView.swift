@@ -1,79 +1,46 @@
-//import SwiftUI
-//
-//
-//struct ProgressView: View {
-//    
-//    var title: String
-//    var trainingSessions: [[Int]]
-//    
-//    var body: some View {
-//        VStack(spacing: 16) {
-//            Text(title)
-//                .font(.title2)
-//            
-//            if trainingSessions.isEmpty {
-//                Text(R.string.localizable.noData())
-//                    .foregroundColor(.gray)
-//            } else {
-//                VStack {
-//                    GeometryReader { geometry in
-//                        let padding: CGFloat = 20
-//                        let graphWidth = geometry.size.width - 2 * padding
-//                        let graphHeight: CGFloat = 80
-//                        let maxReps = CGFloat(trainingSessions.flatMap { $0 }.max() ?? 1)
-//                        let barWidth = graphWidth / CGFloat(trainingSessions.count)
-//                        
-//                        // Draw bars
-//                        ForEach(0..<trainingSessions.count, id: \.self) { index in
-//                            let totalRepsForSession = CGFloat(trainingSessions[index].reduce(0, +))
-//                            let progress = totalRepsForSession / maxReps
-//                            let x = padding + barWidth * CGFloat(index)
-//                            let barHeight = graphHeight * progress / 2 // Adjusting the height of the bars
-//                            let y = geometry.size.height // Starting bars at the bottom of the frame
-//                            
-//                            Rectangle()
-//                                .fill(Color.black)
-//                                .frame(width: barWidth - 5, height: barHeight)
-//                                .position(x: x + barWidth / 2, y: y - barHeight / 2) // Adjusting the position
-//                        }
-//                    }
-//                    .frame(height: 100)
-//                    .padding(.horizontal, 10)
-//                    
-//                    // X-axis label (Date)
-//                    HStack {
-//                        Text("Date")
-//                            .font(.subheadline)
-//                            .foregroundColor(.gray)
-//                        Spacer()
-//                    }
-//                    .padding(.leading, 30)
-//                }
-//                
-//                // Y-axis label (Total Reps)
-//                VStack {
-//                    Text("Total Reps")
-//                        .font(.subheadline)
-//                        .foregroundColor(.gray)
-//                        .rotationEffect(.degrees(-90))
-//                        .offset(x: -150, y: -100) // Adjust offset to align with Y-axis
-//                    Spacer()
-//                }
-//            }
-//        }
-//        .padding()
-//        .background(Color.white)
-//        .cornerRadius(12)
-//        .shadow(radius: 5)
-//    }
-//}
-//
-//struct ProgressView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let storage = TrainingSessionStorage()
-//        let pullupsViewModel = PullupsTrainingViewModel(storage: storage)
-//        let dipsViewModel = DipsTrainingViewModel(storage: storage)
-//
-//        ProgressView(title: "title", trainingSessions: [[]])
-//    }
-//}
+import SwiftUI
+import Charts
+
+struct BarChart: View {
+    var trainingSessions: [TrainingSession]
+
+    var body: some View {
+        Chart {
+            ForEach(Array(trainingSessions.suffix(7).enumerated()), id: \.element) { index, session in
+                BarMark(
+                    x: .value("Session", index),
+                    y: .value("Total Reps", session.totalReps)
+                )
+                PointMark(
+                    x: .value("Session", index),
+                    y: .value("Total Reps", session.totalReps)
+                )
+                .foregroundStyle(by: .value("Total Reps", index))
+                .interpolationMethod(.catmullRom)
+            
+                
+                
+                
+                // Использование аннотации для отображения значения повторений
+                .annotation(position: .top, alignment: .center) {
+                    Text("\(session.totalReps)")
+                        .font(.caption)
+                        .background(Color.white.opacity(0.1))
+                        .cornerRadius(20)
+                }
+                .cornerRadius(20)
+            }
+        }
+        .chartXAxis {
+            AxisMarks(preset: .aligned, position: .bottom)
+        }
+        .chartYAxis {
+            AxisMarks(preset: .aligned, position: .leading)
+        }
+        .frame(width: 300, height: 180) // Задаете желаемый размер графика
+        .padding([.horizontal, .vertical], 10) // Добавляете отступы вокруг графика
+               .background(RoundedRectangle(cornerRadius: 20) // Создаете закругленный прямоугольник
+                               .fill(Color.white) // Задаете цвет фона
+                               .shadow(radius: 10))
+    }
+}

@@ -4,13 +4,24 @@ struct ChooseView: View {
     // MARK: - Properties
     @ObservedObject var pullupsViewmodel: PullupsTrainingViewModel
     @ObservedObject var dipsViewModel: DipsTrainingViewModel
+    @ObservedObject var storage = TrainingSessionStorage()
+
 
     // MARK: - Body
     var body: some View {
         NavigationStack {
             VStack {
                 Spacer()
-                previousTrainingView
+                GroupBox() {
+                    VStack {
+                        Text(R.string.localizable.pullups())
+                        BarChart(trainingSessions: pullupsViewmodel.trainingSessions)
+                    }
+                    VStack {
+                        Text(R.string.localizable.dips())
+                        BarChart(trainingSessions: dipsViewModel.trainingSessions)
+                    }
+                }
                 Spacer()
                 chooseExerciseText
                 exerciseButton(destination: PullupsExerciseView(), image: R.image.pullUps.name, title: R.string.localizable.pullups())
@@ -25,9 +36,9 @@ struct ChooseView: View {
 
     // MARK: - Subviews
     private var previousTrainingView: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("Previous Session")
-                .font(.headline)
+        VStack(alignment: .leading, spacing: 50) {
+            Text(R.string.localizable.previousSession())
+                .font(.title)
                 .fontWeight(.medium)
             VStack {
                 previousTrainingColumn(title: R.string.localizable.pullups(), lastTotalReps: pullupsViewmodel.lastSessionTotalReps)
@@ -35,7 +46,7 @@ struct ChooseView: View {
             }
         }
         .padding()
-        .frame(width: .infinity, height: 100)
+        .frame(width: 300, height: 200)
         .background(Color.white)
         .cornerRadius(12)
         .shadow(radius: 10)

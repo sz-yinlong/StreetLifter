@@ -14,7 +14,7 @@
 "set" = "Подход";
 "noData" = "Нет данных";
 "progress" = "Прогресс";
-"previousSessions" = "Предыдущие сессии";
+"previousSession" = "Предидущая тренировка";
 "goodJobMessage" = "Хорошая работа!\n Вы выполнили %d повторов.";
 "main" = "Главная";
 "startExercise" = "Начать упражнение";
