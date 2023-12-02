@@ -8,4 +8,12 @@
 
 "dips" = "Dips";
 "pullups" = "Pull-ups";
+"exercise" = "Exercise";
+"reps" = "Reps";
+"sets" = "Sets";
+"set" = "Set";
+"noData" = "No data available";
+"progress" = "Progress";
+"addWeight" = "Add Weight";
+"done" = "Done";
 

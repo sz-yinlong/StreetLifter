@@ -13,9 +13,9 @@ struct ChooseView: View {
                 previousTrainingView
                 Spacer()
                 chooseExerciseText
-                exerciseButton(destination: PullupsExerciseView(), image: "pull-ups", title: R.string.localizable.pullups())
+                exerciseButton(destination: PullupsExerciseView(), image: R.image.pullUps.name, title: R.string.localizable.pullups())
                     .standardExerciseButtonStyle()
-                exerciseButton(destination: DipsExerciseView(), image: "dips", title: R.string.localizable.dips)
+                exerciseButton(destination: DipsExerciseView(), image: R.image.dips.name, title: R.string.localizable.dips())
                     .standardExerciseButtonStyle()
             }
             .padding(.horizontal, 10)
@@ -30,8 +30,8 @@ struct ChooseView: View {
                 .font(.headline)
                 .fontWeight(.medium)
             VStack {
-                previousTrainingColumn(title: "Pull-ups:", lastTotalReps: pullupsViewmodel.lastSessionTotalReps)
-                previousTrainingColumn(title: "Dips:", lastTotalReps: dipsViewModel.lastSessionTotalReps)
+                previousTrainingColumn(title: R.string.localizable.pullups(), lastTotalReps: pullupsViewmodel.lastSessionTotalReps)
+                previousTrainingColumn(title: R.string.localizable.dips(), lastTotalReps: dipsViewModel.lastSessionTotalReps)
             }
         }
         .padding()
@@ -42,7 +42,7 @@ struct ChooseView: View {
     }
 
     private var chooseExerciseText: some View {
-        Text("Exercise")
+        Text(R.string.localizable.exercise())
             .font(.body)
             .fontWeight(.light)
             .padding(.top)
@@ -60,7 +60,7 @@ struct ChooseView: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             } else {
-                Text("Reps")
+                Text(R.string.localizable.reps())
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }

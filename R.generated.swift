@@ -38,50 +38,91 @@ struct _R {
     let developmentRegion = "en"
   }
 
-  /// This `_R.string` struct is generated, and contains static references to 2 localization tables.
+  /// This `_R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
     let bundle: Foundation.Bundle
     let preferredLanguages: [String]?
     let locale: Locale?
-    var localizableEn: localizableEn { .init(source: .init(bundle: bundle, tableName: "LocalizableEn", preferredLanguages: preferredLanguages, locale: locale)) }
-    var localizableRu: localizableRu { .init(source: .init(bundle: bundle, tableName: "LocalizableRu", preferredLanguages: preferredLanguages, locale: locale)) }
+    var localizable: localizable { .init(source: .init(bundle: bundle, tableName: "Localizable", preferredLanguages: preferredLanguages, locale: locale)) }
 
-    func localizableEn(preferredLanguages: [String]) -> localizableEn {
-      .init(source: .init(bundle: bundle, tableName: "LocalizableEn", preferredLanguages: preferredLanguages, locale: locale))
-    }
-    func localizableRu(preferredLanguages: [String]) -> localizableRu {
-      .init(source: .init(bundle: bundle, tableName: "LocalizableRu", preferredLanguages: preferredLanguages, locale: locale))
+    func localizable(preferredLanguages: [String]) -> localizable {
+      .init(source: .init(bundle: bundle, tableName: "Localizable", preferredLanguages: preferredLanguages, locale: locale))
     }
 
 
-    /// This `_R.string.localizableEn` struct is generated, and contains static references to 2 localization keys.
-    struct localizableEn {
+    /// This `_R.string.localizable` struct is generated, and contains static references to 10 localization keys.
+    struct localizable {
       let source: RswiftResources.StringResource.Source
 
-      /// Value: Dips
+      /// en translation: Add Weight
+      ///
+      /// Key: addWeight
+      ///
+      /// Locales: en
+      var addWeight: RswiftResources.StringResource { .init(key: "addWeight", tableName: "Localizable", source: source, developmentValue: "Add Weight", comment: nil) }
+
+      /// en translation: Dips
       ///
       /// Key: dips
-      var dips: RswiftResources.StringResource { .init(key: "dips", tableName: "LocalizableEn", source: source, developmentValue: nil, comment: nil) }
-
-      /// Value: Pull-ups
       ///
-      /// Key: pullUps
-      var pullUps: RswiftResources.StringResource { .init(key: "pullUps", tableName: "LocalizableEn", source: source, developmentValue: nil, comment: nil) }
-    }
+      /// Locales: en, ru
+      var dips: RswiftResources.StringResource { .init(key: "dips", tableName: "Localizable", source: source, developmentValue: "Dips", comment: nil) }
 
-    /// This `_R.string.localizableRu` struct is generated, and contains static references to 2 localization keys.
-    struct localizableRu {
-      let source: RswiftResources.StringResource.Source
-
-      /// Value: Отжимания
+      /// en translation: Done
       ///
-      /// Key: dips
-      var dips: RswiftResources.StringResource { .init(key: "dips", tableName: "LocalizableRu", source: source, developmentValue: nil, comment: nil) }
-
-      /// Value: Подтягивания
+      /// Key: done
       ///
-      /// Key: pullUps
-      var pullUps: RswiftResources.StringResource { .init(key: "pullUps", tableName: "LocalizableRu", source: source, developmentValue: nil, comment: nil) }
+      /// Locales: en
+      var done: RswiftResources.StringResource { .init(key: "done", tableName: "Localizable", source: source, developmentValue: "Done", comment: nil) }
+
+      /// en translation: Exercise
+      ///
+      /// Key: exercise
+      ///
+      /// Locales: en
+      var exercise: RswiftResources.StringResource { .init(key: "exercise", tableName: "Localizable", source: source, developmentValue: "Exercise", comment: nil) }
+
+      /// en translation: No data available
+      ///
+      /// Key: noData
+      ///
+      /// Locales: en, ru
+      var noData: RswiftResources.StringResource { .init(key: "noData", tableName: "Localizable", source: source, developmentValue: "No data available", comment: nil) }
+
+      /// en translation: Progress
+      ///
+      /// Key: progress
+      ///
+      /// Locales: en, ru
+      var progress: RswiftResources.StringResource { .init(key: "progress", tableName: "Localizable", source: source, developmentValue: "Progress", comment: nil) }
+
+      /// en translation: Pull-ups
+      ///
+      /// Key: pullups
+      ///
+      /// Locales: en, ru
+      var pullups: RswiftResources.StringResource { .init(key: "pullups", tableName: "Localizable", source: source, developmentValue: "Pull-ups", comment: nil) }
+
+      /// en translation: Reps
+      ///
+      /// Key: reps
+      ///
+      /// Locales: en, ru
+      var reps: RswiftResources.StringResource { .init(key: "reps", tableName: "Localizable", source: source, developmentValue: "Reps", comment: nil) }
+
+      /// en translation: Set
+      ///
+      /// Key: set
+      ///
+      /// Locales: en, ru
+      var set: RswiftResources.StringResource { .init(key: "set", tableName: "Localizable", source: source, developmentValue: "Set", comment: nil) }
+
+      /// en translation: Sets
+      ///
+      /// Key: sets
+      ///
+      /// Locales: en, ru
+      var sets: RswiftResources.StringResource { .init(key: "sets", tableName: "Localizable", source: source, developmentValue: "Sets", comment: nil) }
     }
   }
 

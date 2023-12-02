@@ -6,6 +6,7 @@ struct StreetLifterApp: App {
     var body: some Scene {
         WindowGroup {
          SplashView()
+                .environment(\.colorScheme, .light)
         }
     }
 }

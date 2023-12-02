@@ -48,7 +48,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                 
             } else {
                 VStack {
-                    Text("Progress:")
+                    Text(R.string.localizable.progress())
                         .font(.title)
                         .padding()
                     
@@ -87,7 +87,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                         Spacer()
                         
                         
-                        Text("Reps")
+                        Text(R.string.localizable.reps())
                         
                         Spacer()
                         
@@ -103,7 +103,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                     .padding()
                     
                     HStack {
-                        Text("Add Weight")
+                        Text(R.string.localizable.addWeight())
                             .font(.system(size: 30))
                         
                         
@@ -134,7 +134,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                             viewModel.saveRepsForCurrentSession()
                             viewModel.saveWeightForCurrentSession(weight: viewModel.availableWeights[selectedWeightIndex])
                         }) {
-                            Text("Done")
+                            Text(R.string.localizable.done()
+                           )
                                 .foregroundColor(.white)
                                 .font(.headline)
                                 .padding()
