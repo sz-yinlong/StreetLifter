@@ -5,66 +5,44 @@ struct ChooseView: View {
     @ObservedObject var pullupsViewmodel: PullupsTrainingViewModel
     @ObservedObject var dipsViewModel: DipsTrainingViewModel
     @ObservedObject var storage = TrainingSessionStorage()
-
-
+    
+    
     // MARK: - Body
     var body: some View {
+        
         NavigationStack {
-            VStack {
-                Spacer()
-                GroupBox() {
-                    VStack {
-                        Text(R.string.localizable.pullups())
-                        BarChart(trainingSessions: pullupsViewmodel.trainingSessions)
-                    }
-                    VStack {
-                        Text(R.string.localizable.dips())
-                        BarChart(trainingSessions: dipsViewModel.trainingSessions)
-                    }
+            Text("StreetLifter")
+                .font(.headline)
+            Spacer()
+            ZStack {
+                Rectangle()
+                    .fill(Color(red: 58 / 255, green: 80 / 255, blue: 190 / 255, opacity: 0.05))
+                    .cornerRadius(20)
+                    .frame(width: 300, height: 280)
+                HStack {
+                    BarChart(combinedSessions: CombinedTrainingSession(pullups: pullupsViewmodel.trainingSessions, dips: dipsViewModel.trainingSessions))
                 }
-                Spacer()
-                chooseExerciseText
+            }
+            Spacer()
+            
+            VStack {
                 exerciseButton(destination: PullupsExerciseView(), image: R.image.pullUps.name, title: R.string.localizable.pullups())
                     .standardExerciseButtonStyle()
                 exerciseButton(destination: DipsExerciseView(), image: R.image.dips.name, title: R.string.localizable.dips())
                     .standardExerciseButtonStyle()
             }
+            
             .padding(.horizontal, 10)
+            
+            
         }
-        .navigationBarHidden(true)
     }
-
-    // MARK: - Subviews
-    private var previousTrainingView: some View {
-        VStack(alignment: .leading, spacing: 50) {
-            Text(R.string.localizable.previousSession())
-                .font(.title)
-                .fontWeight(.medium)
-            VStack {
-                previousTrainingColumn(title: R.string.localizable.pullups(), lastTotalReps: pullupsViewmodel.lastSessionTotalReps)
-                previousTrainingColumn(title: R.string.localizable.dips(), lastTotalReps: dipsViewModel.lastSessionTotalReps)
-            }
-        }
-        .padding()
-        .frame(width: 300, height: 200)
-        .background(Color.white)
-        .cornerRadius(12)
-        .shadow(radius: 10)
-    }
-
-    private var chooseExerciseText: some View {
-        Text(R.string.localizable.exercise())
-            .font(.body)
-            .fontWeight(.light)
-            .padding(.top)
-        
-    }
-
+    
     private func previousTrainingColumn(title: String, lastTotalReps: Int?) -> some View {
         HStack {
             Text(title)
                 .font(.subheadline)
-                .frame(width: 100, alignment: .leading)
+            
             
             if let lastTotalReps = lastTotalReps {
                 Text("\(lastTotalReps)")
@@ -77,7 +55,7 @@ struct ChooseView: View {
             }
         }
     }
-
+    
     private func exerciseButton<Destination: View>(destination: Destination, image: String, title: String) -> some View {
         NavigationLink(destination: destination) {
             VStack(alignment: .leading) {
@@ -93,7 +71,7 @@ struct ChooseView: View {
                         .foregroundColor(.gray)
                 }
                 .padding()
-                .background(Color.black.opacity(1))
+                .background(ColorConstants.buttonColor)
                 .cornerRadius(12)
                 .navigationBarBackButtonHidden(true)
             }
@@ -106,19 +84,18 @@ struct ChooseView: View {
 extension View {
     func standardExerciseButtonStyle() -> some View {
         self
-            .padding()
-            .background(Color.white)
-            .cornerRadius(12)
+            .cornerRadius(8)
+            .frame(width: 350, height: 70)
     }
 }
 
 // MARK: - Previews
-struct ChooseView_Previews: PreviewProvider {
+struct ChooseView2_Previews: PreviewProvider {
     static var previews: some View {
         let storage = TrainingSessionStorage()
         let pullupsVM = PullupsTrainingViewModel(storage: storage)
         let dipsVM = DipsTrainingViewModel(storage: storage)
-
+        
         ChooseView(pullupsViewmodel: pullupsVM, dipsViewModel: dipsVM)
     }
 }

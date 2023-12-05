@@ -50,7 +50,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 14 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 16 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -89,6 +89,13 @@ struct _R {
       /// Locales: en, ru
       var goodJobMessage: RswiftResources.StringResource1<Int> { .init(key: "goodJobMessage", tableName: "Localizable", source: source, developmentValue: "Good job!\n You've done %d reps.", comment: nil) }
 
+      /// en translation: Last 7 sessions
+      ///
+      /// Key: lastSevenSessions
+      ///
+      /// Locales: en, ru
+      var lastSevenSessions: RswiftResources.StringResource { .init(key: "lastSevenSessions", tableName: "Localizable", source: source, developmentValue: "Last 7 sessions", comment: nil) }
+
       /// en translation: Main
       ///
       /// Key: main
@@ -103,12 +110,12 @@ struct _R {
       /// Locales: en, ru
       var noData: RswiftResources.StringResource { .init(key: "noData", tableName: "Localizable", source: source, developmentValue: "No data available", comment: nil) }
 
-      /// en translation: Previous session
+      /// en translation: Previous training
       ///
       /// Key: previousSession
       ///
       /// Locales: en, ru
-      var previousSession: RswiftResources.StringResource { .init(key: "previousSession", tableName: "Localizable", source: source, developmentValue: "Previous session", comment: nil) }
+      var previousSession: RswiftResources.StringResource { .init(key: "previousSession", tableName: "Localizable", source: source, developmentValue: "Previous training", comment: nil) }
 
       /// en translation: Progress
       ///
@@ -145,6 +152,13 @@ struct _R {
       /// Locales: en, ru
       var sets: RswiftResources.StringResource { .init(key: "sets", tableName: "Localizable", source: source, developmentValue: "Sets", comment: nil) }
 
+      /// en translation: Start
+      ///
+      /// Key: start
+      ///
+      /// Locales: en, ru
+      var start: RswiftResources.StringResource { .init(key: "start", tableName: "Localizable", source: source, developmentValue: "Start", comment: nil) }
+
       /// en translation: Start Exercise
       ///
       /// Key: startExercise
@@ -162,12 +176,18 @@ struct _R {
     var accentColor: RswiftResources.ColorResource { .init(name: "AccentColor", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 2 images.
+  /// This `_R.image` struct is generated, and contains static references to 4 images.
   struct image {
     let bundle: Foundation.Bundle
 
+    /// Image `Image`.
+    var image: RswiftResources.ImageResource { .init(name: "Image", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `dips`.
     var dips: RswiftResources.ImageResource { .init(name: "dips", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `metalTexture`.
+    var metalTexture: RswiftResources.ImageResource { .init(name: "metalTexture", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `pull-ups`.
     var pullUps: RswiftResources.ImageResource { .init(name: "pull-ups", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }

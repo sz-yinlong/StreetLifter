@@ -11,7 +11,7 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
         NavigationStack {
             VStack {
                 List {
-                    Section(header: Text("Previous sessions")
+                    Section(header: Text(R.string.localizable.previousSession())
                         .font(.subheadline)
                         .frame(maxWidth: .infinity, alignment: .center)
                     ) {
@@ -30,6 +30,7 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
                                                 .font(.system(size: Constants.fontPrimary))
                                                 .fontWeight(.medium)
                                                 .frame(alignment: .leading)
+                                            Divider()
                                             Text("\(weight) kg")
                                                 .font(.system(size: Constants.fontSecondary))
                                                 .foregroundColor(.secondary)
@@ -51,15 +52,16 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
                 }
                 .listStyle(.plain)
                 
+                
                 VStack {
                     if let exerciseType = viewModel.trainingViewType() {
                         NavigationLink(destination: destinationView(for: exerciseType)) {
-                            Color.primary
+                            ColorConstants.buttonColor
                                 .frame(maxWidth: Constants.buttonMaxWidth)
                                 .frame(maxHeight: Constants.buttonMaxHeight)
                                 .cornerRadius(Constants.buttonCornerRadius)
                                 .overlay(
-                                    Text("Start Exercise")
+                                    Text(R.string.localizable.start())
                                         .foregroundColor(.white)
                                         .font(.headline)
                                 )
@@ -94,7 +96,7 @@ struct BaseExerciseView_Previews: PreviewProvider {
     }
 }
 
-struct Constants {
+private struct Constants {
     static let sessionDateWidth = CGFloat(80)
     static let sessionSpacing = CGFloat(4)
     static let sessionVStackWidth = CGFloat(34)
@@ -102,7 +104,7 @@ struct Constants {
     static let sessionVPaddingHorizontal = CGFloat(8)
     static let sessionVCornerRadius = CGFloat(8)
     static let sessionHAlignmentGuide = CGFloat(350)
-    static let buttonMaxWidth = CGFloat(300)
+    static let buttonMaxWidth = CGFloat(350)
     static let buttonMaxHeight = CGFloat(50)
     static let buttonCornerRadius = CGFloat(10)
     static let fontPrimary = CGFloat(16)
