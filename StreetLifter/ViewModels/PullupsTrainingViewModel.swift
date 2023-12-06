@@ -11,12 +11,12 @@ class PullupsTrainingViewModel: BaseTrainingViewModel {
         
         self.currentSessionReps = savedReps
         self.currenSessionWeight = savedWeight
+      
     }
     
     override func trainingViewType() -> ExerciseType? {
         return .pullups
         }
-    
  
     }
 

@@ -67,7 +67,9 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
                 .frame(width: 370, height: 300, alignment: .top)
                 
                 Spacer()
+    
                 VStack {
+                    Spacer()
                     if let exerciseType = viewModel.trainingViewType() {
                         NavigationLink(destination: destinationView(for: exerciseType)) {
                             ColorConstants.buttonColor

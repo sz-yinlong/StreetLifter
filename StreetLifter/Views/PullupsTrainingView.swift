@@ -13,4 +13,5 @@ struct PullupsTrainingView: View {
     var body: some View {
         BaseTrainingView<PullupsTrainingViewModel, Any>(viewModel: viewModel)
     }
+    
 }

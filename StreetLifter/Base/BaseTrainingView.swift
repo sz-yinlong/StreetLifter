@@ -38,7 +38,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                             .frame(maxWidth: 250, maxHeight: 50)
                             .cornerRadius(10)
                             .overlay(
-                                Text("Main")
+                                Text(R.string.localizable.main())
                                     .foregroundColor(.white)
                                     .font(.headline)
                                     .padding(8)
@@ -66,6 +66,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                     Spacer()
                     Text("\(viewModel.reps)")
                         .font(.system(size: 70))
+                        .foregroundStyle(ColorConstants.buttonColor)
                         .bold()
 
                     Spacer()
@@ -139,7 +140,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                                 .cornerRadius(10)
                             
                         }
-                        .background(Color.primary)
+                        .background(ColorConstants.buttonColor)
                         .cornerRadius(10)
                     }
                     

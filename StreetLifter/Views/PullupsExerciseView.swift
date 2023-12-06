@@ -20,10 +20,11 @@ struct PullupsExerciseView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding()
                 BaseExerciseView(viewModel: viewModel)
-                
             }
         }
+      
     }
+       
 }
 
 struct PullupsViewPreviews: PreviewProvider {
