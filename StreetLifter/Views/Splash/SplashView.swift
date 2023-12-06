@@ -20,8 +20,7 @@ struct SplashView: View {
     {
         Group {
             if showNextView {
-                ChooseView(pullupsViewmodel: pullupsViewModel
-                           , dipsViewModel: dipsViewModel)
+               TabBar()
             } else {
                 VStack {
                     Text("STREETLIFTER")

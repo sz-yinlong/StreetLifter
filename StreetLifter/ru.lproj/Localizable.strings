@@ -14,11 +14,11 @@
 "set" = "Подход";
 "noData" = "Нет данных";
 "progress" = "Прогресс";
-"previousSession" = "Предидущие тренировки";
+"trainingHistory" = "История тренировок";
 "goodJobMessage" = "Хорошая работа!\n Вы выполнили %d повторов.";
 "main" = "Главная";
 "startExercise" = "Начать упражнение";
-"lastSevenSessions" = "Последние 7";
-"start" = "Начать";
+"progress" = "Прогресс";
+"start" = "Начать упражнение";
 
 

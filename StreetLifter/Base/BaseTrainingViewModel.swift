@@ -2,6 +2,10 @@
 import SwiftUI
 
 class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
+    func shouldDisplayChart() -> Bool {
+        return true
+    }
+    
     
     private let storage: TrainingSessionStorage// injected
   
@@ -31,6 +35,8 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
         self.trainingSessions = storage.retrieveSessions(forKey: trainingSessionsKey)
         self.lastSessionTotalReps = trainingSessions.last?.totalReps
     }
+    
+ 
     
     func saveTrainingSession() {
         let dateFormatter = DateFormatter()

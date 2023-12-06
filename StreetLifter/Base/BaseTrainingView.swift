@@ -33,7 +33,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                         .font(.title)
                         .multilineTextAlignment(.center)
                     Spacer()
-                    NavigationLink(destination: ChooseView(pullupsViewmodel: pullupsViewModel, dipsViewModel: dipsViewModel)) {
+                    NavigationLink(destination: TabBar()) {
                         Color.black
                             .frame(maxWidth: 250, maxHeight: 50)
                             .cornerRadius(10)

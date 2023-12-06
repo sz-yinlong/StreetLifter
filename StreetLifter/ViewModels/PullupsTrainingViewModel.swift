@@ -16,6 +16,7 @@ class PullupsTrainingViewModel: BaseTrainingViewModel {
     override func trainingViewType() -> ExerciseType? {
         return .pullups
         }
+    
  
     }
 

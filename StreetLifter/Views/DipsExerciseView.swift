@@ -10,9 +10,19 @@ struct DipsExerciseView: View {
         self.viewModel = DipsTrainingViewModel(storage: storage)
     }
     var body: some View {
-        BaseExerciseView(viewModel: viewModel)
+        NavigationStack {
+            VStack {
+                Text(R.string.localizable.dips())
+                    .font(.title)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding()
+                BaseExerciseView(viewModel: viewModel)
+                
+            }
+        }
     }
 }
+
 struct DipsViewPreviews: PreviewProvider {
     static var previews: some View {
         DipsExerciseView()
