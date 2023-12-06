@@ -50,8 +50,23 @@ struct BarChart: View {
                     )
                     .foregroundStyle(by: .value("Session Type", session.sessionType))
                     .interpolationMethod(.catmullRom)
+                    
+                    PointMark(
+                        x: .value("Date", session.date),
+                        y: .value("total Reps", session.totalReps)
+                        )
+                    .foregroundStyle(by: .value("SessionType", session.sessionType))
+                    
                 }
             }
+            .chartYAxis {
+                AxisMarks(position: .trailing, values: .automatic(desiredCount: 5))
+            }
+          
+            .chartForegroundStyleScale([
+                "Pullups": .pink,
+                "Dips": .green
+            ])
         }
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
     }

@@ -20,6 +20,7 @@ struct TabBar: View {
                 }
         }
         .accentColor(ColorConstants.buttonColor)
+        .navigationBarBackButtonHidden()
     }
 }
 

@@ -33,12 +33,12 @@ struct MainView: View {
                         .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
                     RoundedRectangle(cornerRadius: 10.0)
                         .foregroundStyle(.white)
-                        .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.70, trailing: 10))
+                        .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.76, trailing: 10))
                         .ignoresSafeArea()
                     
                     BarChart(pullupsTrainingSession: pullupsViewModel.trainingSessions,
                                                  dipsTrainingSession: dipsViewModel.trainingSessions)
-                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 10, bottom: geo.size.height * 0.65, trailing: 10))
+                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.65, trailing: 15))
                 }
                 
                 VStack {
@@ -51,7 +51,7 @@ struct MainView: View {
                                    reps: dipsViewModel.lastSessionTotalReps ?? 0,
                                    weight: dipsViewModel.weight)
                 }
-                .padding(EdgeInsets(top: geo.size.height * 0.63, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
+                .padding(EdgeInsets(top: geo.size.height * 0.72, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
             }
         }
     }
@@ -99,9 +99,9 @@ struct MainView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-                .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                .padding(EdgeInsets(top: 1, leading: 0, bottom: 0, trailing: 0))
             }
-            .padding(EdgeInsets(top: 8, leading: 15, bottom: 8, trailing: 10))
+            .padding(EdgeInsets(top: 6, leading: 15, bottom: 8, trailing: 10))
             .background(.white)
             .cornerRadius(10)
             .navigationBarBackButtonHidden(true)
@@ -111,7 +111,7 @@ struct MainView: View {
 
 #Preview {
 
-    MainView()
+    TabBar()
 }
 
 enum Constants {
