@@ -12,12 +12,8 @@ struct DipsExerciseView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text(R.string.localizable.dips())
-                    .font(.title)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding()
                 BaseExerciseView(viewModel: viewModel)
-                
+    
             }
         }
     }

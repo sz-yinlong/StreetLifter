@@ -15,10 +15,6 @@ struct PullupsExerciseView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text(R.string.localizable.pullups())
-                    .font(.title)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding()
                 BaseExerciseView(viewModel: viewModel)
             }
         }

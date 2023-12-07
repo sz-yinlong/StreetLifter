@@ -13,7 +13,7 @@ struct DipsTrainingView: View {
     
     var body: some View {
         BaseTrainingView<DipsTrainingViewModel, Any>(viewModel: viewModel)
-            .navigationBarBackButtonHidden()
+            .toolbar(.hidden, for: .tabBar)
     }
 }
 

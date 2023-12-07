@@ -8,24 +8,16 @@
 import SwiftUI
 
 struct TabBar: View {
-    //    @State var tabSelection: Tabs = .tab1
-    
     var body: some View {
-        NavigationStack {
-            TabView() {
-                NavigationLink(destination: PullupsExerciseView()) {
-                    PullupsExerciseView()
-                }
+        TabView() {
+            PullupsExerciseView()
                 .tabItem {
                     Label(R.string.localizable.pullups(), systemImage: "chevron.up.circle")
                 }
-                NavigationLink(destination: DipsExerciseView()) {
-                    DipsExerciseView()
-                }
+            DipsExerciseView()
                 .tabItem {
                     Label(R.string.localizable.dips(), systemImage: "chevron.down.circle")
                 }
-            }
         }
         .accentColor(ColorConstants.buttonColor)
     }

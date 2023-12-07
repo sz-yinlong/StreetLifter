@@ -13,22 +13,28 @@ struct BarChart: View {
                 .font(.headline)
                 .fontWeight(.medium)
                 .foregroundStyle(ColorConstants.buttonColor.opacity(0.7))
+            
             Chart {
-                ForEach(Array(trainingSession.suffix(7).enumerated()), id: \.element) { index ,session in
+                ForEach(Array(trainingSession.suffix(7).enumerated()), id: \.element) { _ ,session in
                     BarMark(
-                        x: .value("Session", index),
+                        x: .value("Date", session.date),
                         y: .value("Total Reps", session.totalReps)
                     )
+                    
                     .foregroundStyle(ColorConstants.buttonColor.opacity(0.7))
+                    
                     .cornerRadius(3)
-                    }
                 }
             }
-            .frame(width: 330, height: 150)
-            .chartXAxis(.hidden)
-            }
+            .padding()
         }
+        .frame(width: 330, height: 150)
+        
+       
+    }
     
+}
+
 
 
 #Preview {
