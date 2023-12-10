@@ -10,13 +10,13 @@ import SwiftUI
 struct TabBar: View {
     var body: some View {
         TabView() {
-            PullupsExerciseView()
+            MainView(viewModel: PullupsTrainingViewModel(storage: TrainingSessionStorage()))
                 .tabItem {
-                    Label(R.string.localizable.pullups(), systemImage: "chevron.up.circle")
+                    Label("Main", systemImage: "medal.fill")
                 }
             DipsExerciseView()
                 .tabItem {
-                    Label(R.string.localizable.dips(), systemImage: "chevron.down.circle")
+                    Label("Sats", systemImage: "chart.bar.doc.horizontal.fill")
                 }
         }
         .accentColor(ColorConstants.buttonColor)
