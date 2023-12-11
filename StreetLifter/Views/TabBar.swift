@@ -16,7 +16,7 @@ struct TabBar: View {
                 }
             DipsExerciseView()
                 .tabItem {
-                    Label("Sats", systemImage: "chart.bar.doc.horizontal.fill")
+                    Label("Settings", systemImage: "gearshape.fill")
                 }
         }
         .accentColor(ColorConstants.buttonColor)

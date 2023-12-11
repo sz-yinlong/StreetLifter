@@ -11,131 +11,133 @@ import SwiftUI
 
 struct MainView<TrainingViewModel: PullupsTrainingViewModel>: View {
     @StateObject private var viewModel: TrainingViewModel
-    @State private var showChart: Bool = true
     
     init(viewModel: TrainingViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        showChart = viewModel.shouldDisplayChart()
     }
     
     var body: some View {
-        
-        GeometryReader { geo in
-            ZStack {
-                RoundedRectangle(cornerRadius: 10.0)
-                    .foregroundStyle(LinearGradient(colors: [.red, .orange.opacity(0.5), Color.secondary.opacity(0.1)], startPoint: .top, endPoint: .bottom))
-                    .padding(EdgeInsets(top: geo.size.height * 0.0, leading: 0, bottom: geo.size.height * 0.125, trailing: 0))
-                    .ignoresSafeArea()
-                RoundedRectangle(cornerRadius: 10.0)
-                    .foregroundStyle( .white )
-                    .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.76, trailing: 10))
-                    .ignoresSafeArea()
-                BarChart(trainingSession: viewModel.trainingSessions)
-                    .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 10, bottom: geo.size.height * 0.65, trailing: 10))
+        NavigationStack {
+            GeometryReader { geo in
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10.0)
+                        .foregroundStyle(LinearGradient(colors: [.red, .orange.opacity(0.5), Color.secondary.opacity(0.1)], startPoint: .top, endPoint: .bottom))
+                        .padding(EdgeInsets(top: geo.size.height * 0.0, leading: 0, bottom: geo.size.height * 0.125, trailing: 0))
+                        .ignoresSafeArea()
+                    Text("Training")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .position(x: geo.size.width * 0.13, y: geo.size.height * 0.035)
+                        .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
+                    RoundedRectangle(cornerRadius: 10.0)
+                        .foregroundStyle( .white )
+                        .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.70, trailing: 10))
+                        .ignoresSafeArea()
+                    
+                    BarChart(trainingSession: viewModel.trainingSessions)
+                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 10, bottom: geo.size.height * 0.65, trailing: 10))
+                }
                 
-               
+                
+                VStack {
+                    exerciseButton(destination: PullupsTrainingView(),
+                                   title: R.string.localizable.pullups(),
+                                   reps: viewModel.lastSessionTotalReps!,
+                                   weight: viewModel.weight
+                    )
+                    exerciseButton(destination: DipsTrainingView(),
+                                   title: R.string.localizable.dips(),
+                                   reps: viewModel.lastSessionTotalReps!,
+                                   weight: viewModel.weight
+                    )
+                }
+                .padding(EdgeInsets(top: geo.size.height * 0.63, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
+                
             }
-          
             
-            VStack {
-              
-                exerciseButton(destination: PullupsTrainingView(),
-                               title: R.string.localizable.pullups(),
-                               reps: viewModel.lastSessionTotalReps!,
-                               weight: viewModel.weight
-                               )
-                
-                exerciseButton(destination: DipsTrainingView(),
-                               title: R.string.localizable.dips(),
-                               reps: viewModel.lastSessionTotalReps!,
-                               weight: viewModel.weight
-                               )
-                
-                 
-                
-                
-            }
-            .padding(EdgeInsets(top: geo.size.height * 0.63, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
             
         }
         
     }
     
     
-    private func exerciseButton<Destination: View>(destination: Destination, title: String, reps: Int, weight: Int) -> some View {
-        
+    
+    
+    
+    
+    
+    
+    
+    
+    func destinationView(for exerciseType: ExerciseType) -> some View {
+        AnyView(
+            Group {
+                switch exerciseType {
+                case .pullups:
+                    PullupsTrainingView()
+                case .dips:
+                    DipsTrainingView()
+                }
+            }
+        )
+    }
+    func exerciseButton<Destination: View>(destination: Destination, title: String,  reps: Int, weight: Int) -> some View {
         NavigationLink(destination: destination) {
             VStack(alignment: .leading) {
-                
                 HStack {
                     Text(title)
                         .font(.headline)
+                        .fontWeight(.medium)
                         .foregroundColor(.black)
                     Spacer()
                     Image(systemName: "chevron.right")
-                        .foregroundColor(.gray)
+                        .foregroundColor(.blue)
                         .font(.title3)
-                
+                        .offset(x: -10, y: 30)
+                    
                 }
                 VStack(alignment: .leading) {
-                    HStack {
-                            Text("Last:")
-                            .foregroundStyle(.secondary)
-                            Text("\(reps)")
+                    
+                    Text("Last session:")
+                        .font(.callout)
+                        .foregroundStyle(.tertiary)
+                    
+                    HStack(spacing: 5) {
+                        Text("\(reps)")
                             .foregroundStyle(.primary)
-                            Text("times")
+                        Text("reps")
                             .foregroundStyle(.secondary)
-                        }
-                    HStack {
-                            Text("Avg. weight:")
-                            .foregroundStyle(.secondary)
-                            Text("\(weight)")
+                        Text("~\(weight)")
                             .foregroundStyle(.primary)
+                        Text("Kg")
                             .foregroundStyle(.secondary)
-                        Text("kg")
-                        }
+                    }
+                    
                 }
-                .padding(EdgeInsets(top: 2, leading: 0, bottom: 0, trailing: 0))
-            
+                .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                
                 
             }
-            .padding()
+            .padding(EdgeInsets(top: 8, leading: 15, bottom: 8, trailing: 10))
             .background(.white)
             .cornerRadius(10)
             .navigationBarBackButtonHidden(true)
-            .shadow(radius: 10)
-            
         }
-        .navigationTitle("Training")
     }
+}
+
+struct Preview: PreviewProvider {
+    static var previews: some View {
+        let storage = TrainingSessionStorage()
+        let viewModel = PullupsTrainingViewModel(storage: storage)
         
-    
+        MainView(viewModel: viewModel)
+    }
 }
 
 
 
-
-
-func destinationView(for exerciseType: ExerciseType) -> some View {
-    AnyView(
-        Group {
-            switch exerciseType {
-            case .pullups:
-                PullupsTrainingView()
-            case .dips:
-                DipsTrainingView()
-            }
-        }
-    )
-}
-
-#Preview {
-    TabBar()
-}
-
-
-
-private struct Constants {
+struct Constants {
     static let sessionDateWidth = CGFloat(80)
     static let sessionSpacing = CGFloat(4)
     static let sessionVStackWidth = CGFloat(28)

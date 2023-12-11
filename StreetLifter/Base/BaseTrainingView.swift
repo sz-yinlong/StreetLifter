@@ -51,21 +51,23 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                             .padding()
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 10) {
+                            HStack  {
                                 ForEach(viewModel.currentSessionReps, id: \.self) { reps in
                                     Text("\(reps)")
-                                        .frame(width: 20, height: 15)
+                                        .frame(width: 25, height: 15)
                                         .padding(20)
+                                        .foregroundStyle(.green)
+                                        .font(.title2)
                                         .background(Color.secondary.opacity(0.1))
                                         .cornerRadius(8)
                                 }
                             }
-                            .padding(.horizontal, 16)
+                            .padding(.horizontal, 5)
                         }
                         Spacer()
                         Text("\(viewModel.reps)")
                             .font(.system(size: 70))
-                            .foregroundStyle(ColorConstants.buttonColor)
+                            .foregroundStyle(.green)
                             .bold()
                         
                         Spacer()
@@ -138,7 +140,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                                 .cornerRadius(10)
                                 
                             }
-                            .background(ColorConstants.buttonColor)
+                            .background(.green)
                             .cornerRadius(10)
                         }
                         

@@ -117,19 +117,3 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
    TabBar()
 }
 
-private struct Constants {
-    static let sessionDateWidth = CGFloat(80)
-    static let sessionSpacing = CGFloat(4)
-    static let sessionVStackWidth = CGFloat(28)
-    static let sessionVPaddingVertical = CGFloat(2)
-    static let sessionVPaddingHorizontal = CGFloat(8)
-    static let sessionVCornerRadius = CGFloat(8)
-    static let sessionHAlignmentGuide = CGFloat(275)
-    static let buttonMaxWidth = CGFloat(44)
-    static let buttonMaxHeight = CGFloat(50)
-    static let buttonCornerRadius = CGFloat(10)
-    static let fontPrimary = CGFloat(10)
-    static let fontSecondary = CGFloat(8)
-    static let fontDate = CGFloat(12)
-    static let opacity = CGFloat(0.1)
-}
