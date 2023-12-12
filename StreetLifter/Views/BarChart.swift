@@ -1,9 +1,29 @@
 import SwiftUI
 import Charts
 
+struct CombinedTrainingSession {
+    var date: String
+    var totalReps: Int
+    var sessionType: String // "Pullups" или "Dips"
+}
+
+
+
+
 struct BarChart: View {
     var pullupsTrainingSession: [TrainingSession]?
     var dipsTrainingSession: [TrainingSession]?
+
+    var combinedSessions: [CombinedTrainingSession] {
+        var sessions = [CombinedTrainingSession]()
+        if let pullupsSessions = pullupsTrainingSession {
+            sessions += pullupsSessions.map { CombinedTrainingSession(date: $0.date, totalReps: $0.totalReps, sessionType: "Pullups") }
+        }
+        if let dipsSessions = dipsTrainingSession {
+            sessions += dipsSessions.map { CombinedTrainingSession(date: $0.date, totalReps: $0.totalReps, sessionType: "Dips") }
+        }
+        return sessions
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,34 +41,16 @@ struct BarChart: View {
             Text(R.string.localizable.lastSevenSessions())
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
-
-            if let pullupsTrainingSession = pullupsTrainingSession,
-               let dipsTrainingSession = dipsTrainingSession {
-                // Display lines for pull-ups training sessions
-                Chart {
-                    ForEach(Array(pullupsTrainingSession.suffix(7).enumerated()), id: \.element) { index, session in
-                        LineMark(
-                            x: .value("Date", session.date),
-                            y: .value("Total Reps", session.totalReps))
-                    }
-                    .foregroundStyle(ColorConstants.chartOrange)
-                    .interpolationMethod(.monotone)
+          
+            Chart {
+                ForEach(combinedSessions, id: \.date) { session in
+                    LineMark(
+                        x: .value("Date", session.date),
+                        y: .value("Total Reps", session.totalReps)
+                    )
+                    .foregroundStyle(by: .value("Session Type", session.sessionType))
+                    .interpolationMethod(.catmullRom)
                 }
-                
-                // Display lines for dips training sessions
-                Chart {
-                    ForEach(Array(dipsTrainingSession.suffix(7).enumerated()), id: \.element) { index, session in
-                        LineMark(
-                            x: .value("Date", session.date),
-                            y: .value("Total Reps", session.totalReps))
-                    }
-                    .foregroundStyle(.blue) // You can set a different color for dips
-                    .interpolationMethod(.monotone)
-                }
-            } else {
-                // Handle the case where either pullupsTrainingSession or dipsTrainingSession is nil,
-                // e.g., show a placeholder or empty state.
-                Text("No training sessions available")
             }
         }
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
