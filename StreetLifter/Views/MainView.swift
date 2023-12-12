@@ -5,17 +5,19 @@
 //  Created by Artem on 10.12.2023.
 //
 
-
-
 import SwiftUI
 
-struct MainView<TrainingViewModel: PullupsTrainingViewModel>: View {
-    @StateObject private var viewModel: TrainingViewModel
+struct MainView: View {
     
-    init(viewModel: TrainingViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @StateObject private var pullupsViewModel: PullupsTrainingViewModel
+    @StateObject private var dipsViewModel: DipsTrainingViewModel
     
+    init() {
+            let storage = TrainingSessionStorage()
+            self._pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
+            self._dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
+        }
+  
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
@@ -30,44 +32,29 @@ struct MainView<TrainingViewModel: PullupsTrainingViewModel>: View {
                         .position(x: geo.size.width * 0.13, y: geo.size.height * 0.035)
                         .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
                     RoundedRectangle(cornerRadius: 10.0)
-                        .foregroundStyle( .white )
+                        .foregroundStyle(.white)
                         .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.70, trailing: 10))
                         .ignoresSafeArea()
                     
-                    BarChart(trainingSession: viewModel.trainingSessions)
+                    BarChart(pullupsTrainingSession: pullupsViewModel.trainingSessions,
+                                                 dipsTrainingSession: dipsViewModel.trainingSessions)
                         .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 10, bottom: geo.size.height * 0.65, trailing: 10))
                 }
-                
                 
                 VStack {
                     exerciseButton(destination: PullupsTrainingView(),
                                    title: R.string.localizable.pullups(),
-                                   reps: viewModel.lastSessionTotalReps!,
-                                   weight: viewModel.weight
-                    )
+                                   reps: pullupsViewModel.lastSessionTotalReps ?? 0,
+                                   weight: pullupsViewModel.weight)
                     exerciseButton(destination: DipsTrainingView(),
                                    title: R.string.localizable.dips(),
-                                   reps: viewModel.lastSessionTotalReps!,
-                                   weight: viewModel.weight
-                    )
+                                   reps: dipsViewModel.lastSessionTotalReps ?? 0,
+                                   weight: dipsViewModel.weight)
                 }
                 .padding(EdgeInsets(top: geo.size.height * 0.63, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
-                
             }
-            
-            
         }
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     func destinationView(for exerciseType: ExerciseType) -> some View {
         AnyView(
@@ -81,7 +68,8 @@ struct MainView<TrainingViewModel: PullupsTrainingViewModel>: View {
             }
         )
     }
-    func exerciseButton<Destination: View>(destination: Destination, title: String,  reps: Int, weight: Int) -> some View {
+
+    func exerciseButton<Destination: View>(destination: Destination, title: String, reps: Int, weight: Int) -> some View {
         NavigationLink(destination: destination) {
             VStack(alignment: .leading) {
                 HStack {
@@ -94,10 +82,8 @@ struct MainView<TrainingViewModel: PullupsTrainingViewModel>: View {
                         .foregroundColor(.blue)
                         .font(.title3)
                         .offset(x: -10, y: 30)
-                    
                 }
                 VStack(alignment: .leading) {
-                    
                     Text("Last session:")
                         .font(.callout)
                         .foregroundStyle(.tertiary)
@@ -112,11 +98,8 @@ struct MainView<TrainingViewModel: PullupsTrainingViewModel>: View {
                         Text("Kg")
                             .foregroundStyle(.secondary)
                     }
-                    
                 }
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-                
-                
             }
             .padding(EdgeInsets(top: 8, leading: 15, bottom: 8, trailing: 10))
             .background(.white)
@@ -126,18 +109,12 @@ struct MainView<TrainingViewModel: PullupsTrainingViewModel>: View {
     }
 }
 
-struct Preview: PreviewProvider {
-    static var previews: some View {
-        let storage = TrainingSessionStorage()
-        let viewModel = PullupsTrainingViewModel(storage: storage)
-        
-        MainView(viewModel: viewModel)
-    }
+#Preview {
+
+    MainView()
 }
 
-
-
-struct Constants {
+enum Constants {
     static let sessionDateWidth = CGFloat(80)
     static let sessionSpacing = CGFloat(4)
     static let sessionVStackWidth = CGFloat(28)

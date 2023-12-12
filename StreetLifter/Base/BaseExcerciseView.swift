@@ -22,7 +22,7 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
             NavigationStack {
                 VStack {
                     if showChart {
-                        BarChart(trainingSession: viewModel.trainingSessions)
+                        BarChart()
                     }
                     Spacer()
                     GeometryReader { geo in

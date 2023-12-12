@@ -10,7 +10,7 @@ import SwiftUI
 struct TabBar: View {
     var body: some View {
         TabView() {
-            MainView(viewModel: PullupsTrainingViewModel(storage: TrainingSessionStorage()))
+            MainView()
                 .tabItem {
                     Label("Main", systemImage: "medal.fill")
                 }
