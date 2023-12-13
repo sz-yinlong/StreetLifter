@@ -1,14 +1,11 @@
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct CombinedTrainingSession {
     var date: String
     var totalReps: Int
     var sessionType: String // "Pullups" или "Dips"
 }
-
-
-
 
 struct BarChart: View {
     var pullupsTrainingSession: [TrainingSession]?
@@ -33,7 +30,7 @@ struct BarChart: View {
                     .fontWeight(.medium)
                     .foregroundStyle(.black)
                 Spacer()
-                Button("See All") { }
+                Button("See All") {}
                     .font(.footnote)
                     .foregroundStyle(.blue)
             }
@@ -41,7 +38,7 @@ struct BarChart: View {
             Text(R.string.localizable.lastSevenSessions())
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
-          
+
             Chart {
                 ForEach(combinedSessions, id: \.date) { session in
                     LineMark(
@@ -50,29 +47,27 @@ struct BarChart: View {
                     )
                     .foregroundStyle(by: .value("Session Type", session.sessionType))
                     .interpolationMethod(.catmullRom)
-                    
+
                     PointMark(
                         x: .value("Date", session.date),
                         y: .value("total Reps", session.totalReps)
-                        )
+                    )
                     .foregroundStyle(by: .value("SessionType", session.sessionType))
-                    
                 }
             }
+            .chartLegend(.hidden)
             .chartYAxis {
                 AxisMarks(position: .trailing, values: .automatic(desiredCount: 5))
             }
-          
+
             .chartForegroundStyleScale([
-                "Pullups": .pink,
-                "Dips": .green
+                "Pullups": ColorConstants.bitterSweet,
+                "Dips": ColorConstants.robinEggBlue
             ])
         }
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
     }
 }
-
-
 
 #Preview {
     TabBar()

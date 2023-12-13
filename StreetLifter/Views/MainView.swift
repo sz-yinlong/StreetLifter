@@ -43,11 +43,11 @@ struct MainView: View {
                 
                 VStack {
                     exerciseButton(destination: PullupsTrainingView(),
-                                   title: R.string.localizable.pullups(),
+                                   title: R.string.localizable.pullups(), buttonColor: ColorConstants.bitterSweet,
                                    reps: pullupsViewModel.lastSessionTotalReps ?? 0,
                                    weight: pullupsViewModel.weight)
                     exerciseButton(destination: DipsTrainingView(),
-                                   title: R.string.localizable.dips(),
+                                   title: R.string.localizable.dips(), buttonColor:ColorConstants.robinEggBlue,
                                    reps: dipsViewModel.lastSessionTotalReps ?? 0,
                                    weight: dipsViewModel.weight)
                 }
@@ -69,17 +69,17 @@ struct MainView: View {
         )
     }
 
-    func exerciseButton<Destination: View>(destination: Destination, title: String, reps: Int, weight: Int) -> some View {
+    func exerciseButton<Destination: View>(destination: Destination, title: String, buttonColor: Color, reps: Int, weight: Int) -> some View {
         NavigationLink(destination: destination) {
             VStack(alignment: .leading) {
                 HStack {
                     Text(title)
                         .font(.headline)
                         .fontWeight(.medium)
-                        .foregroundColor(.black)
+                        .foregroundStyle(.primary)
                     Spacer()
                     Image(systemName: "chevron.right")
-                        .foregroundColor(.blue)
+                        .foregroundColor(buttonColor)
                         .font(.title3)
                         .offset(x: -10, y: 30)
                 }
@@ -100,13 +100,18 @@ struct MainView: View {
                     }
                 }
                 .padding(EdgeInsets(top: 1, leading: 0, bottom: 0, trailing: 0))
+                
             }
             .padding(EdgeInsets(top: 6, leading: 15, bottom: 8, trailing: 10))
+          
             .background(.white)
             .cornerRadius(10)
             .navigationBarBackButtonHidden(true)
+            
         }
+        
     }
+       
 }
 
 #Preview {
