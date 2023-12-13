@@ -34,7 +34,7 @@ struct SplashView: View {
                 }
                 .padding()
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) { showNextView = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { showNextView = true
                     }
                 }
             }

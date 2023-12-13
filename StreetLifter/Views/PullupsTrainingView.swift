@@ -2,7 +2,6 @@
 import SwiftUI
 
 struct PullupsTrainingView: View {
-    
     @StateObject private var viewModel: PullupsTrainingViewModel
     
     init() {
@@ -11,10 +10,13 @@ struct PullupsTrainingView: View {
     }
     
     var body: some View {
-        BaseTrainingView<PullupsTrainingViewModel, Any>(viewModel: viewModel)
+        BaseTrainingView<PullupsTrainingViewModel, Any>(viewModel: viewModel, backgroundColor: ColorConstants.bitterSweet.opacity(1))
             .toolbar(.hidden, for: .tabBar)
-            .navigationTitle("pullups")
+            .navigationTitle(R.string.localizable.pullups())
+            
     }
-        
-    
+}
+
+#Preview {
+    TabBar()
 }

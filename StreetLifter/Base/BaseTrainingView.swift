@@ -2,27 +2,28 @@
 
 import SwiftUI
 
-struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtocol>: View {
-    
+struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProtocol>: View {
     @StateObject var pullupsViewModel: PullupsTrainingViewModel
     @StateObject var dipsViewModel: DipsTrainingViewModel
     @StateObject var viewModel: BaseTrainingViewModel
     @StateObject var storage = TrainingSessionStorage()
     
     @State private var selectedWeightIndex = 0
+    var backgroundColor: Color
     
-    init(viewModel: ViewModel) {
+    init(viewModel: ViewModel, backgroundColor: Color = .secondary) {
         let storage = TrainingSessionStorage()
         
         _viewModel = StateObject(wrappedValue: viewModel)
         _pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
         _dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
+        self.backgroundColor = backgroundColor
     }
+
     var body: some View {
         NavigationStack {
             if #available(iOS 17.0, *) {
                 if viewModel.trainingCompleted {
-                    
                     VStack {
                         Spacer()
                         Image(systemName: "trophy")
@@ -46,19 +47,17 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                     }
                 } else {
                     VStack {
-                        Text(R.string.localizable.progress())
-                            .font(.title)
-                            .padding()
-                        
+                       
                         ScrollView(.horizontal, showsIndicators: false) {
-                            HStack  {
+                            HStack {
                                 ForEach(viewModel.currentSessionReps, id: \.self) { reps in
                                     Text("\(reps)")
                                         .frame(width: 25, height: 15)
                                         .padding(20)
-                                        .foregroundStyle(.green)
-                                        .font(.title2)
-                                        .background(Color.secondary.opacity(0.1))
+                                        .foregroundStyle(backgroundColor)
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                        .background(Color.secondary.opacity(0.04))
                                         .cornerRadius(8)
                                 }
                             }
@@ -67,22 +66,20 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                         Spacer()
                         Text("\(viewModel.reps)")
                             .font(.system(size: 70))
-                            .foregroundStyle(.green)
+                            .foregroundStyle(.primary)
                             .bold()
                         
                         Spacer()
                         
-                        HStack (alignment: .center){
+                        HStack(alignment: .center) {
                             Button(action: {
                                 viewModel.decrementReps()
                             }) {
                                 Image(systemName: "minus.circle")
                                     .foregroundColor(.primary)
                                     .font(.system(size: 50))
-                                
                             }
                             Spacer()
-                            
                             
                             Text(R.string.localizable.reps())
                             
@@ -103,9 +100,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                             Text(R.string.localizable.addWeight())
                                 .font(.system(size: 30))
                             
-                            
                             Picker("Weight", selection: $selectedWeightIndex) {
-                                ForEach(0..<viewModel.availableWeights.count) {
+                                ForEach(0 ..< viewModel.availableWeights.count) {
                                     index in
                                     Text("\(viewModel.availableWeights[index])kg")
                                         .tag(index)
@@ -117,15 +113,12 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                         }
                         
                         VStack {
-                            
                             Button(action: {
-                                
                                 if viewModel.canAddSet {
                                     viewModel.trainingCompleted = false
                                 } else {
                                     viewModel.trainingCompleted = true
                                     viewModel.saveTrainingSession()
-                                    
                                 }
                                 viewModel.saveRepsForCurrentSession()
                                 viewModel.saveWeightForCurrentSession(weight: viewModel.availableWeights[selectedWeightIndex])
@@ -138,12 +131,10 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
                                 .frame(maxWidth: 300)
                                 .frame(maxHeight: 50)
                                 .cornerRadius(10)
-                                
                             }
-                            .background(.green)
+                            .background(.blue)
                             .cornerRadius(10)
                         }
-                        
                     }
                     .padding()
                 }
@@ -152,15 +143,10 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel,TrainingViewModelProtoc
             }
         }
     }
+        
 }
 
-struct BaseTrainingView_Previews: PreviewProvider {
-    static var previews: some View {
-        let storage = TrainingSessionStorage()
-        let viewModel = BaseTrainingViewModel(storage: storage, trainingSessionsKey: "yourKeyHere")
-        
-        // Pass the view model instance to the BaseTrainingView preview
-        BaseTrainingView<BaseTrainingViewModel, Any>(viewModel: viewModel)
-    }
+#Preview {
+    TabBar()
 }
 

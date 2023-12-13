@@ -12,8 +12,9 @@ struct DipsTrainingView: View {
     }
     
     var body: some View {
-        BaseTrainingView<DipsTrainingViewModel, Any>(viewModel: viewModel)
+        BaseTrainingView<DipsTrainingViewModel, Any>(viewModel: viewModel, backgroundColor: ColorConstants.robinEggBlue.opacity(1))
             .toolbar(.hidden, for: .tabBar)
+            .navigationTitle(R.string.localizable.dips())
     }
 }
 

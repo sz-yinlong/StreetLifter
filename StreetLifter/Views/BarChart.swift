@@ -55,6 +55,7 @@ struct BarChart: View {
                     .foregroundStyle(by: .value("SessionType", session.sessionType))
                 }
             }
+           
             .chartLegend(.hidden)
             .chartYAxis {
                 AxisMarks(position: .trailing, values: .automatic(desiredCount: 5))
@@ -72,3 +73,4 @@ struct BarChart: View {
 #Preview {
     TabBar()
 }
+

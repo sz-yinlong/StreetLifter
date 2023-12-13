@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    
     @StateObject private var pullupsViewModel: PullupsTrainingViewModel
     @StateObject private var dipsViewModel: DipsTrainingViewModel
     
     init() {
-            let storage = TrainingSessionStorage()
-            self._pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
-            self._dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
-        }
+        let storage = TrainingSessionStorage()
+        self._pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
+        self._dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
+    }
   
     var body: some View {
         NavigationStack {
@@ -37,17 +36,17 @@ struct MainView: View {
                         .ignoresSafeArea()
                     
                     BarChart(pullupsTrainingSession: pullupsViewModel.trainingSessions,
-                                                 dipsTrainingSession: dipsViewModel.trainingSessions)
+                             dipsTrainingSession: dipsViewModel.trainingSessions)
                         .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.65, trailing: 15))
                 }
                 
                 VStack {
                     exerciseButton(destination: PullupsTrainingView(),
-                                   title: R.string.localizable.pullups(), buttonColor: ColorConstants.bitterSweet,
+                                   title: R.string.localizable.pullups(), circleColor: ColorConstants.bitterSweet,
                                    reps: pullupsViewModel.lastSessionTotalReps ?? 0,
                                    weight: pullupsViewModel.weight)
                     exerciseButton(destination: DipsTrainingView(),
-                                   title: R.string.localizable.dips(), buttonColor:ColorConstants.robinEggBlue,
+                                   title: R.string.localizable.dips(), circleColor: ColorConstants.robinEggBlue,
                                    reps: dipsViewModel.lastSessionTotalReps ?? 0,
                                    weight: dipsViewModel.weight)
                 }
@@ -69,17 +68,23 @@ struct MainView: View {
         )
     }
 
-    func exerciseButton<Destination: View>(destination: Destination, title: String, buttonColor: Color, reps: Int, weight: Int) -> some View {
+    func exerciseButton<Destination: View>(destination: Destination, title: String, circleColor: Color, reps: Int, weight: Int) -> some View {
         NavigationLink(destination: destination) {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(title)
-                        .font(.headline)
-                        .fontWeight(.medium)
-                        .foregroundStyle(.primary)
+                    HStack {
+                        Image(systemName: "aqi.medium")
+                            .foregroundStyle(circleColor)
+                            .font(.subheadline)
+                        Text(title)
+                            .font(.headline)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.black)
+                      
+                    }
                     Spacer()
                     Image(systemName: "chevron.right")
-                        .foregroundColor(buttonColor)
+                        .foregroundColor(.secondary)
                         .font(.title3)
                         .offset(x: -10, y: 30)
                 }
@@ -100,22 +105,17 @@ struct MainView: View {
                     }
                 }
                 .padding(EdgeInsets(top: 1, leading: 0, bottom: 0, trailing: 0))
-                
             }
             .padding(EdgeInsets(top: 6, leading: 15, bottom: 8, trailing: 10))
           
             .background(.white)
             .cornerRadius(10)
             .navigationBarBackButtonHidden(true)
-            
         }
-        
     }
-       
 }
 
 #Preview {
-
     TabBar()
 }
 
