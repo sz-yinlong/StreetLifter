@@ -38,6 +38,9 @@ struct MainView: View {
                     BarChart(pullupsTrainingSession: pullupsViewModel.trainingSessions,
                              dipsTrainingSession: dipsViewModel.trainingSessions)
                         .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.65, trailing: 15))
+                    ZStack  {
+                        CaptureView()
+                    }
                 }
                 
                 VStack {
@@ -46,8 +49,11 @@ struct MainView: View {
                                    reps: pullupsViewModel.lastSessionTotalReps ?? 0,
                                    weight: pullupsViewModel.weight)
                     exerciseButton(destination: DipsTrainingView(),
+                                   
                                    title: R.string.localizable.dips(), circleColor: ColorConstants.robinEggBlue,
+                                   
                                    reps: dipsViewModel.lastSessionTotalReps ?? 0,
+                                   
                                    weight: dipsViewModel.weight)
                 }
                 .padding(EdgeInsets(top: geo.size.height * 0.72, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
@@ -80,7 +86,6 @@ struct MainView: View {
                             .font(.headline)
                             .fontWeight(.medium)
                             .foregroundStyle(.black)
-                      
                     }
                     Spacer()
                     Image(systemName: "chevron.right")
