@@ -1,40 +1,32 @@
+
 import SwiftUI
 
-struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
-    @StateObject private var viewModel: TrainingViewModel
-    @State private var showChart: Bool = true
+struct StatsView<TrainingViewModel: BaseTrainingViewModel>: View {
+    @EnvironmentObject var viewModel: TrainingViewModel
+   
+    @StateObject private var pullupsViewModel: PullupsTrainingViewModel
+    @StateObject private var dipsViewModel: DipsTrainingViewModel
     
-    init(viewModel: TrainingViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-        showChart = viewModel.shouldDisplayChart()
+    init() {
+        let storage = TrainingSessionStorage()
+        self._pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
+        self._dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
     }
-    
     var body: some View {
         ZStack {
-//            GeometryReader { geo in
-//                
-//            
-//            RoundedRectangle(cornerRadius: 10.0)
-//                    .foregroundStyle(.gray.opacity(0.2))
-//                    .padding(EdgeInsets(top: geo.size.height * 0.41, leading: 9, bottom: geo.size.height * 0.432, trailing: 9))
-//                .ignoresSafeArea()
-//                            }
             NavigationStack {
                 VStack {
-                    if showChart {
-                        BarChart()
-                    }
+                    StatsChart(pullupsTrainingSesion: pullupsViewModel.trainingSessions, dipsTrainingSession: dipsViewModel.trainingSessions)
                     Spacer()
                     GeometryReader { geo in
                         VStack {
                             List {
-                            header: do {
+                                header: do {
                                     Text(R.string.localizable.trainingHistory())
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
                                 }
-                                ForEach(viewModel.trainingSessions, id: \.self) { session in
+                                ForEach(pullupsViewModel.trainingSessions, id: \.self) { session in
                                     HStack {
                                         Text(session.date)
                                             .font(.system(size: Constants.fontDate))
@@ -61,10 +53,7 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
                                                 .cornerRadius(Constants.sessionVCornerRadius)
                                             }
                                         }
-                                     
                                     }
-                                    
-                                    
                                 }
                                 .listSectionSeparator(.hidden)
                                 .alignmentGuide(.listRowSeparatorTrailing) { _ in Constants.sessionHAlignmentGuide }
@@ -72,48 +61,14 @@ struct BaseExerciseView<TrainingViewModel: BaseTrainingViewModel>: View {
                             .listStyle(.insetGrouped)
                             .padding(.top)
                             .padding([.leading, .trailing], geo.size.width * -0.03)
-                            
-                            
-                        }
-                    }
-                    VStack {
-                        if let exerciseType = viewModel.trainingViewType() {
-                            NavigationLink(destination: destinationView(for: exerciseType)) {
-                                ColorConstants.buttonColor
-                                    .frame(maxWidth: Constants.buttonMaxWidth)
-                                    .frame(maxHeight: Constants.buttonMaxHeight)
-                                    .cornerRadius(Constants.buttonCornerRadius)
-                                    .overlay(
-                                        Text(R.string.localizable.start())
-                                            .foregroundColor(.white)
-                                            .font(.headline)
-                                    )
-                            }
-                        } else {
-                            // Обработка для других случаев
                         }
                     }
                 }
             }
         }
     }
-    
-    
-     func destinationView(for exerciseType: ExerciseType) -> some View {
-        AnyView(
-            Group {
-                switch exerciseType {
-                case .pullups:
-                    PullupsTrainingView()
-                case .dips:
-                    DipsTrainingView()
-                }
-            }
-        )
-    }
 }
 
 #Preview {
-   TabBar()
+    StatsView().environmentObject(BaseTrainingViewModel())
 }
-

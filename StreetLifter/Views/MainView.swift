@@ -1,9 +1,4 @@
-//
-//  MainView.swift
-//  StreetLifter
-//
-//  Created by Artem on 10.12.2023.
-//
+
 
 import SwiftUI
 
@@ -32,15 +27,12 @@ struct MainView: View {
                         .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
                     RoundedRectangle(cornerRadius: 10.0)
                         .foregroundStyle(.white)
-                        .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.76, trailing: 10))
+                        .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.5, trailing: 10))
                         .ignoresSafeArea()
                     
-                    BarChart(pullupsTrainingSession: pullupsViewModel.trainingSessions,
+                    MainChart(pullupsTrainingSession: pullupsViewModel.trainingSessions,
                              dipsTrainingSession: dipsViewModel.trainingSessions)
-                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.65, trailing: 15))
-                    ZStack  {
-                        CaptureView()
-                    }
+                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.4, trailing: 15))
                 }
                 
                 VStack {

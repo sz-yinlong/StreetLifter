@@ -7,7 +7,7 @@ struct CombinedTrainingSession {
     var sessionType: String // "Pullups" или "Dips"
 }
 
-struct BarChart: View {
+struct MainChart: View {
     var pullupsTrainingSession: [TrainingSession]?
     var dipsTrainingSession: [TrainingSession]?
 
@@ -30,11 +30,12 @@ struct BarChart: View {
                     .fontWeight(.medium)
                     .foregroundStyle(.black)
                 Spacer()
-                Button("See All") {}
+                NavigationLink("See all", destination: StatsView().environmentObject(BaseTrainingViewModel()))
                     .font(.footnote)
                     .foregroundStyle(.blue)
+                    .offset(x: -3, y: 7)
             }
-
+           
             Text(R.string.localizable.lastSevenSessions())
                 .font(.subheadline)
                 .foregroundStyle(.secondary)

@@ -2,12 +2,8 @@
 import SwiftUI
 
 class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
-    func shouldDisplayChart() -> Bool {
-        return true
-    }
-    
-    
-    private let storage: TrainingSessionStorage// injected
+
+    private let storage: TrainingSessionStorage
   
     
     var trainingSessionsKey: String
@@ -27,7 +23,7 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     
    
 
-    init(storage: TrainingSessionStorage, trainingSessionsKey: String) {
+    init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingSessionsKey: String = "defaultkey") {
         self.storage = storage
         self.trainingSessionsKey = trainingSessionsKey
         self.reps = UserDefaults.standard.integer(forKey: "reps")

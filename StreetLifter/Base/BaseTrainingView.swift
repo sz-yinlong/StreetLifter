@@ -34,8 +34,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                             .multilineTextAlignment(.center)
                         Spacer()
                         NavigationLink(destination: TabBar()) {
-                            Color.black
-                                .frame(maxWidth: 250, maxHeight: 50)
+                            Color.blue
+                                .frame(maxWidth: 300, maxHeight: 50)
                                 .cornerRadius(10)
                                 .overlay(
                                     Text(R.string.localizable.main())
@@ -47,7 +47,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     }
                 } else {
                     VStack {
-                       
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(viewModel.currentSessionReps, id: \.self) { reps in
@@ -143,10 +142,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
             }
         }
     }
-        
 }
 
 #Preview {
     TabBar()
 }
-

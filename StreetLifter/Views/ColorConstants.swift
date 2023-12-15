@@ -1,9 +1,4 @@
-//
-//  ColorConstants.swift
-//  StreetLifter
-//
-//  Created by Artem on 05.12.2023.
-//
+
 import SwiftUI
 
 enum ColorConstants {

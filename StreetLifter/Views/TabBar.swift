@@ -1,9 +1,3 @@
-//
-//  TabBar.swift
-//  StreetLifter
-//
-//  Created by Artem on 06.12.2023.
-//
 
 import SwiftUI
 
@@ -14,7 +8,7 @@ struct TabBar: View {
                 .tabItem {
                     Label("Main", systemImage: "medal.fill")
                 }
-            DipsExerciseView()
+           Text("Settings")
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
