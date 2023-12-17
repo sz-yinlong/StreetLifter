@@ -41,6 +41,9 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 )
                         }
                     }
+                    .onDisappear {
+                        viewModel.startNewSession()
+                    }
                 } else {
                     VStack {
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -93,7 +96,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         
                         HStack {
                             Text(R.string.localizable.addWeight())
-                                .font(.system(size: 30))
+                                .font(.headline)
                             
                             Picker("Weight", selection: $selectedWeightIndex) {
                                 ForEach(0 ..< viewModel.availableWeights.count) {

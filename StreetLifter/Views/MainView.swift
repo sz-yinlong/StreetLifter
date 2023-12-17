@@ -6,6 +6,7 @@ struct MainView: View {
     @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
     
     var body: some View {
+        
         NavigationStack {
             GeometryReader { geo in
                 ZStack {

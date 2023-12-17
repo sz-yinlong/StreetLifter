@@ -2,16 +2,15 @@
 import SwiftUI
 
 struct StatsView: View {
-    
     var trainingSessions: [TrainingSession]
-    
-    
+    var chartColor: Color
     
     var body: some View {
         ZStack {
             NavigationStack {
                 VStack {
                     StatsChart(trainingSessions: trainingSessions)
+                        .foregroundStyle(chartColor)
                     Spacer()
                     GeometryReader { geo in
                         VStack {
@@ -26,7 +25,6 @@ struct StatsView: View {
                                         Text(session.date)
                                             .font(.system(size: Constants.fontDate))
 
-                                        
                                         Spacer()
                                             
                                         HStack(alignment: .top, spacing: Constants.sessionSpacing) {

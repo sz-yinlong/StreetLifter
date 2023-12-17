@@ -86,6 +86,7 @@ class BaseTrainingViewModel: ObservableObject {
     func startNewSession() {
         currentSessionReps = []
         resetReps()
+        trainingCompleted = false
     }
     
     func saveRepsForCurrentSession() {
