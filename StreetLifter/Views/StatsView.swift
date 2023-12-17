@@ -4,11 +4,18 @@ import SwiftUI
 struct StatsView: View {
     var trainingSessions: [TrainingSession]
     var chartColor: Color
+    @State private var selectedSegment = 0
     
     var body: some View {
         ZStack {
+            
             NavigationStack {
                 VStack {
+                    Picker("Picker", selection: $selectedSegment) {
+                        Text("Pullups").tag(0)
+                        Text("Dips").tag(1)
+                            .pickerStyle(.segmented)
+                    }
                     StatsChart(trainingSessions: trainingSessions)
                         .foregroundStyle(chartColor)
                     Spacer()
@@ -54,6 +61,7 @@ struct StatsView: View {
                             .listStyle(.insetGrouped)
                             .padding(.top)
                             .padding([.leading, .trailing], geo.size.width * -0.03)
+                            .toolbar(.hidden, for: .tabBar)
                         }
                     }
                 }

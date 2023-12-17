@@ -31,7 +31,7 @@ struct MainChart: View {
                     .foregroundStyle(.black)
                 Spacer()
                 NavigationLink("See all", destination: StatsPageTabView())
-                    .font(.footnote)
+                    .font(.subheadline)
                     .foregroundStyle(.blue)
                     .offset(x: -3, y: 7)
             }
