@@ -3,15 +3,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var pullupsViewModel: PullupsTrainingViewModel
-    @StateObject private var dipsViewModel: DipsTrainingViewModel
+    @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
     
-    init() {
-        let storage = TrainingSessionStorage()
-        self._pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
-        self._dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
-    }
-  
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
@@ -30,23 +23,19 @@ struct MainView: View {
                         .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.5, trailing: 10))
                         .ignoresSafeArea()
                     
-                    MainChart(pullupsTrainingSession: pullupsViewModel.trainingSessions,
-                             dipsTrainingSession: dipsViewModel.trainingSessions)
+                    MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
                         .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.4, trailing: 15))
                 }
                 
                 VStack {
                     exerciseButton(destination: PullupsTrainingView(),
                                    title: R.string.localizable.pullups(), circleColor: ColorConstants.bitterSweet,
-                                   reps: pullupsViewModel.lastSessionTotalReps ?? 0,
-                                   weight: pullupsViewModel.weight)
+                                   reps: trainingSessionManager.pullupsViewModel.lastSessionTotalReps ?? 0,
+                                   weight: trainingSessionManager.pullupsViewModel.weight)
                     exerciseButton(destination: DipsTrainingView(),
-                                   
                                    title: R.string.localizable.dips(), circleColor: ColorConstants.robinEggBlue,
-                                   
-                                   reps: dipsViewModel.lastSessionTotalReps ?? 0,
-                                   
-                                   weight: dipsViewModel.weight)
+                                   reps: trainingSessionManager.dipsViewModel.lastSessionTotalReps ?? 0,
+                                   weight: trainingSessionManager.dipsViewModel.weight)
                 }
                 .padding(EdgeInsets(top: geo.size.height * 0.72, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
             }

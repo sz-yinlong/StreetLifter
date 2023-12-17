@@ -3,8 +3,6 @@
 import SwiftUI
 
 struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProtocol>: View {
-    @StateObject var pullupsViewModel: PullupsTrainingViewModel
-    @StateObject var dipsViewModel: DipsTrainingViewModel
     @StateObject var viewModel: BaseTrainingViewModel
     @StateObject var storage = TrainingSessionStorage()
     
@@ -15,8 +13,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
         let storage = TrainingSessionStorage()
         
         _viewModel = StateObject(wrappedValue: viewModel)
-        _pullupsViewModel = StateObject(wrappedValue: PullupsTrainingViewModel(storage: storage))
-        _dipsViewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
         self.backgroundColor = backgroundColor
     }
 

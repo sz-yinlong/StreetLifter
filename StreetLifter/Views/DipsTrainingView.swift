@@ -3,18 +3,11 @@
 import SwiftUI
 
 struct DipsTrainingView: View {
-    
-    @StateObject private var viewModel: DipsTrainingViewModel
-    
-    init() {
-        let storage = TrainingSessionStorage()
-        _viewModel = StateObject(wrappedValue: DipsTrainingViewModel(storage: storage))
-    }
-    
+    @EnvironmentObject var trainingSessionsManager: TrainingSessionsManager
+
     var body: some View {
-        BaseTrainingView<DipsTrainingViewModel, Any>(viewModel: viewModel, backgroundColor: ColorConstants.robinEggBlue.opacity(1))
+        BaseTrainingView<BaseTrainingViewModel, Any>(viewModel: trainingSessionsManager.dipsViewModel, backgroundColor: ColorConstants.robinEggBlue.opacity(1))
             .toolbar(.hidden, for: .tabBar)
             .navigationTitle(R.string.localizable.dips())
     }
 }
-

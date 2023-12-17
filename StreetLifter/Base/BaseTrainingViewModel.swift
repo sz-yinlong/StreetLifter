@@ -1,12 +1,12 @@
 
 import SwiftUI
 
-class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
+class BaseTrainingViewModel: ObservableObject {
 
     private let storage: TrainingSessionStorage
-  
+    private let trainingType: ExerciseType
     
-    var trainingSessionsKey: String
+   
     let availableWeights = Array(1...30)
     
    
@@ -23,15 +23,23 @@ class BaseTrainingViewModel: TrainingViewModelProtocol, ObservableObject {
     
    
 
-    init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingSessionsKey: String = "defaultkey") {
+    init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingType: ExerciseType) {
         self.storage = storage
-        self.trainingSessionsKey = trainingSessionsKey
+        self.trainingType = trainingType
         self.reps = UserDefaults.standard.integer(forKey: "reps")
         self.weight = UserDefaults.standard.integer(forKey: "weight")
         self.trainingSessions = storage.retrieveSessions(forKey: trainingSessionsKey)
         self.lastSessionTotalReps = trainingSessions.last?.totalReps
     }
     
+    var trainingSessionsKey: String {
+        switch trainingType {
+        case .pullups:
+            return "pullupsTrainingSession"
+        case .dips:
+          return "dipsTrainingSesssion"
+        }
+    }
  
     
     func saveTrainingSession() {

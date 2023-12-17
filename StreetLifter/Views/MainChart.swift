@@ -30,7 +30,7 @@ struct MainChart: View {
                     .fontWeight(.medium)
                     .foregroundStyle(.black)
                 Spacer()
-                NavigationLink("See all", destination: StatsView().environmentObject(BaseTrainingViewModel()))
+                NavigationLink("See all", destination: StatsPageTabView())
                     .font(.footnote)
                     .foregroundStyle(.blue)
                     .offset(x: -3, y: 7)
