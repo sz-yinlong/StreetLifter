@@ -5,6 +5,7 @@ import SwiftUI
 struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProtocol>: View {
     @StateObject var viewModel: BaseTrainingViewModel
     @StateObject var storage = TrainingSessionStorage()
+    @State private var isOn = false
     
     @State private var selectedWeightIndex = 0
     var backgroundColor: Color
@@ -95,9 +96,11 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         .padding()
                         
                         HStack {
-                            Text(R.string.localizable.addWeight())
-                                .font(.headline)
-                            
+                            HStack {
+                                Toggle("", isOn: $isOn)
+                                    .labelsHidden()
+                                Text(R.string.localizable.addWeight())
+                            }
                             Picker("Weight", selection: $selectedWeightIndex) {
                                 ForEach(0 ..< viewModel.availableWeights.count) {
                                     index in
@@ -105,10 +108,13 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                         .tag(index)
                                 }
                             }
+                            .disabled(!isOn)
                             .frame(width: 100, height: 100)
                             .pickerStyle(WheelPickerStyle())
                             .padding()
+                            .opacity(isOn ? 1 : 0.2)
                         }
+                        
                         
                         VStack {
                             Button(action: {
