@@ -44,7 +44,7 @@ class BaseTrainingViewModel: ObservableObject {
     
     func saveTrainingSession() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd"
+        dateFormatter.dateFormat = "MMM d"
         let date = dateFormatter.string(from: Date())
         let newSession = TrainingSession(date: date, reps: currentSessionReps, weight: currenSessionWeight, totalReps: totalReps)
         trainingSessions.append(newSession)

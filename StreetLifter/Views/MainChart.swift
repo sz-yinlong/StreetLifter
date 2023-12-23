@@ -11,6 +11,7 @@ struct CombinedTrainingSession {
 struct MainChart: View {
     var pullupsTrainingSession: [TrainingSession]?
     var dipsTrainingSession: [TrainingSession]?
+    let numberOfDisplayDays = 5
     
     @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
 
@@ -61,11 +62,13 @@ struct MainChart: View {
                     .foregroundStyle(by: .value("SessionType", session.sessionType))
                 }
             }
+            .chartYScale(range: .plotDimension(padding: 30))
+           
+            
+//            ./*chartXVisibleDomain(length: 3600 * 24 * numberOfDisplayDays)*/
             .padding(EdgeInsets(top: 10, leading: 5, bottom: 5, trailing: 5))
             .chartLegend(.hidden)
-            .chartYAxis {
-                AxisMarks(position: .trailing, values: .automatic(desiredCount: 5))
-            }
+           
 
             .chartForegroundStyleScale([
                 "Pullups": Constants.bitterSweet,
