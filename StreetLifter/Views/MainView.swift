@@ -22,7 +22,7 @@ struct MainView: View {
                     Text("Training")
                         .font(.title)
                         .fontWeight(.bold)
-                        .position(x: geo.size.width * 0.135, y: geo.size.height * 0.055)
+                        .position(x: geo.size.width * 0.135, y: geo.size.height * 0.06)
                         .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
                     RoundedRectangle(cornerRadius: 10.0)
                         .foregroundStyle(.white)
@@ -33,15 +33,17 @@ struct MainView: View {
                     
                     MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
                         .padding(EdgeInsets(top: geo.size.height * 0.1, leading: 15, bottom: geo.size.height * 0.6, trailing: 15))
-                    
+      
                     NavigationLink(destination: EmptyView()) {
                         HStack {
                     
                             Text(trainingProgram[selectedWeek])
-                                .foregroundColor(.gray)
+                    
+                                .font(.headline)
+                                .fontWeight(.light)
                     
                             Spacer()
-                            Image(systemName: "chevron.right")
+                            Image(systemName: "list.bullet")
                                 .foregroundColor(.gray)
                         }
                         .frame(height: 5)
@@ -50,11 +52,11 @@ struct MainView: View {
                         .cornerRadius(10)
                     }
                    
-                    .padding(EdgeInsets(top: geo.size.height * 0.65, leading: 10, bottom: geo.size.height * 0.28, trailing: geo.size.width * 0.6))
+                    .padding(EdgeInsets(top: geo.size.height * 0.65, leading: 10, bottom: geo.size.height * 0.28, trailing: 10))
                    
                     
                 }
-            
+              
                 
                
                 
@@ -62,7 +64,8 @@ struct MainView: View {
                     
                 
                 VStack {
-        
+                    Divider()
+                        .frame(width: geo.size.width * 0.5)
                     exerciseButton(destination: PullupsTrainingView(),
                                    title: R.string.localizable.pullups(), circleColor: Constants.bitterSweet,
                                    reps: trainingSessionManager.pullupsViewModel.lastSessionTotalReps ?? 0,
