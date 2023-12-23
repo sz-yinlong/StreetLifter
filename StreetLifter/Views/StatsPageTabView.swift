@@ -16,11 +16,11 @@ struct StatsPageTabView: View {
             .padding()
 
             TabView(selection: $selectedSegment) {
-                StatsView(trainingSessions: trainingSessionsManager.pullupsViewModel.trainingSessions, chartColor: ColorConstants.bitterSweet)
+                StatsView(trainingSessions: trainingSessionsManager.pullupsViewModel.trainingSessions, chartColor: Constants.bitterSweet)
                     .tag(0)
                     .navigationTitle(R.string.localizable.pullups())
 
-                StatsView(trainingSessions: trainingSessionsManager.dipsViewModel.trainingSessions, chartColor: ColorConstants.robinEggBlue)
+                StatsView(trainingSessions: trainingSessionsManager.dipsViewModel.trainingSessions, chartColor: Constants.robinEggBlue)
                     .tag(1)
                     .navigationTitle(R.string.localizable.dips())
             }

@@ -12,12 +12,12 @@ struct MainView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10.0)
                         .foregroundStyle(LinearGradient(colors: [.red, .orange.opacity(0.5), Color.secondary.opacity(0.1)], startPoint: .top, endPoint: .bottom))
-                        .padding(EdgeInsets(top: geo.size.height * 0.0, leading: 0, bottom: geo.size.height * 0.125, trailing: 0))
+                        .padding(EdgeInsets(top: geo.size.height * 0.0, leading: 0, bottom: geo.size.height * 0, trailing: 0))
                         .ignoresSafeArea()
                     Text("Training")
                         .font(.title)
                         .fontWeight(.bold)
-                        .position(x: geo.size.width * 0.13, y: geo.size.height * 0.055)
+                        .position(x: geo.size.width * 0.135, y: geo.size.height * 0.055)
                         .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
                     RoundedRectangle(cornerRadius: 10.0)
                         .foregroundStyle(.white)
@@ -25,23 +25,27 @@ struct MainView: View {
                         .ignoresSafeArea()
                     
                     MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.5, trailing: 15))
+                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.55, trailing: 15))
                 }
+               
                 
                 VStack {
                     exerciseButton(destination: PullupsTrainingView(),
-                                   title: R.string.localizable.pullups(), circleColor: ColorConstants.bitterSweet,
+                                   title: R.string.localizable.pullups(), circleColor: Constants.bitterSweet,
                                    reps: trainingSessionManager.pullupsViewModel.lastSessionTotalReps ?? 0,
                                    weight: trainingSessionManager.pullupsViewModel.weight)
                     exerciseButton(destination: DipsTrainingView(),
-                                   title: R.string.localizable.dips(), circleColor: ColorConstants.robinEggBlue,
+                                   title: R.string.localizable.dips(), circleColor: Constants.robinEggBlue,
                                    reps: trainingSessionManager.dipsViewModel.lastSessionTotalReps ?? 0,
                                    weight: trainingSessionManager.dipsViewModel.weight)
                 }
                 .padding(EdgeInsets(top: geo.size.height * 0.72, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
             }
         }
+        .accentColor(Constants.buttonColor)
+        .navigationBarBackButtonHidden()
     }
+    
     
     func destinationView(for exerciseType: ExerciseType) -> some View {
         AnyView(
@@ -104,23 +108,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        MainView()
             .environmentObject(TrainingSessionsManager())
     }
-}
-enum Constants {
-    static let sessionDateWidth = CGFloat(80)
-    static let sessionSpacing = CGFloat(4)
-    static let sessionVStackWidth = CGFloat(28)
-    static let sessionVPaddingVertical = CGFloat(2)
-    static let sessionVPaddingHorizontal = CGFloat(8)
-    static let sessionVCornerRadius = CGFloat(8)
-    static let sessionHAlignmentGuide = CGFloat(275)
-    static let buttonMaxWidth = CGFloat(350)
-    static let buttonMaxHeight = CGFloat(120)
-    static let buttonCornerRadius = CGFloat(10)
-    static let fontPrimary = CGFloat(10)
-    static let fontSecondary = CGFloat(8)
-    static let fontDate = CGFloat(12)
-    static let opacity = CGFloat(0.1)
 }

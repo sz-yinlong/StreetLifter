@@ -30,7 +30,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                             .font(.title)
                             .multilineTextAlignment(.center)
                         Spacer()
-                        NavigationLink(destination: TabBar()) {
+                        NavigationLink(destination: MainView()) {
                             Color.blue
                                 .frame(maxWidth: 300, maxHeight: 50)
                                 .cornerRadius(10)
@@ -150,5 +150,5 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
 }
 
 #Preview {
-    TabBar()
+    MainView()
 }

@@ -13,8 +13,7 @@ struct TabBar: View {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
         }
-        .accentColor(ColorConstants.buttonColor)
-        .navigationBarBackButtonHidden()
+       
     }
 }
 

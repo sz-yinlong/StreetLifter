@@ -7,9 +7,12 @@ struct CombinedTrainingSession {
     var sessionType: String // "Pullups" или "Dips"
 }
 
+
 struct MainChart: View {
     var pullupsTrainingSession: [TrainingSession]?
     var dipsTrainingSession: [TrainingSession]?
+    
+    @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
 
     var combinedSessions: [CombinedTrainingSession] {
         var sessions = [CombinedTrainingSession]()
@@ -35,11 +38,13 @@ struct MainChart: View {
                     .foregroundStyle(.blue)
                     .offset(x: -3, y: 7)
             }
+            .padding(EdgeInsets(top: 5, leading: 1, bottom: 0, trailing: 1))
            
             Text(R.string.localizable.lastSevenSessions())
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
-
+                .padding(EdgeInsets(top: 0, leading: 1, bottom: 2, trailing: 1))
+         
             Chart {
                 ForEach(combinedSessions, id: \.date) { session in
                     LineMark(
@@ -56,22 +61,25 @@ struct MainChart: View {
                     .foregroundStyle(by: .value("SessionType", session.sessionType))
                 }
             }
-           
+            .padding(EdgeInsets(top: 10, leading: 5, bottom: 5, trailing: 5))
             .chartLegend(.hidden)
             .chartYAxis {
                 AxisMarks(position: .trailing, values: .automatic(desiredCount: 5))
             }
 
             .chartForegroundStyleScale([
-                "Pullups": ColorConstants.bitterSweet,
-                "Dips": ColorConstants.robinEggBlue
+                "Pullups": Constants.bitterSweet,
+                "Dips": Constants.robinEggBlue
             ])
         }
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
     }
 }
 
-#Preview {
-    TabBar()
+struct CHART_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
+            .environmentObject(TrainingSessionsManager())
+       
+    }
 }
-
