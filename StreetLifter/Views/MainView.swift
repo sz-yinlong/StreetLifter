@@ -17,15 +17,15 @@ struct MainView: View {
                     Text("Training")
                         .font(.title)
                         .fontWeight(.bold)
-                        .position(x: geo.size.width * 0.13, y: geo.size.height * 0.035)
+                        .position(x: geo.size.width * 0.13, y: geo.size.height * 0.055)
                         .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
                     RoundedRectangle(cornerRadius: 10.0)
                         .foregroundStyle(.white)
-                        .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.5, trailing: 10))
+                        .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.6, trailing: 10))
                         .ignoresSafeArea()
                     
                     MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.4, trailing: 15))
+                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.5, trailing: 15))
                 }
                 
                 VStack {
@@ -102,10 +102,12 @@ struct MainView: View {
     }
 }
 
-#Preview {
-    TabBar()
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        TabBar()
+            .environmentObject(TrainingSessionsManager())
+    }
 }
-
 enum Constants {
     static let sessionDateWidth = CGFloat(80)
     static let sessionSpacing = CGFloat(4)

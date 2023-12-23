@@ -18,6 +18,9 @@ struct TabBar: View {
     }
 }
 
-#Preview {
-    TabBar()
+struct TabBar_Previews: PreviewProvider {
+    static var previews: some View {
+        TabBar()
+            .environmentObject(TrainingSessionsManager())
+    }
 }
