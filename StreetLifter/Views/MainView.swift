@@ -36,19 +36,21 @@ struct MainView: View {
                     
                     NavigationLink(destination: EmptyView()) {
                         HStack {
-                            
-                            Spacer()
+                    
                             Text(trainingProgram[selectedWeek])
-                                .foregroundColor(.blue)
+                                .foregroundColor(.gray)
+                    
+                            Spacer()
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.gray)
                         }
+                        .frame(height: 5)
                         .padding()
-                        .background(Color.white)
-                        .cornerRadius(40)
+                        .background(.white)
+                        .cornerRadius(10)
                     }
-                    .frame(height: 10)
-                    .padding(EdgeInsets(top: geo.size.height * 0.52, leading: 10, bottom: geo.size.height * 0.2, trailing: 250))
+                   
+                    .padding(EdgeInsets(top: geo.size.height * 0.65, leading: 10, bottom: geo.size.height * 0.28, trailing: geo.size.width * 0.6))
                    
                     
                 }
