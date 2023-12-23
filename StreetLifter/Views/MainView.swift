@@ -4,12 +4,17 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
+    @State private var selectedWeek: Int = 0
+     @State private var trainingProgram = ["Level 1", "Level 2", "Level 3"]
+
+  
     
     var body: some View {
         
         NavigationStack {
             GeometryReader { geo in
                 ZStack {
+                    
                     RoundedRectangle(cornerRadius: 10.0)
                         .foregroundStyle(LinearGradient(colors: [.red, .orange.opacity(0.5), Color.secondary.opacity(0.1)], startPoint: .top, endPoint: .bottom))
                         .padding(EdgeInsets(top: geo.size.height * 0.0, leading: 0, bottom: geo.size.height * 0, trailing: 0))
@@ -23,13 +28,39 @@ struct MainView: View {
                         .foregroundStyle(.white)
                         .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.6, trailing: 10))
                         .ignoresSafeArea()
+                   
+                   
                     
                     MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                        .padding(EdgeInsets(top: geo.size.height * 0.10, leading: 15, bottom: geo.size.height * 0.55, trailing: 15))
+                        .padding(EdgeInsets(top: geo.size.height * 0.1, leading: 15, bottom: geo.size.height * 0.6, trailing: 15))
+                    
+                    NavigationLink(destination: EmptyView()) {
+                        HStack {
+                            
+                            Spacer()
+                            Text(trainingProgram[selectedWeek])
+                                .foregroundColor(.blue)
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(40)
+                    }
+                    .frame(height: 10)
+                    .padding(EdgeInsets(top: geo.size.height * 0.52, leading: 10, bottom: geo.size.height * 0.2, trailing: 250))
+                   
+                    
                 }
+            
+                
                
                 
+         
+                    
+                
                 VStack {
+        
                     exerciseButton(destination: PullupsTrainingView(),
                                    title: R.string.localizable.pullups(), circleColor: Constants.bitterSweet,
                                    reps: trainingSessionManager.pullupsViewModel.lastSessionTotalReps ?? 0,
