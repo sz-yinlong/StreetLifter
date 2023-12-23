@@ -5,16 +5,12 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
     @State private var selectedWeek: Int = 0
-     @State private var trainingProgram = ["Level 1", "Level 2", "Level 3"]
+    @State private var trainingProgram = ["Level 1", "Level 2", "Level 3"]
 
-  
-    
     var body: some View {
-        
         NavigationStack {
             GeometryReader { geo in
                 ZStack {
-                    
                     RoundedRectangle(cornerRadius: 10.0)
                         .foregroundStyle(LinearGradient(colors: [.red, .orange.opacity(0.5), Color.secondary.opacity(0.1)], startPoint: .top, endPoint: .bottom))
                         .padding(EdgeInsets(top: geo.size.height * 0.0, leading: 0, bottom: geo.size.height * 0, trailing: 0))
@@ -29,21 +25,18 @@ struct MainView: View {
                         .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.6, trailing: 10))
                         .ignoresSafeArea()
                    
-                   
-                    
                     MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
                         .padding(EdgeInsets(top: geo.size.height * 0.1, leading: 15, bottom: geo.size.height * 0.6, trailing: 15))
       
-                    NavigationLink(destination: EmptyView()) {
+                    NavigationLink(destination: TrainingProgram()) {
                         HStack {
-                    
                             Text(trainingProgram[selectedWeek])
                     
                                 .font(.headline)
                                 .fontWeight(.light)
                     
                             Spacer()
-                            Image(systemName: "list.bullet")
+                            Image(systemName: "line.3.horizontal")
                                 .foregroundColor(.gray)
                         }
                         .frame(height: 5)
@@ -53,16 +46,8 @@ struct MainView: View {
                     }
                    
                     .padding(EdgeInsets(top: geo.size.height * 0.65, leading: 10, bottom: geo.size.height * 0.28, trailing: 10))
-                   
-                    
                 }
               
-                
-               
-                
-         
-                    
-                
                 VStack {
                     Divider()
                         .frame(width: geo.size.width * 0.5)
@@ -81,7 +66,6 @@ struct MainView: View {
         .accentColor(Constants.buttonColor)
         .navigationBarBackButtonHidden()
     }
-    
     
     func destinationView(for exerciseType: ExerciseType) -> some View {
         AnyView(
