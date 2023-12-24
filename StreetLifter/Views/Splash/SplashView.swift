@@ -14,7 +14,7 @@ struct SplashView: View {
     {
         Group {
             if showNextView {
-               MainView()
+               TabBar()
             } else {
                 VStack {
                     Text("STREETLIFTER")

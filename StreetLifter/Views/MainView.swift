@@ -11,56 +11,45 @@ struct MainView: View {
         NavigationStack {
             GeometryReader { geo in
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10.0)
+                    
+                      
+                    RoundedRectangle(cornerRadius: 15.0)
                         .foregroundStyle(LinearGradient(colors: [.red, .orange.opacity(0.5), Color.secondary.opacity(0.1)], startPoint: .top, endPoint: .bottom))
                         .padding(EdgeInsets(top: geo.size.height * 0.0, leading: 0, bottom: geo.size.height * 0, trailing: 0))
                         .ignoresSafeArea()
                     Text("Training")
                         .font(.title)
                         .fontWeight(.bold)
-                        .position(x: geo.size.width * 0.135, y: geo.size.height * 0.06)
+                        .position(x: geo.size.width * 0.14, y: geo.size.height * 0.05)
                         .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
-                    RoundedRectangle(cornerRadius: 10.0)
+                    
+  
+         
+                    RoundedRectangle(cornerRadius: 15.0)
                         .foregroundStyle(.white)
-                        .padding(EdgeInsets(top: geo.size.height * 0.17, leading: 10, bottom: geo.size.height * 0.6, trailing: 10))
+                        .padding(EdgeInsets(top: geo.size.height * 0.29, leading: 10, bottom: geo.size.height * 0.55, trailing: 10))
                         .ignoresSafeArea()
                    
                     MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                        .padding(EdgeInsets(top: geo.size.height * 0.1, leading: 15, bottom: geo.size.height * 0.6, trailing: 15))
-      
-                    NavigationLink(destination: TrainingProgram()) {
-                        HStack {
-                            Text(trainingProgram[selectedWeek])
-                    
-                                .font(.headline)
-                                .fontWeight(.light)
-                    
-                            Spacer()
-                            Image(systemName: "line.3.horizontal")
-                                .foregroundColor(.gray)
-                        }
-                        .frame(height: 5)
-                        .padding()
-                        .background(.white)
-                        .cornerRadius(10)
-                    }
-                   
-                    .padding(EdgeInsets(top: geo.size.height * 0.65, leading: 10, bottom: geo.size.height * 0.28, trailing: 10))
+                        .padding(EdgeInsets(top: geo.size.height * 0.23, leading: 15, bottom: geo.size.height * 0.44, trailing: 15))
+                    StreakView()
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: geo.size.height * 0.7, trailing: 10))
                 }
+        
               
                 VStack {
-                    Divider()
-                        .frame(width: geo.size.width * 0.5)
+                    
                     exerciseButton(destination: PullupsTrainingView(),
                                    title: R.string.localizable.pullups(), circleColor: Constants.bitterSweet,
                                    reps: trainingSessionManager.pullupsViewModel.lastSessionTotalReps ?? 0,
                                    weight: trainingSessionManager.pullupsViewModel.weight)
                     exerciseButton(destination: DipsTrainingView(),
+                                   
                                    title: R.string.localizable.dips(), circleColor: Constants.robinEggBlue,
                                    reps: trainingSessionManager.dipsViewModel.lastSessionTotalReps ?? 0,
                                    weight: trainingSessionManager.dipsViewModel.weight)
                 }
-                .padding(EdgeInsets(top: geo.size.height * 0.72, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
+                .padding(EdgeInsets(top: geo.size.height * 0.73, leading: 10, bottom: geo.size.height * 0.0, trailing: 10))
             }
         }
         .accentColor(Constants.buttonColor)
@@ -117,10 +106,10 @@ struct MainView: View {
                 }
                 .padding(EdgeInsets(top: 1, leading: 0, bottom: 0, trailing: 0))
             }
-            .padding(EdgeInsets(top: 6, leading: 15, bottom: 8, trailing: 10))
+            .padding(EdgeInsets(top: 5, leading: 15, bottom: 8, trailing: 10))
           
             .background(.white)
-            .cornerRadius(10)
+            .cornerRadius(15)
             .navigationBarBackButtonHidden(true)
         }
     }
@@ -128,7 +117,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        TabBar()
             .environmentObject(TrainingSessionsManager())
     }
 }

@@ -6,20 +6,20 @@ struct TabBar: View {
         TabView() {
             MainView()
                 .tabItem {
-                    Label("Main", systemImage: "medal.fill")
+                    Label("Training", systemImage: "medal.fill")
                 }
-           Text("Settings")
+          TrainingProgram()
                 .tabItem {
-                    Label("Settings", systemImage: "gearshape.fill")
+                    Label("Program", systemImage: "line.3.horizontal")
                 }
         }
        
     }
 }
 
-struct TabBar_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBar()
-            .environmentObject(TrainingSessionsManager())
-    }
-}
+//struct TabBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabBar()
+//            .environmentObject(TrainingSessionsManager())
+//    }
+//}
