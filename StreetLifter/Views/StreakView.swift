@@ -20,33 +20,45 @@ struct StreakView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                RoundedRectangle(cornerRadius: 35.0)
-                    .fill(.white.opacity(0.9))
-                    .padding(EdgeInsets(top: geo.size.height * 0.31, leading: 0, bottom: geo.size.height * 0.36, trailing: 0))
+                RoundedRectangle(cornerRadius: 20.0)
+                    .fill(.white)
+                    .padding(EdgeInsets(top: geo.size.height * 0.26, leading: 0, bottom: geo.size.height * 0.39, trailing: 0))
+                
                 HStack(spacing: 8) {
                     ForEach($workoutDays, id: \.day) { $day in
                         Circle()
-                            .fill(day.isCompleted ? Constants.acidGreen : Color.secondary.opacity(0.3))
+                            .fill(day.isCompleted ? Constants.acidGreen : Color.secondary.opacity(0.2))
                             .padding(.horizontal, 1)
-                            .frame(width: geo.size.width * 0.12)
+                            .frame(width: geo.size.width * 0.113)
+                        
                             .overlay(
                                 Text(day.day)
                                     .font(.footnote)
-                                    .fontWeight(.light)
+                                    
                             )
-
+                        
                             .onTapGesture {
                                 day.isCompleted.toggle()
                             }
                             .animation(.bouncy, value: day.isCompleted)
                     }
                 }
-                Text("Streak")
-                    .font(.caption)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.secondary)
-                    .position(x: geo.size.width * 0.45, y: geo.size.height * 0.36)
-                    .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
+                .padding(EdgeInsets(top: 20, leading: 0, bottom: 10, trailing: 0))
+             
+                VStack(alignment: .leading) { // Установка выравнивания по левому краю и интервала между элементами
+                    Text("Streak")
+                        .font(.headline)
+                        
+                                
+                    Text("Tap training days")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                                
+                }
+                .padding(EdgeInsets(top: 10, leading: 15, bottom: 100, trailing: 0))
+                .frame(width: geo.size.width, height: geo.size.height * 0.1, alignment: .leading)
+               
+                
             }
         }
     }
@@ -60,4 +72,46 @@ struct StreakView: View {
 struct WorkoutDay {
     let day: String
     var isCompleted: Bool
+}
+
+struct CustomShape: Shape {
+    let radius: CGFloat = 16.0
+    
+    private let padding: CGFloat = 26
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: .zero)
+        
+        path.addLine(to: CGPoint(x: rect.midX - padding - radius, y: rect.minY))
+        
+        path.addQuadCurve(to: CGPoint(x: rect.midX - padding, y: rect.minY + radius),
+                          control: CGPoint(x: rect.midX - padding, y: rect.minY))
+        
+        path.addLine(to: CGPoint(x: rect.midX - padding,
+                                 y: rect.minY + padding - radius))
+        
+        path.addQuadCurve(to: CGPoint(x: rect.midX - padding + radius,
+                                      y: rect.minY + padding),
+                          control: CGPoint(x: rect.midX - padding,
+                                           y: rect.minY + padding))
+        
+        path.addLine(to: CGPoint(x: rect.midX + padding - radius,
+                                 y: rect.minY + padding))
+        
+        path.addQuadCurve(to: CGPoint(x: rect.midX + padding,
+                                      y: rect.minY + padding - radius),
+                          control: CGPoint(x: rect.midX + padding, y: rect.minY + padding))
+        
+        path.addLine(to: CGPoint(x: rect.midX + padding,
+                                 y: rect.minY + radius))
+                
+        path.addQuadCurve(to: CGPoint(x: rect.midX + padding + radius, y: rect.minY),
+                          control: CGPoint(x: rect.midX + padding, y: rect.minY))
+        
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+    
+        return path
+    }
 }

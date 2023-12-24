@@ -52,7 +52,7 @@ struct MainChart: View {
                         y: .value("Total Reps", session.totalReps)
                     )
                     .foregroundStyle(by: .value("Session Type", session.sessionType))
-                    .interpolationMethod(.catmullRom)
+                    .interpolationMethod(.monotone)
 
                     PointMark(
                         x: .value("Date", session.date),
@@ -78,7 +78,7 @@ struct MainChart: View {
 
 struct CHART_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        TabBar()
             .environmentObject(TrainingSessionsManager())
        
     }

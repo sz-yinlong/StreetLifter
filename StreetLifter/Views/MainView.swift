@@ -13,27 +13,27 @@ struct MainView: View {
                 ZStack {
                     
                       
-                    RoundedRectangle(cornerRadius: 15.0)
+                    RoundedRectangle(cornerRadius: 20.0)
                         .foregroundStyle(LinearGradient(colors: [.red, .orange.opacity(0.5), Color.secondary.opacity(0.1)], startPoint: .top, endPoint: .bottom))
                         .padding(EdgeInsets(top: geo.size.height * 0.0, leading: 0, bottom: geo.size.height * 0, trailing: 0))
                         .ignoresSafeArea()
                     Text("Training")
                         .font(.title)
                         .fontWeight(.bold)
-                        .position(x: geo.size.width * 0.14, y: geo.size.height * 0.05)
+                        .position(x: geo.size.width * 0.14, y: geo.size.height * 0.06)
                         .padding(EdgeInsets(top: 0, leading: 11, bottom: 0, trailing: 0))
                     
   
          
-                    RoundedRectangle(cornerRadius: 15.0)
+                    RoundedRectangle(cornerRadius: 20.0)
                         .foregroundStyle(.white)
-                        .padding(EdgeInsets(top: geo.size.height * 0.29, leading: 10, bottom: geo.size.height * 0.55, trailing: 10))
+                        .padding(EdgeInsets(top: geo.size.height * 0.37, leading: 10, bottom: geo.size.height * 0.42, trailing: 10))
                         .ignoresSafeArea()
                    
                     MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                        .padding(EdgeInsets(top: geo.size.height * 0.23, leading: 15, bottom: geo.size.height * 0.44, trailing: 15))
+                        .padding(EdgeInsets(top: geo.size.height * 0.3, leading: 15, bottom: geo.size.height * 0.3, trailing: 15))
                     StreakView()
-                        .padding(EdgeInsets(top: 0, leading: 10, bottom: geo.size.height * 0.7, trailing: 10))
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: geo.size.height * 0.58, trailing: 10))
                 }
         
               
@@ -109,7 +109,7 @@ struct MainView: View {
             .padding(EdgeInsets(top: 5, leading: 15, bottom: 8, trailing: 10))
           
             .background(.white)
-            .cornerRadius(15)
+            .cornerRadius(20)
             .navigationBarBackButtonHidden(true)
         }
     }

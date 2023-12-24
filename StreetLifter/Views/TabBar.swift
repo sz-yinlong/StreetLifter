@@ -6,14 +6,14 @@ struct TabBar: View {
         TabView() {
             MainView()
                 .tabItem {
-                    Label("Training", systemImage: "medal.fill")
+                    Label("Training", systemImage: "house")
                 }
           TrainingProgram()
                 .tabItem {
                     Label("Program", systemImage: "line.3.horizontal")
                 }
         }
-       
+        .accentColor(Constants.buttonColor)
     }
 }
 
