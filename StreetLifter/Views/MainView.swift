@@ -23,7 +23,7 @@ struct MainView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 
                 MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                    .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+                    .padding(EdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16))
                     
             }
     
@@ -38,6 +38,7 @@ struct MainView: View {
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 10)
+            .padding(.top, 0)
         }
         .background(Constants.trainingBackgroundGradient.ignoresSafeArea(.all))
         .accentColor(Constants.buttonColor)
@@ -72,6 +73,8 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                         .fontWeight(.medium)
                         .foregroundStyle(.black)
                 }
+                .padding(.vertical, 10)
+                .padding(.leading, 16)
                 Spacer()
             
                 Image(systemName: "chevron.right")
@@ -79,7 +82,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                     .font(.title3)
                     .offset(x: -10, y: 25)
             }
-            .padding(.bottom, 1)
+          
             VStack(alignment: .leading) {
                 Text("Last session:")
                     .font(.callout)
@@ -87,14 +90,17 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                     
                 HStack(spacing: 5) {
                     Text("\(reps)")
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(.black)
+                        .font(.title3)
+                     
                         
                     Text("reps")
                         .foregroundStyle(.secondary)
+                        .offset(y: 0.3)
                 }
-            }
+            }.padding(EdgeInsets(top: 0, leading: 16, bottom: 5, trailing: 0))
         }
-        .padding()
+
         .background(.white)
         .cornerRadius(15)
         .navigationBarBackButtonHidden(true)

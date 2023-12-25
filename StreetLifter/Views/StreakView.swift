@@ -43,8 +43,8 @@ struct StreakView: View {
             }
         }
         
-        .padding(.vertical, 5)
-        .padding(.horizontal, 5)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 8)
         .background(.white, in: RoundedRectangle(cornerRadius: 20))
     }
 }
