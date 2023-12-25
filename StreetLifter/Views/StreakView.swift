@@ -36,8 +36,10 @@ struct StreakView: View {
                 
                     .onTapGesture {
                         day.isCompleted.toggle()
+                      
                     }
                     .animation(.bouncy, value: day.isCompleted)
+                    .sensoryFeedback(.success, trigger: day.isCompleted)
             }
         }
         

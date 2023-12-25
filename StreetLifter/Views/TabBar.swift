@@ -14,7 +14,7 @@ struct TabBar: View {
                         Label("Program", systemImage: "line.3.horizontal")
                     }
             }
-            .accentColor(Constants.coquelicot)
+            .accentColor(Constants.tomato)
         }
     }
 }

@@ -18,8 +18,9 @@ struct MainView: View {
                         
                     Spacer()
                 }
+                .padding(.top, 16)
                 StreakView()
-                    .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 
                 MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
                     .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
