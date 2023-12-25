@@ -124,12 +124,12 @@ struct _R {
       /// Locales: en, ru
       var pullups: RswiftResources.StringResource { .init(key: "pullups", tableName: "Localizable", source: source, developmentValue: "Pull-ups", comment: nil) }
 
-      /// en translation: Reps
+      /// en translation: reps
       ///
       /// Key: reps
       ///
       /// Locales: en, ru
-      var reps: RswiftResources.StringResource { .init(key: "reps", tableName: "Localizable", source: source, developmentValue: "Reps", comment: nil) }
+      var reps: RswiftResources.StringResource { .init(key: "reps", tableName: "Localizable", source: source, developmentValue: "reps", comment: nil) }
 
       /// en translation: Set
       ///

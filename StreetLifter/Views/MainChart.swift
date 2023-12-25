@@ -7,12 +7,10 @@ struct CombinedTrainingSession {
     var sessionType: String // "Pullups" или "Dips"
 }
 
-
 struct MainChart: View {
     var pullupsTrainingSession: [TrainingSession]?
     var dipsTrainingSession: [TrainingSession]?
-    let numberOfDisplayDays = 7
-    
+
     @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
 
     var combinedSessions: [CombinedTrainingSession] {
@@ -37,15 +35,8 @@ struct MainChart: View {
                 NavigationLink("See all", destination: StatsPageTabView())
                     .font(.subheadline)
                     .foregroundStyle(.blue)
-                    .offset(x: -3, y: 7)
             }
-            .padding(EdgeInsets(top: 5, leading: 1, bottom: 0, trailing: 1))
-           
-            Text(R.string.localizable.lastSevenSessions())
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .padding(EdgeInsets(top: 0, leading: 1, bottom: 2, trailing: 1))
-         
+            .padding(EdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 16))
             Chart {
                 ForEach(combinedSessions, id: \.date) { session in
                     LineMark(
@@ -53,27 +44,24 @@ struct MainChart: View {
                         y: .value("Total Reps", session.totalReps)
                     )
                     .foregroundStyle(by: .value("Session Type", session.sessionType))
-                    .interpolationMethod(.monotone)
-
-                    PointMark(
-                        x: .value("Date", session.date),
-                        y: .value("total Reps", session.totalReps)
-                    )
-                    .foregroundStyle(by: .value("SessionType", session.sessionType))
+                    .symbol(by: .value("Total Reps", session.sessionType))
+                    .interpolationMethod(.catmullRom)
                 }
             }
-//            .chartYScale(range: .plotDimension(padding: 30))
-            .chartXVisibleDomain(length: 3600 * 24 * numberOfDisplayDays)
-//            .padding(EdgeInsets(top: 10, leading: 5, bottom: 5, trailing: 5))
+            .chartScrollableAxes(.horizontal)
+            .chartXVisibleDomain(length: 7)
+            .chartYScale(type: .linear)
+            .chartYScale(range: .plotDimension())
+            .padding(EdgeInsets(top: 5, leading: 16, bottom: 16, trailing: 16))
             .chartLegend(.hidden)
-           
 
             .chartForegroundStyleScale([
                 "Pullups": Constants.bitterSweet,
                 "Dips": Constants.robinEggBlue
             ])
         }
-        .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
+        .background(.white)
+        .cornerRadius(15)
     }
 }
 
@@ -81,6 +69,5 @@ struct CHART_Previews: PreviewProvider {
     static var previews: some View {
         TabBar()
             .environmentObject(TrainingSessionsManager())
-       
     }
 }

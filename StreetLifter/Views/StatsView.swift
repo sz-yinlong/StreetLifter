@@ -52,6 +52,7 @@ struct StatsView: View {
                                 .listSectionSeparator(.hidden)
                                 .alignmentGuide(.listRowSeparatorTrailing) { _ in Constants.sessionHAlignmentGuide }
                             }
+                            .scrollContentBackground(.hidden)
                             .listStyle(.insetGrouped)
                             .padding(.top)
                             .padding([.leading, .trailing], geo.size.width * -0.03)

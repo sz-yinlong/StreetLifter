@@ -9,7 +9,7 @@
 "dips" = "Dips";
 "pullups" = "Pull-ups";
 "exercise" = "Exercise";
-"reps" = "Reps";
+"reps" = "reps";
 "sets" = "Sets";
 "set" = "Set";
 "noData" = "No data available";
