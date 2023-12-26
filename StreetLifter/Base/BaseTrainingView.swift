@@ -5,9 +5,7 @@ import SwiftUI
 struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProtocol>: View {
     @StateObject var viewModel: BaseTrainingViewModel
     @StateObject var storage = TrainingSessionStorage()
-    @State private var isOn = false
-    
-    @State private var selectedWeightIndex = 0
+ 
     var backgroundColor: Color
     
     init(viewModel: ViewModel, backgroundColor: Color = .secondary) {
@@ -97,24 +95,26 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         
                         HStack {
                             HStack {
-                                Toggle("", isOn: $isOn)
+                                Toggle("", isOn: $viewModel.isWeightAdded)
                                     .labelsHidden()
                                 Text(R.string.localizable.addWeight())
                             }
-                            Picker("Weight", selection: $selectedWeightIndex) {
-                                ForEach(0 ..< viewModel.availableWeights.count) {
+                            Picker("Weight", selection: $viewModel.selectedWeightIndex) {
+                                ForEach(0 ..< viewModel.availableWeights.count, id: \.self) {
                                     index in
-                                    Text("\(viewModel.availableWeights[index])kg")
-                                        .tag(index)
+                                    Text("\(viewModel.availableWeights[index])kg").tag(index)
                                 }
                             }
-                            .disabled(!isOn)
+                            .onChange(of: viewModel.selectedWeightIndex, perform: { newValue in
+                                viewModel.tempSelectedWeight = viewModel.availableWeights[newValue]
+                                print("Выбранный вес: \(viewModel.availableWeights[newValue])кг")
+                            })
+                            .disabled(!viewModel.isWeightAdded)
                             .frame(width: 100, height: 100)
                             .pickerStyle(WheelPickerStyle())
                             .padding()
-                            .opacity(isOn ? 1 : 0.2)
+                            .opacity(viewModel.isWeightAdded ? 1 : 0.2)
                         }
-                        
                         
                         VStack {
                             Button(action: {
@@ -125,7 +125,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                     viewModel.saveTrainingSession()
                                 }
                                 viewModel.saveRepsForCurrentSession()
-                                viewModel.saveWeightForCurrentSession(weight: viewModel.availableWeights[selectedWeightIndex])
+                                viewModel.saveWeightForCurrentSession()
                             }) {
                                 Text(R.string.localizable.done()
                                 )
@@ -151,4 +151,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
 
 #Preview {
     MainView()
+        .environmentObject(TrainingSessionsManager())
 }
+
+// 5-0/6-8/7-10/8-12/4-0/
