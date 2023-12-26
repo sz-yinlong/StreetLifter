@@ -7,7 +7,8 @@ class BaseTrainingViewModel: ObservableObject {
     private let trainingType: ExerciseType
     
    
-    let availableWeights = Array(1...30)
+    var availableWeights = Array(1...30)
+    let noWeight: Int = 0
     
    
     
@@ -20,6 +21,9 @@ class BaseTrainingViewModel: ObservableObject {
     @Published var trainingCompleted = false
     @Published var trainingDate: [Int] = []
     @Published var lastSessionTotalReps: Int?
+    @Published var isWeightAdded: Bool = false
+    @Published var selectedWeightIndex: Int = 1
+    @Published var tempSelectedWeight: Int = 1
     
    
 
@@ -94,8 +98,12 @@ class BaseTrainingViewModel: ObservableObject {
             currentSessionReps.append(reps)
         }
     }
-    func saveWeightForCurrentSession(weight: Int) {
-        currenSessionWeight.append(weight)
+    func saveWeightForCurrentSession() {
+        if isWeightAdded {
+            currenSessionWeight.append(tempSelectedWeight)
+        } else {
+            currenSessionWeight.append(noWeight)
+        }
     }
     
     func trainingViewType() -> ExerciseType? {
