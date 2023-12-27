@@ -1,5 +1,5 @@
 //
-//  TrainingProgram.swift
+//  ProgramView.swift
 //  StreetLifter
 //
 //  Created by Artem on 23.12.2023.
