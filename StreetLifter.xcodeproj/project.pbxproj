@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		4B3C6075CBBE088A652052A5 /* Pods_StreetLifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039D711BABADB351AB8F3881 /* Pods_StreetLifter.framework */; };
 		AC12428A2B262A46000ED27A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1242892B262A46000ED27A /* MainView.swift */; };
-		AC8515A52B3717FC002CFA45 /* TrainingProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8515A42B3717FC002CFA45 /* TrainingProgram.swift */; };
+		AC6B89E72B3C37B900169FB3 /* TrainingProgramData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */; };
+		AC8515A52B3717FC002CFA45 /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8515A42B3717FC002CFA45 /* ProgramView.swift */; };
 		AC8515A72B382A02002CFA45 /* StreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8515A62B382A02002CFA45 /* StreakView.swift */; };
 		AC8B57562B2C406200BADC48 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B57552B2C406200BADC48 /* StatsView.swift */; };
 		AC8B57582B2C439500BADC48 /* StatsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B57572B2C439500BADC48 /* StatsChart.swift */; };
@@ -39,7 +40,8 @@
 		039D711BABADB351AB8F3881 /* Pods_StreetLifter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreetLifter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFF1F45337964277926B103 /* Pods-StreetLifter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetLifter.release.xcconfig"; path = "Target Support Files/Pods-StreetLifter/Pods-StreetLifter.release.xcconfig"; sourceTree = "<group>"; };
 		AC1242892B262A46000ED27A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		AC8515A42B3717FC002CFA45 /* TrainingProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgram.swift; sourceTree = "<group>"; };
+		AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramData.swift; sourceTree = "<group>"; };
+		AC8515A42B3717FC002CFA45 /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
 		AC8515A62B382A02002CFA45 /* StreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakView.swift; sourceTree = "<group>"; };
 		AC8B57552B2C406200BADC48 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		AC8B57572B2C439500BADC48 /* StatsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsChart.swift; sourceTree = "<group>"; };
@@ -165,7 +167,7 @@
 				FAF7B6152A988A9400249317 /* MainChart.swift */,
 				AC1242892B262A46000ED27A /* MainView.swift */,
 				AC8515A62B382A02002CFA45 /* StreakView.swift */,
-				AC8515A42B3717FC002CFA45 /* TrainingProgram.swift */,
+				AC8515A42B3717FC002CFA45 /* ProgramView.swift */,
 				AC8B575B2B2C582700BADC48 /* StatsPageTabView.swift */,
 				ACCDD2012B206349005A21FC /* TabBar.swift */,
 				ACCDD1FD2B1F8E61005A21FC /* Constants.swift */,
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF7B6192A9A2C0D00249317 /* TrainingSessionModel.swift */,
+				AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */,
 				FAF7B61C2A9A2CD000249317 /* TrainingSessionStorage.swift */,
 			);
 			path = Models;
@@ -343,6 +346,7 @@
 				FAF7B60A2A9679C300249317 /* DipsTrainingView.swift in Sources */,
 				FAF7B6142A976C2200249317 /* ExerciseTypeEnum.swift in Sources */,
 				FAF7B6012A962BBA00249317 /* BaseTrainingViewModel.swift in Sources */,
+				AC6B89E72B3C37B900169FB3 /* TrainingProgramData.swift in Sources */,
 				AC8515A72B382A02002CFA45 /* StreakView.swift in Sources */,
 				FAF7B6122A97551C00249317 /* ExerciseTypeProtocol.swift in Sources */,
 				ACB8C4CD2B185C19004B64F4 /* R.generated.swift in Sources */,
@@ -359,7 +363,7 @@
 				AC12428A2B262A46000ED27A /* MainView.swift in Sources */,
 				FAF7B61D2A9A2CD000249317 /* TrainingSessionStorage.swift in Sources */,
 				ACCDD2022B206349005A21FC /* TabBar.swift in Sources */,
-				AC8515A52B3717FC002CFA45 /* TrainingProgram.swift in Sources */,
+				AC8515A52B3717FC002CFA45 /* ProgramView.swift in Sources */,
 				AC8B575C2B2C582700BADC48 /* StatsPageTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

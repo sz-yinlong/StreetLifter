@@ -9,21 +9,24 @@ import SwiftUI
 
 struct TrainingProgram: View {
     
-
+    @StateObject private var trainingData = TrainingProgramData()
     @State private var selectedLevel = "Level 1"
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(trainingLevels, id: \.title) { section in
+                ForEach(trainingData.trainingLevels, id: \.title) { section in
                     Section(header: Text(section.title).textCase(.uppercase)) {
                         ForEach(section.levels, id: \.level) { level in
                             HStack {
                                 Text(level.level)
                                 Spacer()
-                                HStack {
+                                HStack(spacing: 8) {
                                     ForEach(level.sets.indices, id: \.self) { index in
                                         Text("\(level.sets[index])")
+                                            .frame(minWidth: 15, alignment: .trailing)
+                                          
+                                        
                                     }
                                 }
                                 .padding(.trailing, 10)
@@ -48,7 +51,9 @@ struct TrainingProgram: View {
                 }
             }
             .navigationTitle("Training Program")
+           
         }
+        
     }
 }
 

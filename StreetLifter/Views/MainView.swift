@@ -5,7 +5,7 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
     @State private var selectedWeek: Int = 0
-    @State private var trainingProgram = ["Level 1", "Level 2", "Level 3"]
+
     
     var body: some View {
         NavigationStack {
