@@ -4,7 +4,7 @@ import Combine
 
 struct SplashView: View {
     
-    @State private var showNextView = false
+    @State private var showNextView = true
     
     private var cancellable: Set<AnyCancellable> = []
     private let storage = TrainingSessionStorage()
