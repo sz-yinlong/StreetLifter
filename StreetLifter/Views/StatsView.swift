@@ -20,38 +20,34 @@ struct StatsView: View {
                                     .font(.subheadline)
                                     .foregroundStyle(.secondary)
                             }
-                            ForEach(trainingSessions, id: \.self) { session in
+                            ForEach(trainingSessions, id: \.id) { session in
                                 HStack {
                                     Text(session.date)
-                                        .padding(.leading, 10)
+                                    
                                         .font(.system(size: Constants.fontDate))
                                         
-                                    Spacer()
-                                    HStack(spacing: 15) {
-                                        ForEach(Array(zip(session.reps, session.weight)), id: \.0) { reps, weight in
+                                    Spacer(minLength: 35)
+                                    HStack(spacing: 8) {
+                                        ForEach(Array(zip(session.reps, session.weight).map { RepsAndWeight(reps: $0, weight: $1) }), id: \.id) { repsAndWeight in
                                             VStack {
-                                                Text("\(reps)")
+                                                Text("\(repsAndWeight.reps)")
                                                     .font(.system(size: Constants.fontPrimary))
                                                     .fontWeight(.medium)
-                                                    .padding(.bottom, 3)
-                                             
-                                                
-                                                Text("\(weight) kg")
+                                                    .padding(.bottom, 5)
+                                                                                    
+                                                Text("\(repsAndWeight.weight) kg")
                                                     .font(.system(size: Constants.fontSecondary))
                                                     .foregroundColor(.secondary)
-                                               
                                             }
-                                            .padding(EdgeInsets(top: 5, leading: 12, bottom: 5, trailing: 12))
-                                            .background(Color.secondary.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
+                                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                                         
+                                            .padding(.vertical, 5)
+                                            .background(Color.secondary.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
                                         }
                                     }
-                                  
-                                  
                                 }
                             }
                             .listSectionSeparator(.hidden)
-                            
                         }
                         .padding(.trailing, 1)
                         .listStyle(.inset)
