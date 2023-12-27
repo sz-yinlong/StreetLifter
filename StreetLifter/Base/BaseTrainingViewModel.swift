@@ -9,6 +9,9 @@ class BaseTrainingViewModel: ObservableObject {
    
     var availableWeights = Array(1...30)
     let noWeight: Int = 0
+    var combinedRepsAndWeight: [RepsAndWeight] {
+        return Array(zip(currentSessionReps, currenSessionWeight)).map { RepsAndWeight (reps: $0.0, weight: $0.1)}
+    }
     
    
     
@@ -22,7 +25,7 @@ class BaseTrainingViewModel: ObservableObject {
     @Published var trainingDate: [Int] = []
     @Published var lastSessionTotalReps: Int?
     @Published var isWeightAdded: Bool = false
-    @Published var selectedWeightIndex: Int = 1
+    @Published var selectedWeightIndex: Int = 0
     @Published var tempSelectedWeight: Int = 1
     
    
@@ -109,4 +112,10 @@ class BaseTrainingViewModel: ObservableObject {
     func trainingViewType() -> ExerciseType? {
        return nil
        }
+}
+
+
+struct RepsAndWeight: Hashable {
+    let reps: Int
+    let weight: Int
 }

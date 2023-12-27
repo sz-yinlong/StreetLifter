@@ -47,15 +47,20 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     VStack {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(viewModel.currentSessionReps, id: \.self) { reps in
-                                    Text("\(reps)")
-                                        .frame(width: 25, height: 15)
-                                        .padding(20)
-                                        .foregroundStyle(backgroundColor)
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                        .background(Color.secondary.opacity(0.04))
-                                        .cornerRadius(8)
+                                ForEach(viewModel.combinedRepsAndWeight, id: \.self) {index in
+                                    VStack {
+                                        Text("\(index.reps)")
+                                            .frame(width: 25, height: 15)
+                                            .padding(20)
+                                            .foregroundStyle(backgroundColor)
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                            .background(Color.secondary.opacity(0.04))
+                                            .cornerRadius(8)
+                                        Text("\(index.weight)")
+                                            .font(.subheadline)
+                                            
+                                    }
                                 }
                             }
                             .padding(.horizontal, 5)
@@ -143,14 +148,14 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     .padding()
                 }
             } else {
-                // Fallback on earlier versions
+
             }
         }
     }
 }
 
 #Preview {
-    MainView()
+    PullupsTrainingView()
         .environmentObject(TrainingSessionsManager())
 }
 
