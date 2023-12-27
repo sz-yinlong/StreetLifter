@@ -21,6 +21,18 @@ enum ExerciseType {
     case dips
 }
 
+struct RepsAndWeight: Hashable {
+    var id = UUID()
+    let reps: Int
+    let weight: Int
+    
+    init(id: UUID = UUID(), reps: Int, weight: Int) {
+        self.id = id
+        self.reps = reps
+        self.weight = weight
+    }
+}
+
 
 
 

@@ -115,7 +115,3 @@ class BaseTrainingViewModel: ObservableObject {
 }
 
 
-struct RepsAndWeight: Hashable {
-    let reps: Int
-    let weight: Int
-}
