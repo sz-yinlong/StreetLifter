@@ -6,7 +6,8 @@ class TrainingSessionsManager: ObservableObject {
     @Published var dipsViewModel: BaseTrainingViewModel
     
     init() {
-        pullupsViewModel = BaseTrainingViewModel(trainingType: .pullups)
-        dipsViewModel = BaseTrainingViewModel(trainingType: .dips)
+        let programData = TrainingProgramData()
+        pullupsViewModel = BaseTrainingViewModel(trainingType: .pullups, programData: programData)
+        dipsViewModel = BaseTrainingViewModel(trainingType: .dips,programData: programData)
     }
 }

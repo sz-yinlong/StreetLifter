@@ -27,14 +27,17 @@ class BaseTrainingViewModel: ObservableObject {
     @Published var isWeightAdded: Bool = false
     @Published var selectedWeightIndex: Int = 0
     @Published var tempSelectedWeight: Int = 1
+    @Published var trainingLevels: [TrainingSection] = []
+    @Published var selectedLevel = "Level 1"
     
    
 
-    init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingType: ExerciseType) {
+    init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingType: ExerciseType, programData: TrainingProgramData = TrainingProgramData()) {
         self.storage = storage
         self.trainingType = trainingType
         self.reps = UserDefaults.standard.integer(forKey: "reps")
         self.weight = UserDefaults.standard.integer(forKey: "weight")
+        self.trainingLevels = programData.trainingLevels
         self.trainingSessions = storage.retrieveSessions(forKey: trainingSessionsKey)
         self.lastSessionTotalReps = trainingSessions.last?.totalReps
     }
@@ -112,6 +115,10 @@ class BaseTrainingViewModel: ObservableObject {
     func trainingViewType() -> ExerciseType? {
        return nil
        }
+    
+    func selectLevel(level: String) {
+        self.selectedLevel = level
+    }
 }
 
 

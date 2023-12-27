@@ -7,15 +7,18 @@
 
 import SwiftUI
 
-struct TrainingProgram: View {
+struct ProgramView: View {
+//    @StateObject private var trainingData = TrainingProgramData()
+//    @State private var selectedLevel = "Level 1"
     
-    @StateObject private var trainingData = TrainingProgramData()
-    @State private var selectedLevel = "Level 1"
-
+    @EnvironmentObject var trainingSessionsManager: TrainingSessionsManager
+   
     var body: some View {
+        let viewModel = trainingSessionsManager.pullupsViewModel
+        
         NavigationView {
             List {
-                ForEach(trainingData.trainingLevels, id: \.title) { section in
+                ForEach(viewModel.trainingLevels, id: \.title) { section in
                     Section(header: Text(section.title).textCase(.uppercase)) {
                         ForEach(section.levels, id: \.level) { level in
                             HStack {
@@ -25,41 +28,34 @@ struct TrainingProgram: View {
                                     ForEach(level.sets.indices, id: \.self) { index in
                                         Text("\(level.sets[index])")
                                             .frame(minWidth: 15, alignment: .trailing)
-                                          
-                                        
                                     }
                                 }
                                 .padding(.trailing, 10)
 
-                                if selectedLevel == level.level {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.blue)
-                                } else {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.clear)
+                                if viewModel.selectedLevel == level.level {
+                                    Image(systemName: "checkmark").foregroundColor(.blue)
                                 }
                             }
-                            .sensoryFeedback(.selection, trigger: self.selectedLevel)
+
+                            .sensoryFeedback(.selection, trigger: viewModel.selectedLevel)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                self.selectedLevel = level.level
-                                print("Выбранный уровень: \(self.selectedLevel)")
-                                    
+                                viewModel.selectedLevel = level.level
+                                print("Выбранный уровень: \(viewModel.selectedLevel)")
                             }
                         }
                     }
                 }
             }
+            
             .navigationTitle("Training Program")
-           
         }
-        
     }
 }
 
-
 struct TrainingProgram_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingProgram()
+        ProgramView()
+            .environmentObject(TrainingSessionsManager())
     }
 }

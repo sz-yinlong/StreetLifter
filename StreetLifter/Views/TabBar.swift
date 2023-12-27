@@ -9,7 +9,7 @@ struct TabBar: View {
                     .tabItem {
                         Label("Training", systemImage: "medal")
                     }
-                TrainingProgram()
+                ProgramView()
                     .tabItem {
                         Label("Program", systemImage: "line.3.horizontal")
                     }
