@@ -3,12 +3,13 @@
 import SwiftUI
 
 struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProtocol>: View {
-    @StateObject var viewModel: BaseTrainingViewModel
+    @StateObject var viewModel: ViewModel
     @StateObject var storage = TrainingSessionStorage()
     @State private var showingLevels = false
     
  
     var backgroundColor: Color
+    var showProgramView: (() -> Void)?
     
     init(viewModel: ViewModel, backgroundColor: Color = .secondary) {
         let storage = TrainingSessionStorage()
@@ -16,6 +17,9 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
         _viewModel = StateObject(wrappedValue: viewModel)
         self.backgroundColor = backgroundColor
     }
+    
+    
+    
 
     var body: some View {
         NavigationStack {
@@ -50,11 +54,11 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         Spacer()
                      
                         Button("\(viewModel.selectedLevel)") {
-                                           showingLevels = true
+                            showingLevels = true
                                        }
                         .padding(.trailing, 16)
                                        .sheet(isPresented: $showingLevels) {
-                                         ProgramView()
+                                           ProgramView().environmentObject(viewModel)
                                        }
 
                                
@@ -175,29 +179,4 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
 #Preview {
     PullupsTrainingView()
         .environmentObject(TrainingSessionsManager())
-}
-
-// 5-0/6-8/7-10/8-12/4-0/
-struct LevelsList: View {
-    @ObservedObject var viewModel: BaseTrainingViewModel
-
-    var body: some View {
-        List {
-            ForEach(viewModel.trainingLevels, id: \.title) { section in
-                Section(header: Text(section.title).textCase(.uppercase)) {
-                    ForEach(section.levels, id: \.level) { level in
-                        Button(action: {
-                            viewModel.selectedLevel = level.level
-                        }) {
-                            HStack {
-                                Text(level.level)
-                                Spacer()
-                                Text(level.sets.map(String.init).joined(separator: " "))
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
