@@ -98,6 +98,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                         .foregroundStyle(.secondary)
                         .offset(y: 0.3)
                 }
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 0))
             }.padding(EdgeInsets(top: 0, leading: 16, bottom: 5, trailing: 0))
         }
 
