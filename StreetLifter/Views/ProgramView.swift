@@ -59,6 +59,6 @@ struct ProgramView: View {
 struct TrainingProgram_Previews: PreviewProvider {
     static var previews: some View {
         ProgramView()
-            .environmentObject(TrainingSessionsManager())
+            .environmentObject(TrainingSessionsManager().pullupsViewModel)
     }
 }
