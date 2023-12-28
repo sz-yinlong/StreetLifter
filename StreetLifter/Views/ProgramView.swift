@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ProgramView: View {
 //    @StateObject private var trainingData = TrainingProgramData()
-    @State private var selectedLevel = "Level 1"
     
-    @EnvironmentObject var viewModel: BaseTrainingViewModel
+    
+    @EnvironmentObject var trainingSessionsManager: TrainingSessionsManager
    
     var body: some View {
        
         
         NavigationView {
             List {
-                ForEach(viewModel.trainingLevels, id: \.title) { section in
+                ForEach(trainingSessionsManager.pullupsViewModel.trainingLevels, id: \.title) { section in
                     Section(header: Text(section.title).textCase(.uppercase)) {
                         ForEach(section.levels, id: \.level) { level in
                             HStack {
@@ -31,20 +31,23 @@ struct ProgramView: View {
                                     }
                                 }
                                 .padding(.trailing, 10)
-
-                                if viewModel.selectedLevel == level.level {
-                                    Image(systemName: "checkmark").foregroundColor(.blue)
-                                } else {
-                                    Image(systemName: "checkmark").foregroundColor(.clear)
-                                }
+                                
+                             
+                                    if trainingSessionsManager.pullupsViewModel.selectedLevel == level.level {
+                                        Image(systemName: "checkmark").foregroundColor(.blue)
+                                    } else {
+                                        Image(systemName: "checkmark").foregroundColor(.clear)
+                                    }
+                                
 
                             }
 
-                            .sensoryFeedback(.selection, trigger: viewModel.selectedLevel)
+                            .sensoryFeedback(.selection, trigger: trainingSessionsManager.pullupsViewModel.selectedLevel)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                viewModel.selectedLevel = level.level
-                                print("Выбранный уровень: \(viewModel.selectedLevel)")
+                                trainingSessionsManager.pullupsViewModel.selectedLevel = level.level
+                                print("Выбранный уровень: \(trainingSessionsManager.pullupsViewModel.selectedLevel)")
+                                self.trainingSessionsManager.objectWillChange.send()// Добавьте эту строку
                             }
                         }
                     }
@@ -59,6 +62,6 @@ struct ProgramView: View {
 struct TrainingProgram_Previews: PreviewProvider {
     static var previews: some View {
         ProgramView()
-            .environmentObject(TrainingSessionsManager().pullupsViewModel)
+            .environmentObject(TrainingSessionsManager())
     }
 }
