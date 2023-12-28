@@ -5,6 +5,8 @@ import SwiftUI
 struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProtocol>: View {
     @StateObject var viewModel: BaseTrainingViewModel
     @StateObject var storage = TrainingSessionStorage()
+    @State private var showingLevels = false
+    
  
     var backgroundColor: Color
     
@@ -44,6 +46,22 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         viewModel.startNewSession()
                     }
                 } else {
+                    HStack {
+                        Spacer()
+                     
+                        Button("\(viewModel.selectedLevel)") {
+                                           showingLevels = true
+                                       }
+                        .padding(.trailing, 16)
+                                       .sheet(isPresented: $showingLevels) {
+                                         ProgramView()
+                                       }
+
+                               
+                               
+                    }
+
+                        
                     VStack {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
@@ -160,3 +178,26 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
 }
 
 // 5-0/6-8/7-10/8-12/4-0/
+struct LevelsList: View {
+    @ObservedObject var viewModel: BaseTrainingViewModel
+
+    var body: some View {
+        List {
+            ForEach(viewModel.trainingLevels, id: \.title) { section in
+                Section(header: Text(section.title).textCase(.uppercase)) {
+                    ForEach(section.levels, id: \.level) { level in
+                        Button(action: {
+                            viewModel.selectedLevel = level.level
+                        }) {
+                            HStack {
+                                Text(level.level)
+                                Spacer()
+                                Text(level.sets.map(String.init).joined(separator: " "))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

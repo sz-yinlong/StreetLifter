@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ProgramView: View {
 //    @StateObject private var trainingData = TrainingProgramData()
-//    @State private var selectedLevel = "Level 1"
+    @State private var selectedLevel = "Level 1"
     
-    @EnvironmentObject var trainingSessionsManager: TrainingSessionsManager
+    @EnvironmentObject var viewModel: BaseTrainingViewModel
    
     var body: some View {
-        let viewModel = trainingSessionsManager.pullupsViewModel
+       
         
         NavigationView {
             List {
@@ -34,7 +34,10 @@ struct ProgramView: View {
 
                                 if viewModel.selectedLevel == level.level {
                                     Image(systemName: "checkmark").foregroundColor(.blue)
+                                } else {
+                                    Image(systemName: "checkmark").foregroundColor(.clear)
                                 }
+
                             }
 
                             .sensoryFeedback(.selection, trigger: viewModel.selectedLevel)
