@@ -14,8 +14,9 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
     
     init(viewModel: ViewModel, backgroundColor: Color = .secondary) {
         let storage = TrainingSessionStorage()
-        
+       
         _viewModel = StateObject(wrappedValue: viewModel)
+       
         self.backgroundColor = backgroundColor
     }
     
@@ -32,7 +33,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                             .font(.title)
                             .multilineTextAlignment(.center)
                         Spacer()
-                        NavigationLink(destination: MainView()) {
+                        NavigationLink(destination: TabBar()) {
                             Color.blue
                                 .frame(maxWidth: 300, maxHeight: 50)
                                 .cornerRadius(10)
@@ -44,24 +45,37 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 )
                         }
                     }
-                    .onDisappear {
-                        viewModel.startNewSession()
+                    .onAppear {
+                       
                     }
                 } else {
+                    
                     VStack {
 
-                        HStack {
-                               ForEach(viewModel.currentLevelRepetitions, id: \.self) { repetition in
-                                   Text("\(repetition)")
-                               }
-                           }
-                           .padding(.horizontal)
+                        HStack(spacing: 20) {
+                            ForEach(Array(viewModel.mutableRepetitions.enumerated()), id: \.element) { index, repetition in
+                                Text("\(repetition)")
+                                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                                    .foregroundStyle(backgroundColor)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .background(Color.secondary.opacity(0.06))
+                                    .cornerRadius(8)
+                                    .onTapGesture {
+                                        viewModel.currentSetIndex = index // При тапе устанавливаем текущий сет
+                                        viewModel.reps = viewModel.mutableRepetitions[index]
+                                    }
+                            }
+                        
+                        }
+                        
 
                         Spacer()
-                        Text("\(viewModel.reps)")
+                        Text(viewModel.currentSetIndex < viewModel.mutableRepetitions.count ? "\(viewModel.mutableRepetitions[viewModel.currentSetIndex])" : "0")
                             .font(.system(size: 70))
                             .foregroundStyle(.primary)
                             .bold()
+
                         
                         Spacer()
                         
@@ -106,6 +120,10 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 viewModel.tempSelectedWeight = viewModel.availableWeights[newValue]
                                 print("Выбранный вес: \(viewModel.availableWeights[newValue])кг")
                             })
+                            .onChange(of: viewModel.selectedLevel) { _ in
+                                viewModel.selectLevel(level: viewModel.selectedLevel)
+                            }
+                            
                             .disabled(!viewModel.isWeightAdded)
                             .frame(width: 100, height: 100)
                             .pickerStyle(WheelPickerStyle())
@@ -163,11 +181,14 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     ProgramView().environmentObject(viewModel)
                 }
             }
+        } 
+        .onAppear {
+            viewModel.startNewSession()
         }
     }
 }
 
 #Preview {
-    MainView()
+    TabBar()
         .environmentObject(TrainingSessionsManager())
 }

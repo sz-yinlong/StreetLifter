@@ -45,9 +45,12 @@ struct ProgramView: View {
                             .sensoryFeedback(.selection, trigger: viewModel.selectedLevel)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                viewModel.selectedLevel = level.level
-                                print("Выбранный уровень: \(viewModel.selectedLevel)")
-                                self.viewModel.objectWillChange.send()// Добавьте эту строку
+                                withAnimation {
+                                    viewModel.selectedLevel = level.level
+                                    print("Выбранный уровень: \(viewModel.selectedLevel)")
+                                    self.viewModel.objectWillChange.send()
+                                }
+                               
                             }
                         }
                     }

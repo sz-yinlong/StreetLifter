@@ -5,7 +5,7 @@ class BaseTrainingViewModel: ObservableObject {
 
     private let storage: TrainingSessionStorage
     private let trainingType: ExerciseType
-    
+    private var originalTrainingLevels: [TrainingSection]
    
     var availableWeights = Array(1...30)
     let noWeight: Int = 0
@@ -16,7 +16,7 @@ class BaseTrainingViewModel: ObservableObject {
    
     
     @Published var showExerciseView = false
-    @Published var reps: Int
+   
     @Published var weight: Int
     @Published var trainingSessions: [TrainingSession] = []
     @Published var currentSessionReps: [Int] = []
@@ -29,17 +29,22 @@ class BaseTrainingViewModel: ObservableObject {
     @Published var tempSelectedWeight: Int = 1
     @Published var trainingLevels: [TrainingSection] = []
     @Published var selectedLevel = "Level 1"
+    @Published var currentSetIndex = 0
+    @Published var mutableRepetitions: [Int] = []
+    @Published var reps: Int
     
    
 
     init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingType: ExerciseType, programData: TrainingProgramData) {
         self.storage = storage
         self.trainingType = trainingType
+        self.originalTrainingLevels = trainingType == .pullups ? programData.pullupsTraining : programData.dipsTraining
         self.reps = UserDefaults.standard.integer(forKey: "reps")
         self.weight = UserDefaults.standard.integer(forKey: "weight")
         self.trainingSessions = storage.retrieveSessions(forKey: trainingSessionsKey)
         self.lastSessionTotalReps = trainingSessions.last?.totalReps
         self.trainingLevels = trainingType == .pullups ? programData.pullupsTraining : programData.dipsTraining
+        self.reps = currentLevelRepetitions.first ?? 0
     }
     
     var trainingSessionsKey: String {
@@ -53,10 +58,17 @@ class BaseTrainingViewModel: ObservableObject {
     
     var currentLevelRepetitions: [Int] {
         return trainingLevels
-            .flatMap({ $0.levels }) // Создаём один массив из всех подуровней
-            .first(where: { $0.level == selectedLevel })?.sets ?? [] // Ищем подуровень с нужным названием и берём его повторения
+            .flatMap({ $0.levels })
+            .first(where: { $0.level == selectedLevel })?.sets ?? []
     }
  
+    var currentRepetition: Int {
+           if currentSetIndex < currentLevelRepetitions.count {
+               return currentLevelRepetitions[currentSetIndex]
+           } else {
+               return 0
+           }
+       }
     
     func saveTrainingSession() {
         let dateFormatter = DateFormatter()
@@ -85,31 +97,34 @@ class BaseTrainingViewModel: ObservableObject {
         return total
     }
     
-    func decrementReps() {
-        if reps > 1 {
-            reps -= 1
-        }
-    }
-    
-    func incrementReps() {
-        reps += 1
-    }
-    
-    func resetReps() {
-        reps = 0
-    }
-    
+  
     func startNewSession() {
-        currentSessionReps = []
-        resetReps()
+        selectedLevel = "Level 1"
+        guard let levelRepetitions = trainingLevels
+            .flatMap({ $0.levels })
+            .first(where: { $0.level == selectedLevel })?.sets else {
+                return
+        }
+        mutableRepetitions = levelRepetitions
+        currentSetIndex = 0
+        reps = mutableRepetitions[currentSetIndex]
         trainingCompleted = false
     }
+
     
     func saveRepsForCurrentSession() {
-        if currentSessionReps.count < 5 {
-            currentSessionReps.append(reps)
+        if canAddSet {
+           currentSessionReps.append(reps)
+           currentSetIndex += 1 // Переходим к следующему сету
+            if currentSetIndex >= mutableRepetitions.count {
+                // Если это был последний сет, завершаем тренировку
+                trainingCompleted = true
+                saveTrainingSession()
+            }
         }
     }
+    
+    
     func saveWeightForCurrentSession() {
         if isWeightAdded {
             currenSessionWeight.append(tempSelectedWeight)
@@ -123,18 +138,51 @@ class BaseTrainingViewModel: ObservableObject {
        }
     
     func selectLevel(level: String) {
-        self.selectedLevel = level
-        print("Выбранный подуровень: \(level)")
-        
-        // Проверяем, существует ли выбранный подуровень в любой из секций
-        if let selectedLevelSets = trainingLevels
-            .flatMap({ $0.levels }) // Создаём один массив из всех подуровней
-            .first(where: { $0.level == level })?.sets { // Ищем подуровень с нужным названием
-            print("Повторения для выбранного подуровня \(level): \(selectedLevelSets)")
-        } else {
-            print("Повторения для подуровня \(level) не найдены.")
+        if let levelSets = originalTrainingLevels
+            .flatMap({ $0.levels })
+            .first(where: { $0.level == level })?.sets {
+                withAnimation {
+                    self.selectedLevel = level
+                    self.mutableRepetitions = levelSets
+                    self.currentSetIndex = 0
+                    self.reps = mutableRepetitions.first ?? 0
+                }
+                self.objectWillChange.send()
         }
     }
+
+
+    
+    func completeSet() {
+           if currentSetIndex < currentLevelRepetitions.count - 1 {
+               currentSetIndex += 1
+           } else {
+              
+           }
+       }
+    
+    func incrementReps() {
+          if currentSetIndex < mutableRepetitions.count {
+              mutableRepetitions[currentSetIndex] += 1
+              reps = mutableRepetitions[currentSetIndex]
+          }
+      }
+
+      func decrementReps() {
+          if currentSetIndex < mutableRepetitions.count && mutableRepetitions[currentSetIndex] > 0 {
+              mutableRepetitions[currentSetIndex] -= 1
+              reps = mutableRepetitions[currentSetIndex]
+          }
+      }
+
+
+
+    func setCurrentRepsToCurrentSet() {
+        if currentSetIndex < mutableRepetitions.count {
+            reps = mutableRepetitions[currentSetIndex]
+        }
+    }
+
 }
 
 
