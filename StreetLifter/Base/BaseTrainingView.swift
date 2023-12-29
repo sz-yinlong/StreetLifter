@@ -45,38 +45,38 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 )
                         }
                     }
-                    .onAppear {
-                       
-                    }
+                    .onAppear {}
                 } else {
-                    
                     VStack {
-
-                        HStack(spacing: 20) {
-                            ForEach(Array(viewModel.mutableRepetitions.enumerated()), id: \.element) { index, repetition in
-                                Text("\(repetition)")
-                                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-                                    .foregroundStyle(backgroundColor)
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .background(Color.secondary.opacity(0.06))
-                                    .cornerRadius(8)
-                                    .onTapGesture {
-                                        viewModel.currentSetIndex = index // При тапе устанавливаем текущий сет
+                        HStack(spacing: 12) {
+                            ForEach(Array(viewModel.mutableRepetitions.enumerated()), id: \.offset) { index, repetition in
+                                Button(action: {
+                                    withAnimation {
+                                        viewModel.currentSetIndex = index
                                         viewModel.reps = viewModel.mutableRepetitions[index]
                                     }
+                                }) {
+                                RoundedRectangle(cornerRadius: 10)
+                                        .fill(index == viewModel.currentSetIndex ? Constants.acidGreen.opacity(0.7) : Color.secondary.opacity(0.1))
+                                        .frame(width: 55, height: 45)
+                                        .overlay(
+                                            Text("\(repetition)")
+                                                .font(.title)
+                                                .foregroundColor(index == viewModel.currentSetIndex ? .white : .primary)
+                                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                                        )
+                                }
                             }
-                        
                         }
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 8)
                         
-
                         Spacer()
                         Text(viewModel.currentSetIndex < viewModel.mutableRepetitions.count ? "\(viewModel.mutableRepetitions[viewModel.currentSetIndex])" : "0")
                             .font(.system(size: 70))
                             .foregroundStyle(.primary)
                             .bold()
 
-                        
                         Spacer()
                         
                         HStack(alignment: .center) {
@@ -181,7 +181,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     ProgramView().environmentObject(viewModel)
                 }
             }
-        } 
+        }
         .onAppear {
             viewModel.startNewSession()
         }
