@@ -32,14 +32,14 @@ class BaseTrainingViewModel: ObservableObject {
     
    
 
-    init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingType: ExerciseType, programData: TrainingProgramData = TrainingProgramData()) {
+    init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingType: ExerciseType, programData: TrainingProgramData) {
         self.storage = storage
         self.trainingType = trainingType
         self.reps = UserDefaults.standard.integer(forKey: "reps")
         self.weight = UserDefaults.standard.integer(forKey: "weight")
-        self.trainingLevels = programData.trainingLevels
         self.trainingSessions = storage.retrieveSessions(forKey: trainingSessionsKey)
         self.lastSessionTotalReps = trainingSessions.last?.totalReps
+        self.trainingLevels = trainingType == .pullups ? programData.pullupsTraining : programData.dipsTraining
     }
     
     var trainingSessionsKey: String {
