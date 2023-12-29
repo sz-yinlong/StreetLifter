@@ -164,12 +164,15 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         } label: {
                             Image(systemName: "chevron.backward")
                         }
+                        .fontWeight(.medium)
                     }
             ToolbarItem(placement: .topBarTrailing) {
                     Button("\(viewModel.selectedLevel)") {
                         showingLevels = true
                             
                     }
+                    .padding(.top, 8)
+                    .padding(.trailing, 8)
             
                     
                     

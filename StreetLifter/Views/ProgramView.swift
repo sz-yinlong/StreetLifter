@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ProgramView: View {
-//    @StateObject private var trainingData = TrainingProgramData()
+
     
-    
-    @EnvironmentObject var trainingSessionsManager: TrainingSessionsManager
+//    @EnvironmentObject var trainingSessionsManager: TrainingSessionsManager
+    @EnvironmentObject var viewModel: BaseTrainingViewModel
    
     var body: some View {
        
         
         NavigationView {
             List {
-                ForEach(trainingSessionsManager.pullupsViewModel.trainingLevels, id: \.title) { section in
+                ForEach(viewModel.trainingLevels, id: \.title) { section in
                     Section(header: Text(section.title).textCase(.uppercase)) {
                         ForEach(section.levels, id: \.level) { level in
                             HStack {
@@ -33,7 +33,7 @@ struct ProgramView: View {
                                 .padding(.trailing, 10)
                                 
                              
-                                    if trainingSessionsManager.pullupsViewModel.selectedLevel == level.level {
+                                    if viewModel.selectedLevel == level.level {
                                         Image(systemName: "checkmark").foregroundColor(.blue)
                                     } else {
                                         Image(systemName: "checkmark").foregroundColor(.clear)
@@ -42,12 +42,12 @@ struct ProgramView: View {
 
                             }
 
-                            .sensoryFeedback(.selection, trigger: trainingSessionsManager.pullupsViewModel.selectedLevel)
+                            .sensoryFeedback(.selection, trigger: viewModel.selectedLevel)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                trainingSessionsManager.pullupsViewModel.selectedLevel = level.level
-                                print("Выбранный уровень: \(trainingSessionsManager.pullupsViewModel.selectedLevel)")
-                                self.trainingSessionsManager.objectWillChange.send()// Добавьте эту строку
+                                viewModel.selectedLevel = level.level
+                                print("Выбранный уровень: \(viewModel.selectedLevel)")
+                                self.viewModel.objectWillChange.send()// Добавьте эту строку
                             }
                         }
                     }

@@ -25,6 +25,7 @@ struct MainChart: View {
     }
 
     var body: some View {
+        
         VStack(alignment: .leading) {
             HStack {
                 Text(R.string.localizable.progress())
@@ -32,9 +33,6 @@ struct MainChart: View {
                     .fontWeight(.medium)
                     .foregroundStyle(.black)
                 Spacer()
-                NavigationLink("See all", destination: StatsPageTabView())
-                    .font(.subheadline)
-                    .foregroundStyle(.blue)
             }
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 16))
             Chart {

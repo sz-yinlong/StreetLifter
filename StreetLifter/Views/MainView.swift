@@ -23,7 +23,7 @@ struct MainView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 
                 MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                    .padding(EdgeInsets(top: 60, leading: 16, bottom: 16, trailing: 16))
+                    .padding(EdgeInsets(top: 60, leading: 16, bottom: 8, trailing: 16))
                     
             }
     
@@ -110,7 +110,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        TabBar()
             .environmentObject(TrainingSessionsManager())
     }
 }

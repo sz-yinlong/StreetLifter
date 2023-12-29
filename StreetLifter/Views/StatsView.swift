@@ -51,7 +51,7 @@ struct StatsView: View {
                         }
                         .padding(.trailing, 1)
                         .listStyle(.inset)
-                        .toolbar(.hidden, for: .tabBar)
+                        
                     }
                 }
             }

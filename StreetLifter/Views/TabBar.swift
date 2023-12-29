@@ -9,15 +9,18 @@ struct TabBar: View {
                     .tabItem {
                         Label("Training", systemImage: "medal")
                     }
-                ProgramView()
-                    .tabItem {
-                        Label("Program", systemImage: "line.3.horizontal")
-                    }
+                NavigationView {
+                    StatsPageTabView()
+                }
+                .tabItem {
+                    Label("Stats", systemImage: "chart.bar.xaxis.ascending")
+                }
             }
             .accentColor(Constants.tomato)
         }
     }
 }
+
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {

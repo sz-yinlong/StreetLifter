@@ -1,11 +1,9 @@
 
-
 import SwiftUI
 
 struct PullupsTrainingView: View {
     @EnvironmentObject var trainingSessionsManager: TrainingSessionsManager
-    @State private var showingLevels = false // Состояние для отображения модального окна
-
+    @State private var showingLevels = false 
     var body: some View {
         BaseTrainingView<BaseTrainingViewModel, Any>(
             viewModel: trainingSessionsManager.pullupsViewModel,
