@@ -34,13 +34,13 @@ struct RepsAndWeight: Hashable {
 }
 
 
-struct TrainingSection: Identifiable {
+struct TrainingSection: Hashable, Identifiable {
     let id = UUID()
     let title: String
     var levels: [TrainingLevel]
 }
 
-struct TrainingLevel: Identifiable {
+struct TrainingLevel: Hashable, Identifiable {
     let id = UUID()
     let level: String
     var sets: [Int]

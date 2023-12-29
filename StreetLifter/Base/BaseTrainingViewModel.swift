@@ -50,6 +50,12 @@ class BaseTrainingViewModel: ObservableObject {
           return "dipsTrainingSesssion"
         }
     }
+    
+    var currentLevelRepetitions: [Int] {
+        return trainingLevels
+            .flatMap({ $0.levels }) // Создаём один массив из всех подуровней
+            .first(where: { $0.level == selectedLevel })?.sets ?? [] // Ищем подуровень с нужным названием и берём его повторения
+    }
  
     
     func saveTrainingSession() {
@@ -118,6 +124,16 @@ class BaseTrainingViewModel: ObservableObject {
     
     func selectLevel(level: String) {
         self.selectedLevel = level
+        print("Выбранный подуровень: \(level)")
+        
+        // Проверяем, существует ли выбранный подуровень в любой из секций
+        if let selectedLevelSets = trainingLevels
+            .flatMap({ $0.levels }) // Создаём один массив из всех подуровней
+            .first(where: { $0.level == level })?.sets { // Ищем подуровень с нужным названием
+            print("Повторения для выбранного подуровня \(level): \(selectedLevelSets)")
+        } else {
+            print("Повторения для подуровня \(level) не найдены.")
+        }
     }
 }
 

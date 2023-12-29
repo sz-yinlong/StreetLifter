@@ -21,7 +21,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
     
     var body: some View {
         NavigationStack {
-            
             if #available(iOS 17.0, *) {
                 if viewModel.trainingCompleted {
                     VStack {
@@ -49,28 +48,15 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         viewModel.startNewSession()
                     }
                 } else {
-                    
-
                     VStack {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(viewModel.combinedRepsAndWeight, id: \.self) { index in
-                                    VStack {
-                                        Text("\(index.reps)")
-                                            .frame(width: 25, height: 15)
-                                            .padding(20)
-                                            .foregroundStyle(backgroundColor)
-                                            .font(.title3)
-                                            .fontWeight(.bold)
-                                            .background(Color.secondary.opacity(0.04))
-                                            .cornerRadius(8)
-                                        Text("\(index.weight)")
-                                            .font(.subheadline)
-                                    }
-                                }
-                            }
-                            .padding(.horizontal, 5)
-                        }
+
+                        HStack {
+                               ForEach(viewModel.currentLevelRepetitions, id: \.self) { repetition in
+                                   Text("\(repetition)")
+                               }
+                           }
+                           .padding(.horizontal)
+
                         Spacer()
                         Text("\(viewModel.reps)")
                             .font(.system(size: 70))
@@ -157,32 +143,28 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
         }
         .navigationBarBackButtonHidden()
             
-            .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                         dismiss()
-                        } label: {
-                            Image(systemName: "chevron.backward")
-                        }
-                        .fontWeight(.medium)
-                    }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.backward")
+                }
+                .fontWeight(.medium)
+            }
             ToolbarItem(placement: .topBarTrailing) {
-                    Button("\(viewModel.selectedLevel)") {
-                        showingLevels = true
-                            
-                    }
-                    .padding(.top, 8)
-                    .padding(.trailing, 8)
+                Button("\(viewModel.selectedLevel)") {
+                    showingLevels = true
+                }
+                .padding(.top, 8)
+                .padding(.trailing, 8)
             
-                    
-                    
-                    .sheet(isPresented: $showingLevels) {
-                        ProgramView().environmentObject(viewModel)
-                    }
+                .sheet(isPresented: $showingLevels) {
+                    ProgramView().environmentObject(viewModel)
+                }
             }
         }
     }
-    
 }
 
 #Preview {

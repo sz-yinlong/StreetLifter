@@ -10,7 +10,7 @@ import SwiftUI
 struct ProgramView: View {
 
     
-//    @EnvironmentObject var trainingSessionsManager: TrainingSessionsManager
+
     @EnvironmentObject var viewModel: BaseTrainingViewModel
    
     var body: some View {
