@@ -7,7 +7,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
     @StateObject var storage = TrainingSessionStorage()
     @State private var showingLevels = false
     
- 
+    @Environment(\.dismiss) var dismiss
+    
     var backgroundColor: Color
     var showProgramView: (() -> Void)?
     
@@ -18,11 +19,9 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
         self.backgroundColor = backgroundColor
     }
     
-    
-    
-
     var body: some View {
         NavigationStack {
+            
             if #available(iOS 17.0, *) {
                 if viewModel.trainingCompleted {
                     VStack {
@@ -50,26 +49,12 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         viewModel.startNewSession()
                     }
                 } else {
-                    HStack {
-                        Spacer()
-                     
-                        Button("\(viewModel.selectedLevel)") {
-                            showingLevels = true
-                                       }
-                        .padding(.trailing, 16)
-                                       .sheet(isPresented: $showingLevels) {
-                                           ProgramView().environmentObject(viewModel)
-                                       }
+                    
 
-                               
-                               
-                    }
-
-                        
                     VStack {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(viewModel.combinedRepsAndWeight, id: \.self) {index in
+                                ForEach(viewModel.combinedRepsAndWeight, id: \.self) { index in
                                     VStack {
                                         Text("\(index.reps)")
                                             .frame(width: 25, height: 15)
@@ -81,7 +66,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                             .cornerRadius(8)
                                         Text("\(index.weight)")
                                             .font(.subheadline)
-                                            
                                     }
                                 }
                             }
@@ -105,7 +89,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                             }
                             Spacer()
                             
-                            Text(R.string.localizable.reps())
+                            Text(R.string.localizable.repsCaps())
                             
                             Spacer()
                             
@@ -169,14 +153,36 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     }
                     .padding()
                 }
-            } else {
-
+            } else {}
+        }
+        .navigationBarBackButtonHidden()
+            
+            .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                         dismiss()
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                        }
+                    }
+            ToolbarItem(placement: .topBarTrailing) {
+                    Button("\(viewModel.selectedLevel)") {
+                        showingLevels = true
+                            
+                    }
+            
+                    
+                    
+                    .sheet(isPresented: $showingLevels) {
+                        ProgramView().environmentObject(viewModel)
+                    }
             }
         }
     }
+    
 }
 
 #Preview {
-    PullupsTrainingView()
+    MainView()
         .environmentObject(TrainingSessionsManager())
 }
