@@ -10,6 +10,7 @@
 "pullups" = "Pull-ups";
 "exercise" = "Exercise";
 "reps" = "reps";
+"repsCaps" = "Reps";
 "sets" = "Sets";
 "set" = "Set";
 "noData" = "No data available";
