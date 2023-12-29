@@ -110,7 +110,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        MainView()
             .environmentObject(TrainingSessionsManager())
     }
 }
