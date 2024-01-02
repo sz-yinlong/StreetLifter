@@ -7,6 +7,10 @@ struct TrainingSession: Hashable, Identifiable {
     let weight: [Int]
     let totalReps: Int
     
+    var combinedRepsAndWeight: [RepsAndWeight] {
+           return Array(zip(reps, weight)).map { RepsAndWeight(reps: $0, weight: $1) }
+       }
+    
     init(id: UUID = UUID(), date: String, reps: [Int], weight: [Int], totalReps: Int) {
            self.id = id
            self.date = date
@@ -21,7 +25,7 @@ enum ExerciseType {
     case dips
 }
 
-struct RepsAndWeight: Hashable {
+struct RepsAndWeight: Hashable, Identifiable {
     var id = UUID()
     let reps: Int
     let weight: Int

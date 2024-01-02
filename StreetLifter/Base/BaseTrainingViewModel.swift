@@ -8,9 +8,7 @@ class BaseTrainingViewModel: ObservableObject {
    
     var availableWeights = Array(1 ... 30)
     let noWeight: Int = 0
-    var combinedRepsAndWeight: [RepsAndWeight] {
-        return Array(zip(currentSessionReps, currenSessionWeight)).map { RepsAndWeight(reps: $0.0, weight: $0.1) }
-    }
+  
     
     @Published var showExerciseView = false
    
@@ -23,10 +21,10 @@ class BaseTrainingViewModel: ObservableObject {
     @Published var lastSessionTotalReps: Int?
     @Published var isWeightAdded: Bool = false
     @Published var selectedWeightIndex: Int = 0
-    @Published var tempSelectedWeight: Int = 1
+    @Published var tempSelectedWeight: Int = 0
     @Published var trainingLevels: [TrainingSection] = []
     @Published var selectedLevel = "Level 1"
-    @Published var currentSetIndex = 0
+    @Published var currentSetIndex: Int = 0
     @Published var mutableRepetitions: [Int] = []
     @Published var reps: Int
     
@@ -50,6 +48,7 @@ class BaseTrainingViewModel: ObservableObject {
             return "dipsTrainingSesssion"
         }
     }
+  
     
     var currentLevelRepetitions: [Int] {
         return trainingLevels
@@ -104,11 +103,9 @@ class BaseTrainingViewModel: ObservableObject {
     }
 
     func saveWeightForCurrentSession() {
-        if isWeightAdded {
-            currenSessionWeight.append(tempSelectedWeight)
-        } else {
-            currenSessionWeight.append(noWeight)
-        }
+        // Добавляем вес, если он был выбран, или 0, если вес не был добавлен.
+        let weightToAdd = isWeightAdded ? tempSelectedWeight : noWeight
+        currenSessionWeight.append(weightToAdd)
     }
     
     func trainingViewType() -> ExerciseType? {
@@ -140,6 +137,7 @@ class BaseTrainingViewModel: ObservableObject {
     func saveRepsForCurrentSession() {
         if canAddSet {
             currentSessionReps.append(reps)
+            saveWeightForCurrentSession()
             currentSetIndex += 1
             if currentSetIndex < mutableRepetitions.count {
                 // Обновляем reps для следующего сета.

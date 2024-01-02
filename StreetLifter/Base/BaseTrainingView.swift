@@ -45,7 +45,10 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 )
                         }
                     }
-                    .onAppear {}
+                    .onAppear {
+                        viewModel.completeSet()
+                  
+                    }
                 } else {
                     VStack {
                         HStack(spacing: 12) {
@@ -140,7 +143,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                     viewModel.saveTrainingSession()
                                 }
                                 viewModel.saveRepsForCurrentSession()
-                                viewModel.saveWeightForCurrentSession()
                             }) {
                                 Text(R.string.localizable.done()
                                 )
@@ -184,6 +186,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
         }
         .onAppear {
             viewModel.startNewSession()
+                           viewModel.updateMostRecentTotalReps()
+                           viewModel.setCurrentRepsToCurrentSet()
         }
     }
 }
