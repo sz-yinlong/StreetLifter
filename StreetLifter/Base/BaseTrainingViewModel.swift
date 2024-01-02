@@ -2,18 +2,15 @@
 import SwiftUI
 
 class BaseTrainingViewModel: ObservableObject {
-
     private let storage: TrainingSessionStorage
     private let trainingType: ExerciseType
     private var originalTrainingLevels: [TrainingSection]
    
-    var availableWeights = Array(1...30)
+    var availableWeights = Array(1 ... 30)
     let noWeight: Int = 0
     var combinedRepsAndWeight: [RepsAndWeight] {
-        return Array(zip(currentSessionReps, currenSessionWeight)).map { RepsAndWeight (reps: $0.0, weight: $0.1)}
+        return Array(zip(currentSessionReps, currenSessionWeight)).map { RepsAndWeight(reps: $0.0, weight: $0.1) }
     }
-    
-   
     
     @Published var showExerciseView = false
    
@@ -33,8 +30,6 @@ class BaseTrainingViewModel: ObservableObject {
     @Published var mutableRepetitions: [Int] = []
     @Published var reps: Int
     
-   
-
     init(storage: TrainingSessionStorage = TrainingSessionStorage(), trainingType: ExerciseType, programData: TrainingProgramData) {
         self.storage = storage
         self.trainingType = trainingType
@@ -52,23 +47,23 @@ class BaseTrainingViewModel: ObservableObject {
         case .pullups:
             return "pullupsTrainingSession"
         case .dips:
-          return "dipsTrainingSesssion"
+            return "dipsTrainingSesssion"
         }
     }
     
     var currentLevelRepetitions: [Int] {
         return trainingLevels
-            .flatMap({ $0.levels })
+            .flatMap { $0.levels }
             .first(where: { $0.level == selectedLevel })?.sets ?? []
     }
  
     var currentRepetition: Int {
-           if currentSetIndex < currentLevelRepetitions.count {
-               return currentLevelRepetitions[currentSetIndex]
-           } else {
-               return 0
-           }
-       }
+        if currentSetIndex < currentLevelRepetitions.count {
+            return currentLevelRepetitions[currentSetIndex]
+        } else {
+            return 0
+        }
+    }
     
     func saveTrainingSession() {
         let dateFormatter = DateFormatter()
@@ -79,13 +74,10 @@ class BaseTrainingViewModel: ObservableObject {
         lastSessionTotalReps = totalReps
         storage.saveSession(session: trainingSessions, forKey: trainingSessionsKey)
         print("total reps\(totalReps)")
-
     }
-    
     
     func updateMostRecentTotalReps() {
         self.lastSessionTotalReps = trainingSessions.last?.totalReps
-
     }
     
     var canAddSet: Bool { currentSessionReps.count < 5 }
@@ -97,13 +89,13 @@ class BaseTrainingViewModel: ObservableObject {
         return total
     }
     
-  
     func startNewSession() {
         selectedLevel = "Level 1"
         guard let levelRepetitions = trainingLevels
             .flatMap({ $0.levels })
-            .first(where: { $0.level == selectedLevel })?.sets else {
-                return
+            .first(where: { $0.level == selectedLevel })?.sets
+        else {
+            return
         }
         mutableRepetitions = levelRepetitions
         currentSetIndex = 0
@@ -111,20 +103,6 @@ class BaseTrainingViewModel: ObservableObject {
         trainingCompleted = false
     }
 
-    
-    func saveRepsForCurrentSession() {
-        if canAddSet {
-           currentSessionReps.append(reps)
-           currentSetIndex += 1 // Переходим к следующему сету
-            if currentSetIndex >= mutableRepetitions.count {
-                // Если это был последний сет, завершаем тренировку
-                trainingCompleted = true
-                saveTrainingSession()
-            }
-        }
-    }
-    
-    
     func saveWeightForCurrentSession() {
         if isWeightAdded {
             currenSessionWeight.append(tempSelectedWeight)
@@ -134,55 +112,68 @@ class BaseTrainingViewModel: ObservableObject {
     }
     
     func trainingViewType() -> ExerciseType? {
-       return nil
-       }
+        return nil
+    }
     
     func selectLevel(level: String) {
         if let levelSets = originalTrainingLevels
             .flatMap({ $0.levels })
-            .first(where: { $0.level == level })?.sets {
-                withAnimation {
-                    self.selectedLevel = level
-                    self.mutableRepetitions = levelSets
-                    self.currentSetIndex = 0
-                    self.reps = mutableRepetitions.first ?? 0
-                }
-                self.objectWillChange.send()
+            .first(where: { $0.level == level })?.sets
+        {
+            withAnimation {
+                self.selectedLevel = level
+                self.mutableRepetitions = levelSets
+                self.currentSetIndex = 0
+                self.reps = mutableRepetitions.first ?? 0
+                updateCurrentSetReps()
+            }
+            self.objectWillChange.send()
         }
     }
 
+    func updateCurrentSetReps() {
+        if currentSetIndex < mutableRepetitions.count {
+            reps = mutableRepetitions[currentSetIndex]
+        }
+    }
 
-    
+    func saveRepsForCurrentSession() {
+        if canAddSet {
+            currentSessionReps.append(reps)
+            currentSetIndex += 1
+            if currentSetIndex < mutableRepetitions.count {
+                // Обновляем reps для следующего сета.
+                reps = mutableRepetitions[currentSetIndex]
+            } else {
+                trainingCompleted = true
+                saveTrainingSession()
+            }
+        }
+    }
+
     func completeSet() {
-           if currentSetIndex < currentLevelRepetitions.count - 1 {
-               currentSetIndex += 1
-           } else {
-              
-           }
-       }
+        if currentSetIndex < currentLevelRepetitions.count - 1 {
+            currentSetIndex += 1
+        } else {}
+    }
     
     func incrementReps() {
-          if currentSetIndex < mutableRepetitions.count {
-              mutableRepetitions[currentSetIndex] += 1
-              reps = mutableRepetitions[currentSetIndex]
-          }
-      }
+        if currentSetIndex < mutableRepetitions.count {
+            mutableRepetitions[currentSetIndex] += 1
+            reps = mutableRepetitions[currentSetIndex]
+        }
+    }
 
-      func decrementReps() {
-          if currentSetIndex < mutableRepetitions.count && mutableRepetitions[currentSetIndex] > 0 {
-              mutableRepetitions[currentSetIndex] -= 1
-              reps = mutableRepetitions[currentSetIndex]
-          }
-      }
-
-
+    func decrementReps() {
+        if currentSetIndex < mutableRepetitions.count && mutableRepetitions[currentSetIndex] > 0 {
+            mutableRepetitions[currentSetIndex] -= 1
+            reps = mutableRepetitions[currentSetIndex]
+        }
+    }
 
     func setCurrentRepsToCurrentSet() {
         if currentSetIndex < mutableRepetitions.count {
             reps = mutableRepetitions[currentSetIndex]
         }
     }
-
 }
-
-
