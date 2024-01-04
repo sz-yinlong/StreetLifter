@@ -37,13 +37,15 @@ struct MainChart: View {
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 16))
             Chart {
                 ForEach(combinedSessions, id: \.date) { session in
-                    LineMark(
+                    BarMark(
                         x: .value("Date", session.date),
                         y: .value("Total Reps", session.totalReps)
                     )
+                    .cornerRadius(3)
                     .foregroundStyle(by: .value("Session Type", session.sessionType))
                     .symbol(by: .value("Total Reps", session.sessionType))
-                    .interpolationMethod(.catmullRom)
+                    .position(by: .value("Session Type", session.sessionType))
+                
                 }
             }
             .chartScrollableAxes(.horizontal)
@@ -51,7 +53,6 @@ struct MainChart: View {
             .chartYScale(type: .linear)
             .chartYScale(range: .plotDimension())
             .padding(EdgeInsets(top: 5, leading: 16, bottom: 16, trailing: 16))
-            .chartLegend(.hidden)
 
             .chartForegroundStyleScale([
                 "Pullups": Constants.bitterSweet,

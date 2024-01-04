@@ -7,7 +7,7 @@ struct DipsTrainingView: View {
     var body: some View {
         BaseTrainingView<BaseTrainingViewModel, Any>(
             viewModel: trainingSessionsManager.dipsViewModel,
-            backgroundColor: Constants.robinEggBlue.opacity(1)
+            backgroundColor: Constants.robinEggBlue
         )
             .toolbar(.hidden, for: .tabBar)
             .navigationTitle(R.string.localizable.dips())

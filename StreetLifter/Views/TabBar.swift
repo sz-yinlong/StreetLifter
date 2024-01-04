@@ -16,7 +16,7 @@ struct TabBar: View {
                     Label("Stats", systemImage: "chart.bar.xaxis.ascending")
                 }
             }
-            .accentColor(Constants.tomato)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

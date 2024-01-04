@@ -7,7 +7,7 @@ struct PullupsTrainingView: View {
     var body: some View {
         BaseTrainingView<BaseTrainingViewModel, Any>(
             viewModel: trainingSessionsManager.pullupsViewModel,
-            backgroundColor: Constants.bitterSweet.opacity(1)
+            backgroundColor: Constants.bitterSweet
         )
         .toolbar(.hidden, for: .tabBar)
         .navigationTitle(R.string.localizable.pullups())

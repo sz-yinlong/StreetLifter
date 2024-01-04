@@ -65,9 +65,6 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
         VStack(alignment: .leading) {
             HStack {
                 HStack {
-                    Image(systemName: "aqi.medium")
-                        .foregroundStyle(circleColor)
-                        .font(.subheadline)
                     Text(title)
                         .font(.headline)
                         .fontWeight(.medium)
@@ -98,7 +95,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                         .foregroundStyle(.secondary)
                         .offset(y: 0.3)
                 }
-                .padding(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             }.padding(EdgeInsets(top: 0, leading: 16, bottom: 5, trailing: 0))
         }
 
