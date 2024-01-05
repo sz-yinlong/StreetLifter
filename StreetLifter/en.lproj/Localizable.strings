@@ -24,6 +24,20 @@
 "progress" = "Progress";
 "start" = "Start";
 "lastSevenSessions" = "Last 7 sessions";
+"level" = "Level";
+"beginner" = "Beginner";
+"intermediate" = "Intermediate";
+"pro" = "Pro";
+"addWeight" = "Add Weight";
+"training" = "Training";
+"lastSession" = "Last session";
+"stats" = "Stats";
 
-
-
+// days
+"mon" = "Mon";
+"tue" = "Tue";
+"wed" = "Wed";
+"thu" = "Thu";
+"fri" = "Fri";
+"sat" = "Sat";
+"sun" = "Sun";

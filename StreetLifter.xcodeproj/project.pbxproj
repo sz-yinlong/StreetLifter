@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		4B3C6075CBBE088A652052A5 /* Pods_StreetLifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039D711BABADB351AB8F3881 /* Pods_StreetLifter.framework */; };
 		AC12428A2B262A46000ED27A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1242892B262A46000ED27A /* MainView.swift */; };
-		AC4918682B47C359003DA896 /* MotionLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4918672B47C359003DA896 /* MotionLogic.swift */; };
-		AC49186B2B47CD6C003DA896 /* MotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49186A2B47CD6C003DA896 /* MotionView.swift */; };
 		AC6B89E72B3C37B900169FB3 /* TrainingProgramData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */; };
 		AC8515A52B3717FC002CFA45 /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8515A42B3717FC002CFA45 /* ProgramView.swift */; };
 		AC8515A72B382A02002CFA45 /* StreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8515A62B382A02002CFA45 /* StreakView.swift */; };
@@ -41,8 +39,6 @@
 		039D711BABADB351AB8F3881 /* Pods_StreetLifter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreetLifter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFF1F45337964277926B103 /* Pods-StreetLifter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetLifter.release.xcconfig"; path = "Target Support Files/Pods-StreetLifter/Pods-StreetLifter.release.xcconfig"; sourceTree = "<group>"; };
 		AC1242892B262A46000ED27A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		AC4918672B47C359003DA896 /* MotionLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionLogic.swift; sourceTree = "<group>"; };
-		AC49186A2B47CD6C003DA896 /* MotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionView.swift; sourceTree = "<group>"; };
 		AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramData.swift; sourceTree = "<group>"; };
 		AC8515A42B3717FC002CFA45 /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
 		AC8515A62B382A02002CFA45 /* StreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakView.swift; sourceTree = "<group>"; };
@@ -95,8 +91,6 @@
 		AC4918692B47CD59003DA896 /* Motion */ = {
 			isa = PBXGroup;
 			children = (
-				AC4918672B47C359003DA896 /* MotionLogic.swift */,
-				AC49186A2B47CD6C003DA896 /* MotionView.swift */,
 			);
 			path = Motion;
 			sourceTree = "<group>";
@@ -357,11 +351,9 @@
 				FAF7B60A2A9679C300249317 /* DipsTrainingView.swift in Sources */,
 				FAF7B6012A962BBA00249317 /* BaseTrainingViewModel.swift in Sources */,
 				AC6B89E72B3C37B900169FB3 /* TrainingProgramData.swift in Sources */,
-				AC49186B2B47CD6C003DA896 /* MotionView.swift in Sources */,
 				AC8515A72B382A02002CFA45 /* StreakView.swift in Sources */,
 				FAF7B6122A97551C00249317 /* ExerciseTypeProtocol.swift in Sources */,
 				ACB8C4CD2B185C19004B64F4 /* R.generated.swift in Sources */,
-				AC4918682B47C359003DA896 /* MotionLogic.swift in Sources */,
 				FAF7B60E2A97400A00249317 /* TrainingViewModelProtocol.swift in Sources */,
 				AC8B57582B2C439500BADC48 /* StatsChart.swift in Sources */,
 				AC8B57562B2C406200BADC48 /* StatsView.swift in Sources */,
