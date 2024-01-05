@@ -23,7 +23,7 @@ struct MainView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 
                 MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                    .padding(EdgeInsets(top: 60, leading: 16, bottom: 8, trailing: 16))
+                    .padding(EdgeInsets(top: 80, leading: 16, bottom: 8, trailing: 16))
                     
             }
     
@@ -43,6 +43,7 @@ struct MainView: View {
         .background(Constants.trainingBackgroundGradient.ignoresSafeArea(.all))
         .accentColor(Constants.buttonColor)
         .navigationBarBackButtonHidden()
+        .fontDesign(.rounded)
        
     }
 }

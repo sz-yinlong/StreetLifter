@@ -33,19 +33,22 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         Text("Good job!\n You've done \(viewModel.lastSessionTotalReps ?? 0) reps.")
                             .font(.title)
                             .multilineTextAlignment(.center)
-                        Spacer()
+                            .padding(.bottom, 250)
+                     
                         NavigationLink(destination: TabBar()) {
-                            Color.blue
+                           backgroundColor
                                 .frame(maxWidth: 300, maxHeight: 50)
                                 .cornerRadius(10)
                                 .overlay(
                                     Text(R.string.localizable.main())
                                         .foregroundColor(.white)
                                         .font(.headline)
-                                        .padding(8)
+                                    
                                 )
                         }
+                        .padding()
                     }
+                    .navigationBarBackButtonHidden()
                     .onAppear {
                         viewModel.completeSet()
                   
@@ -66,6 +69,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                         withAnimation {
                                             viewModel.currentSetIndex = index
                                             viewModel.reps = viewModel.mutableRepetitions[index]
+                                            
                                         }
                                     }) {
                                         RoundedRectangle(cornerRadius: 10)
@@ -76,6 +80,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                                     .font(.title)
                                                     .foregroundColor(index == viewModel.currentSetIndex ? .white : .primary)
                                                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+//                                                Text(viewModel.tempSelectedWeight)
                                             )
                                     }
                                 }
@@ -165,8 +170,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                     .foregroundColor(.white)
                                     .font(.headline)
                                     .padding()
-                                    .frame(maxWidth: 300)
-                                    .frame(maxHeight: 50)
+                                    .frame(maxWidth: 300, maxHeight: 50)
                                     .cornerRadius(10)
                                 }
                                 .background(backgroundColor)

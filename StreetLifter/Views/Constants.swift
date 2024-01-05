@@ -34,7 +34,7 @@ enum Constants {
 
 struct Constants_Previews: PreviewProvider {
     static var previews: some View {
-        StatsPageTabView()
+        TabBar()
             .environmentObject(TrainingSessionsManager())
     }
 }

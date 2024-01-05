@@ -6,7 +6,7 @@ struct StreetLifterApp: App {
     
     var body: some Scene {
         WindowGroup {
-        TabBar()
+        MotionView()
                 .environment(\.colorScheme, .light)
                 .environmentObject(TrainingSessionsManager())
         }

@@ -53,7 +53,7 @@ struct MainChart: View {
             .chartYScale(type: .linear)
             .chartYScale(range: .plotDimension())
             .padding(EdgeInsets(top: 5, leading: 16, bottom: 16, trailing: 16))
-
+            .chartLegend(.hidden)
             .chartForegroundStyleScale([
                 "Pullups": Constants.bitterSweet,
                 "Dips": Constants.robinEggBlue
