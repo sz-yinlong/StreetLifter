@@ -167,7 +167,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                     .frame(maxWidth: 300, maxHeight: 50)
                                     .cornerRadius(10)
                                 }
-                                .background(backgroundColor)
+                                .background(.blue)
                                 .cornerRadius(10)
                             }
                         }
