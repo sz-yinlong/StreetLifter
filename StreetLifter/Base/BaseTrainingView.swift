@@ -90,17 +90,11 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                             
                             Spacer()
                             Text(viewModel.currentSetIndex < viewModel.mutableRepetitions.count ? "\(viewModel.mutableRepetitions[viewModel.currentSetIndex])" : "0")
-                                .font(.system(size: 70))
+                                .font(.system(size: 80))
                                 .foregroundStyle(.primary)
                                 .bold()
                                 .fontDesign(.rounded)
-                                
-                                .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(backgroundColor.opacity(0.5), lineWidth: 2)
-                                            .frame(width: 100, height: 100, alignment: .center)
-                                            
-                                    )
+                               
                             Spacer()
                             
                             HStack(alignment: .center) {
