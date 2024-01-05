@@ -6,7 +6,6 @@ struct MainView: View {
     @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
     @State private var selectedWeek: Int = 0
 
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -24,7 +23,6 @@ struct MainView: View {
                 
                 MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
                     .padding(EdgeInsets(top: 80, leading: 16, bottom: 8, trailing: 16))
-                    
             }
     
             VStack(spacing: 8) {
@@ -44,7 +42,6 @@ struct MainView: View {
         .accentColor(Constants.buttonColor)
         .navigationBarBackButtonHidden()
         .fontDesign(.rounded)
-       
     }
 }
       
@@ -78,7 +75,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                 Image(systemName: "chevron.right")
                     .foregroundColor(.secondary)
                     .font(.title3)
-                    .offset(x: -10, y: 25)
+                    .offset(x: -10, y: 28)
             }
           
             VStack(alignment: .leading) {
@@ -91,7 +88,6 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                         .foregroundStyle(.black)
                         .font(.title3)
                      
-                        
                     Text("reps")
                         .foregroundStyle(.secondary)
                         .offset(y: 0.3)
@@ -99,9 +95,8 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             }.padding(EdgeInsets(top: 0, leading: 16, bottom: 5, trailing: 0))
         }
-
         .background(.white)
-        .cornerRadius(15)
+        .cornerRadius(20)
         .navigationBarBackButtonHidden(true)
     }
 }

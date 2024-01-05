@@ -9,13 +9,13 @@ import SwiftUI
 
 struct StreakView: View {
     @State private var workoutDays: [WorkoutDay] = [
-        WorkoutDay(day: "Mon", isCompleted: true),
-        WorkoutDay(day: "Tue", isCompleted: false),
-        WorkoutDay(day: "Wed", isCompleted: true),
-        WorkoutDay(day: "Thu", isCompleted: false),
-        WorkoutDay(day: "Fri", isCompleted: true),
-        WorkoutDay(day: "Sat", isCompleted: false),
-        WorkoutDay(day: "Sun", isCompleted: false),
+        WorkoutDay(day: R.string.localizable.mon(), isCompleted: true),
+        WorkoutDay(day: R.string.localizable.tue(), isCompleted: false),
+        WorkoutDay(day: R.string.localizable.wed(), isCompleted: true),
+        WorkoutDay(day: R.string.localizable.thu(), isCompleted: false),
+        WorkoutDay(day: R.string.localizable.fri(), isCompleted: true),
+        WorkoutDay(day: R.string.localizable.sat(), isCompleted: false),
+        WorkoutDay(day: R.string.localizable.sun(), isCompleted: false),
     ]
     var body: some View {
         //        HStack {

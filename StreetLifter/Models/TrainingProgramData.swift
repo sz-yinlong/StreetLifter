@@ -3,14 +3,14 @@ import Foundation
 
 class TrainingProgramData: ObservableObject {
     @Published var pullupsTraining: [TrainingSection] = [
-        TrainingSection(title: "Beginner", levels: [
+        TrainingSection(title: R.string.localizable.beginner(), levels: [
             TrainingLevel(level: "Level 1", sets: [5, 4, 5, 4, 3]),
-            TrainingLevel(level: "Level 2", sets: [6, 5, 5, 6, 4]),
-            TrainingLevel(level: "Level 3", sets: [5, 6, 6, 5, 5]),
-            TrainingLevel(level: "Level 4", sets: [6, 5, 4, 6, 5]),
-            TrainingLevel(level: "Level 5", sets: [8, 5, 5, 4, 4]),
-            TrainingLevel(level: "Level 6", sets: [5, 9, 5, 5, 5]),
-            TrainingLevel(level: "Level 7", sets: [8, 6, 5, 6, 2]),
+            TrainingLevel(level: R.string.localizable.level2(), sets: [6, 5, 5, 6, 4]),
+            TrainingLevel(level: R.string.localizable.level3(), sets: [5, 6, 6, 5, 5]),
+            TrainingLevel(level: R.string.localizable.level4(), sets: [6, 5, 4, 6, 5]),
+            TrainingLevel(level: R.string.localizable.level5(), sets: [8, 5, 5, 4, 4]),
+            TrainingLevel(level: R.string.localizable.level6(), sets: [5, 9, 5, 5, 5]),
+            TrainingLevel(level: R.string.localizable.level7(), sets: [8, 6, 5, 6, 2]),
         ]),
         TrainingSection(title: "Intermediate", levels: [
             TrainingLevel(level: "Level 8", sets: [8, 7, 6, 6, 2]),
@@ -33,7 +33,7 @@ class TrainingProgramData: ObservableObject {
     
     @Published var dipsTraining: [TrainingSection] = [
         TrainingSection(title: "Beginner", levels: [
-            TrainingLevel(level: "Level 1", sets: [5, 4, 5, 4, 3]),
+            TrainingLevel(level: R.string.localizable.level1(), sets: [5, 4, 5, 4, 3]),
             TrainingLevel(level: "Level 2", sets: [6, 5, 5, 6, 4]),
             TrainingLevel(level: "Level 3", sets: [5, 6, 6, 5, 5]),
             TrainingLevel(level: "Level 4", sets: [6, 5, 4, 6, 5]),

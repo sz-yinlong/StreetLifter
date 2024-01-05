@@ -50,7 +50,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 31 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 51 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -130,6 +130,146 @@ struct _R {
       ///
       /// Locales: en, ru
       var level: RswiftResources.StringResource { .init(key: "level", tableName: "Localizable", source: source, developmentValue: "Level", comment: nil) }
+
+      /// en translation: Level 1
+      ///
+      /// Key: level1
+      ///
+      /// Locales: en, ru
+      var level1: RswiftResources.StringResource { .init(key: "level1", tableName: "Localizable", source: source, developmentValue: "Level 1", comment: nil) }
+
+      /// en translation: Level 10
+      ///
+      /// Key: level10
+      ///
+      /// Locales: en, ru
+      var level10: RswiftResources.StringResource { .init(key: "level10", tableName: "Localizable", source: source, developmentValue: "Level 10", comment: nil) }
+
+      /// en translation: Level 11
+      ///
+      /// Key: level11
+      ///
+      /// Locales: en, ru
+      var level11: RswiftResources.StringResource { .init(key: "level11", tableName: "Localizable", source: source, developmentValue: "Level 11", comment: nil) }
+
+      /// en translation: Level 12
+      ///
+      /// Key: level12
+      ///
+      /// Locales: en, ru
+      var level12: RswiftResources.StringResource { .init(key: "level12", tableName: "Localizable", source: source, developmentValue: "Level 12", comment: nil) }
+
+      /// en translation: Level 13
+      ///
+      /// Key: level13
+      ///
+      /// Locales: en, ru
+      var level13: RswiftResources.StringResource { .init(key: "level13", tableName: "Localizable", source: source, developmentValue: "Level 13", comment: nil) }
+
+      /// en translation: Level 14
+      ///
+      /// Key: level14
+      ///
+      /// Locales: en, ru
+      var level14: RswiftResources.StringResource { .init(key: "level14", tableName: "Localizable", source: source, developmentValue: "Level 14", comment: nil) }
+
+      /// en translation: Level 15
+      ///
+      /// Key: level15
+      ///
+      /// Locales: en, ru
+      var level15: RswiftResources.StringResource { .init(key: "level15", tableName: "Localizable", source: source, developmentValue: "Level 15", comment: nil) }
+
+      /// en translation: Level 16
+      ///
+      /// Key: level16
+      ///
+      /// Locales: en, ru
+      var level16: RswiftResources.StringResource { .init(key: "level16", tableName: "Localizable", source: source, developmentValue: "Level 16", comment: nil) }
+
+      /// en translation: Level 17
+      ///
+      /// Key: level17
+      ///
+      /// Locales: en, ru
+      var level17: RswiftResources.StringResource { .init(key: "level17", tableName: "Localizable", source: source, developmentValue: "Level 17", comment: nil) }
+
+      /// en translation: Level 18
+      ///
+      /// Key: level18
+      ///
+      /// Locales: en, ru
+      var level18: RswiftResources.StringResource { .init(key: "level18", tableName: "Localizable", source: source, developmentValue: "Level 18", comment: nil) }
+
+      /// en translation: Level 19
+      ///
+      /// Key: level19
+      ///
+      /// Locales: en, ru
+      var level19: RswiftResources.StringResource { .init(key: "level19", tableName: "Localizable", source: source, developmentValue: "Level 19", comment: nil) }
+
+      /// en translation: Level 2
+      ///
+      /// Key: level2
+      ///
+      /// Locales: en, ru
+      var level2: RswiftResources.StringResource { .init(key: "level2", tableName: "Localizable", source: source, developmentValue: "Level 2", comment: nil) }
+
+      /// en translation: Level 20
+      ///
+      /// Key: level20
+      ///
+      /// Locales: en, ru
+      var level20: RswiftResources.StringResource { .init(key: "level20", tableName: "Localizable", source: source, developmentValue: "Level 20", comment: nil) }
+
+      /// en translation: Level 3
+      ///
+      /// Key: level3
+      ///
+      /// Locales: en, ru
+      var level3: RswiftResources.StringResource { .init(key: "level3", tableName: "Localizable", source: source, developmentValue: "Level 3", comment: nil) }
+
+      /// en translation: Level 4
+      ///
+      /// Key: level4
+      ///
+      /// Locales: en, ru
+      var level4: RswiftResources.StringResource { .init(key: "level4", tableName: "Localizable", source: source, developmentValue: "Level 4", comment: nil) }
+
+      /// en translation: Level 5
+      ///
+      /// Key: level5
+      ///
+      /// Locales: en, ru
+      var level5: RswiftResources.StringResource { .init(key: "level5", tableName: "Localizable", source: source, developmentValue: "Level 5", comment: nil) }
+
+      /// en translation: Level 6
+      ///
+      /// Key: level6
+      ///
+      /// Locales: en, ru
+      var level6: RswiftResources.StringResource { .init(key: "level6", tableName: "Localizable", source: source, developmentValue: "Level 6", comment: nil) }
+
+      /// en translation: Level 7
+      ///
+      /// Key: level7
+      ///
+      /// Locales: en, ru
+      var level7: RswiftResources.StringResource { .init(key: "level7", tableName: "Localizable", source: source, developmentValue: "Level 7", comment: nil) }
+
+      /// en translation: Level 8
+      ///
+      /// Key: level8
+      ///
+      /// Locales: en, ru
+      var level8: RswiftResources.StringResource { .init(key: "level8", tableName: "Localizable", source: source, developmentValue: "Level 8", comment: nil) }
+
+      /// en translation: Level 9
+      ///
+      /// Key: level9
+      ///
+      /// Locales: en, ru
+      var level9: RswiftResources.StringResource { .init(key: "level9", tableName: "Localizable", source: source, developmentValue: "Level 9", comment: nil) }
 
       /// en translation: Main
       ///

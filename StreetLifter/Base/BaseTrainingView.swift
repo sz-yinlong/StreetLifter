@@ -51,12 +51,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         viewModel.completeSet()
                     }
                 } else {
-                    ZStack {
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .frame(width: 100, height: 100, alignment: .center)
-//                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 230, trailing: 0))
-//                            .foregroundColor(.blue)
-                            
                         VStack {
                             HStack(spacing: 12) {
                                 ForEach(Array(viewModel.mutableRepetitions.enumerated()), id: \.offset) { index, repetition in
@@ -65,12 +59,11 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                             withAnimation {
                                                 viewModel.currentSetIndex = index
                                                 viewModel.reps = viewModel.mutableRepetitions[index]
-                                                // Make sure to update the current weight from here if needed
                                             }
                                         }) {
                                             RoundedRectangle(cornerRadius: 10)
                                                 .fill(index == viewModel.currentSetIndex ? backgroundColor : Color.secondary.opacity(0.15))
-                                                .frame(width: 50, height: 45)
+                                                .frame(maxWidth: 60, maxHeight: 55)
                                                 .overlay(
                                                     Text("\(repetition)")
                                                         .font(.title)
@@ -169,7 +162,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 .background(.blue)
                                 .cornerRadius(10)
                             }
-                        }
                     }
                     .padding()
                 }
@@ -189,8 +181,9 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                 .fontWeight(.medium)
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Button("\(viewModel.selectedLevel)") {
+                Button(viewModel.selectedLevel) {
                     showingLevels = true
+                    print(viewModel.selectedLevel)
                 }
                 .padding(.top, 8)
                 .padding(.trailing, 8)
@@ -200,6 +193,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                 }
             }
         }
+
         .onAppear {
             viewModel.startNewSession()
             viewModel.updateMostRecentTotalReps()

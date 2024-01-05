@@ -23,7 +23,7 @@ class BaseTrainingViewModel: ObservableObject {
     @Published var selectedWeightIndex: Int = 0
     @Published var tempSelectedWeight: Int = 0
     @Published var trainingLevels: [TrainingSection] = []
-    @Published var selectedLevel = "Level 1"
+    @Published var selectedLevel = NSLocalizedString("level1", comment: "")
     @Published var currentSetIndex: Int = 0
     @Published var mutableRepetitions: [Int] = []
     @Published var reps: Int
@@ -103,7 +103,6 @@ class BaseTrainingViewModel: ObservableObject {
     }
 
     func saveWeightForCurrentSession() {
-        // Добавляем вес, если он был выбран, или 0, если вес не был добавлен.
         let weightToAdd = isWeightAdded ? tempSelectedWeight : noWeight
         currenSessionWeight.append(weightToAdd)
     }

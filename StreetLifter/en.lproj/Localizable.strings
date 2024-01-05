@@ -33,7 +33,6 @@
 "lastSession" = "Last session";
 "stats" = "Stats";
 
-// days
 "mon" = "Mon";
 "tue" = "Tue";
 "wed" = "Wed";
@@ -41,3 +40,24 @@
 "fri" = "Fri";
 "sat" = "Sat";
 "sun" = "Sun";
+
+"level1" = "Level 1";
+"level2" = "Level 2";
+"level3" = "Level 3";
+"level4" = "Level 4";
+"level5" = "Level 5";
+"level6" = "Level 6";
+"level7" = "Level 7";
+"level8" = "Level 8";
+"level9" = "Level 9";
+"level10" = "Level 10";
+"level11" = "Level 11";
+"level12" = "Level 12";
+"level13" = "Level 13";
+"level14" = "Level 14";
+"level15" = "Level 15";
+"level16" = "Level 16";
+"level17" = "Level 17";
+"level18" = "Level 18";
+"level19" = "Level 19";
+"level20" = "Level 20";
