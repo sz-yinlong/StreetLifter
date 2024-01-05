@@ -24,7 +24,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
         NavigationStack {
             if #available(iOS 17.0, *) {
                 if viewModel.trainingCompleted {
-                    
                     VStack {
                         Spacer()
                         Image(systemName: "trophy")
@@ -36,14 +35,13 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                             .padding(.bottom, 250)
                      
                         NavigationLink(destination: TabBar()) {
-                           backgroundColor
+                            backgroundColor
                                 .frame(maxWidth: 300, maxHeight: 50)
                                 .cornerRadius(10)
                                 .overlay(
                                     Text(R.string.localizable.main())
                                         .foregroundColor(.white)
                                         .font(.headline)
-                                    
                                 )
                         }
                         .padding()
@@ -51,7 +49,6 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     .navigationBarBackButtonHidden()
                     .onAppear {
                         viewModel.completeSet()
-                  
                     }
                 } else {
                     ZStack {
@@ -60,28 +57,30 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
 //                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 230, trailing: 0))
 //                            .foregroundColor(.blue)
                             
-                           
-                            
                         VStack {
                             HStack(spacing: 12) {
                                 ForEach(Array(viewModel.mutableRepetitions.enumerated()), id: \.offset) { index, repetition in
-                                    Button(action: {
-                                        withAnimation {
-                                            viewModel.currentSetIndex = index
-                                            viewModel.reps = viewModel.mutableRepetitions[index]
-                                            
+                                    VStack {
+                                        Button(action: {
+                                            withAnimation {
+                                                viewModel.currentSetIndex = index
+                                                viewModel.reps = viewModel.mutableRepetitions[index]
+                                                // Make sure to update the current weight from here if needed
+                                            }
+                                        }) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(index == viewModel.currentSetIndex ? backgroundColor : Color.secondary.opacity(0.15))
+                                                .frame(width: 50, height: 45)
+                                                .overlay(
+                                                    Text("\(repetition)")
+                                                        .font(.title)
+                                                        .foregroundColor(index == viewModel.currentSetIndex ? .white : .primary)
+                                                )
                                         }
-                                    }) {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(index == viewModel.currentSetIndex ? backgroundColor : Color.secondary.opacity(0.15))
-                                            .frame(width: 55, height: 45)
-                                            .overlay(
-                                                Text("\(repetition)")
-                                                    .font(.title)
-                                                    .foregroundColor(index == viewModel.currentSetIndex ? .white : .primary)
-                                                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-//                                                Text(viewModel.tempSelectedWeight)
-                                            )
+                                        Text(index < viewModel.currenSessionWeight.count ? "\(viewModel.currenSessionWeight[index])kg" : "")
+                                            .font(.caption)
+                                            .foregroundColor(.primary)
+                                            .frame(height: 20)
                                     }
                                 }
                             }
@@ -203,8 +202,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
         }
         .onAppear {
             viewModel.startNewSession()
-                           viewModel.updateMostRecentTotalReps()
-                           viewModel.setCurrentRepsToCurrentSet()
+            viewModel.updateMostRecentTotalReps()
+            viewModel.setCurrentRepsToCurrentSet()
         }
     }
 }
