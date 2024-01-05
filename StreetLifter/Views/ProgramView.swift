@@ -57,7 +57,7 @@ struct ProgramView: View {
                 }
             }
             
-            .navigationTitle("Training Program")
+            .navigationTitle(R.string.localizable.trainingProgram())
         }
     }
 }

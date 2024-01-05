@@ -14,7 +14,7 @@ struct StatsView: View {
 
                     VStack {
                         List {
-                            Section(header: Text("История тренировок")
+                            Section(header: Text(R.string.localizable.trainingHistory())
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary))
                             {

@@ -29,13 +29,13 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                         Image(systemName: "trophy")
                             .font(Font.system(size: 50))
                             .padding()
-                        Text("Good job!\n You've done \(viewModel.lastSessionTotalReps ?? 0) reps.")
+                        Text(R.string.localizable.goodJobMessage(viewModel.lastSessionTotalReps ?? 0))
                             .font(.title)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 250)
                      
                         NavigationLink(destination: TabBar()) {
-                            backgroundColor
+                            Color.blue
                                 .frame(maxWidth: 300, maxHeight: 50)
                                 .cornerRadius(10)
                                 .overlay(
@@ -97,9 +97,10 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                         .foregroundColor(.primary)
                                         .font(.system(size: 50))
                                 }
+                                .padding(.leading, 10)
                                 Spacer()
                                 
-                                Text(R.string.localizable.repsCaps())
+                                Text(R.string.localizable.reps())
                                 
                                 Spacer()
                                 
@@ -110,6 +111,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                         .foregroundColor(.primary)
                                         .font(.system(size: 50))
                                 }
+                                .padding(.trailing, 10)
                             }
                             .font(.largeTitle)
                             .padding()

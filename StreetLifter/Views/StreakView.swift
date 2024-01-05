@@ -18,12 +18,7 @@ struct StreakView: View {
         WorkoutDay(day: R.string.localizable.sun(), isCompleted: false),
     ]
     var body: some View {
-        //        HStack {
-        //            VStack(alignment: .leading) { // Установка выравнивания по левому краю и интервала между элементами
-        //                Text("Streak")
-        //                    .font(.headline)
-        //            }
-        
+
         HStack(spacing: 8) {
             ForEach($workoutDays, id: \.day) { $day in
                 RoundedRectangle(cornerRadius: 15)

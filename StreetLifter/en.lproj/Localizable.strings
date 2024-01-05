@@ -32,6 +32,7 @@
 "training" = "Training";
 "lastSession" = "Last session";
 "stats" = "Stats";
+"trainingProgram" = "Training Program";
 
 "mon" = "Mon";
 "tue" = "Tue";

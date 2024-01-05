@@ -5,7 +5,7 @@ struct StatsPageTabView: View {
     @State private var selectedSegment = 0
 
     @Environment(\.dismiss) var dismiss
-    private let exerciseArray = ["Pullups", "Dips"]
+    private let exerciseArray = [R.string.localizable.pullups(), R.string.localizable.dips()]
 
     var body: some View {
         VStack {

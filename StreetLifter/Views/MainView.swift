@@ -10,7 +10,7 @@ struct MainView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    Text("Training")
+                    Text(R.string.localizable.training())
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.leading, 16)
@@ -79,7 +79,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
             }
           
             VStack(alignment: .leading) {
-                Text("Last session:")
+                Text(R.string.localizable.lastSession())
                     .font(.callout)
                     .foregroundStyle(.tertiary)
                     
@@ -88,7 +88,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                         .foregroundStyle(.black)
                         .font(.title3)
                      
-                    Text("reps")
+                    Text(R.string.localizable.repsCaps())
                         .foregroundStyle(.secondary)
                         .offset(y: 0.3)
                 }

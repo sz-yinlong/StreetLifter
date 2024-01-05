@@ -9,7 +9,6 @@ class BaseTrainingViewModel: ObservableObject {
     var availableWeights = Array(1 ... 30)
     let noWeight: Int = 0
   
-    
     @Published var showExerciseView = false
    
     @Published var weight: Int
@@ -49,7 +48,6 @@ class BaseTrainingViewModel: ObservableObject {
         }
     }
   
-    
     var currentLevelRepetitions: [Int] {
         return trainingLevels
             .flatMap { $0.levels }
@@ -89,18 +87,25 @@ class BaseTrainingViewModel: ObservableObject {
     }
     
     func startNewSession() {
-        selectedLevel = "Level 1"
+        selectedLevel = NSLocalizedString("level1", comment: "")
         guard let levelRepetitions = trainingLevels
             .flatMap({ $0.levels })
             .first(where: { $0.level == selectedLevel })?.sets
         else {
             return
         }
+        currentSessionReps = []
+        resetReps()
         mutableRepetitions = levelRepetitions
         currentSetIndex = 0
         reps = mutableRepetitions[currentSetIndex]
         trainingCompleted = false
+        currenSessionWeight = []
     }
+    
+    func resetReps() {
+               reps = 0
+           }
 
     func saveWeightForCurrentSession() {
         let weightToAdd = isWeightAdded ? tempSelectedWeight : noWeight
