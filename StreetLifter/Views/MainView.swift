@@ -22,7 +22,7 @@ struct MainView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 
                 MainChart(pullupsTrainingSession: trainingSessionManager.pullupsViewModel.trainingSessions, dipsTrainingSession: trainingSessionManager.dipsViewModel.trainingSessions)
-                    .padding(EdgeInsets(top: 80, leading: 16, bottom: 8, trailing: 16))
+                    .padding(EdgeInsets(top: 40, leading: 16, bottom: 40, trailing: 16))
             }
     
             VStack(spacing: 8) {
@@ -41,7 +41,7 @@ struct MainView: View {
         .background(Constants.trainingBackgroundGradient.ignoresSafeArea(.all))
         .accentColor(Constants.buttonColor)
         .navigationBarBackButtonHidden()
-        .fontDesign(.rounded)
+        
     }
 }
       
@@ -67,7 +67,6 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                         .font(.headline)
                         .fontWeight(.medium)
                         .foregroundColor(.primary)
-                        
                 }
                 .padding(.vertical, 10)
                 .padding(.leading, 16)
@@ -89,7 +88,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                         .foregroundStyle(.white)
                         .font(.title3)
                      
-                    Text(R.string.localizable.repsCaps())
+                    Text(R.string.localizable.reps())
                         .foregroundStyle(.secondary)
                         .offset(y: 0.3)
                 }
@@ -99,6 +98,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
         .background(Color(.systemGray6))
         .cornerRadius(20)
         .navigationBarBackButtonHidden(true)
+        .fontDesign(.rounded)
     }
 }
 

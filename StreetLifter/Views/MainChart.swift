@@ -41,7 +41,7 @@ struct MainChart: View {
                         x: .value("Date", session.date),
                         y: .value("Total Reps", session.totalReps)
                     )
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
                     .foregroundStyle(by: .value("Session Type", session.sessionType))
                     .symbol(by: .value("Total Reps", session.sessionType))
                     .position(by: .value("Session Type", session.sessionType))

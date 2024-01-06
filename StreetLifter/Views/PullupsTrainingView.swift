@@ -6,7 +6,9 @@ struct PullupsTrainingView: View {
     @State private var showingLevels = false 
     var body: some View {
         BaseTrainingView<BaseTrainingViewModel, Any>(
-            viewModel: trainingSessionsManager.pullupsViewModel)
+            viewModel: trainingSessionsManager.pullupsViewModel,
+            backgroundColor: Constants.bitterSweet
+        )
         .toolbar(.hidden, for: .tabBar)
         .navigationTitle(R.string.localizable.pullups())
         .sheet(isPresented: $showingLevels) {

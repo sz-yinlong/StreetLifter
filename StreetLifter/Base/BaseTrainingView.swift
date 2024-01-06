@@ -10,12 +10,16 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
     @Environment(\.dismiss) var dismiss
     
     var showProgramView: (() -> Void)?
-    
-    init(viewModel: ViewModel) {
-        let storage = TrainingSessionStorage()
-        _viewModel = StateObject(wrappedValue: viewModel)
+    var backgroundColor: Color
+       
+       init(viewModel: ViewModel, backgroundColor: Color = .secondary) {
+           let storage = TrainingSessionStorage()
+           
+           _viewModel = StateObject(wrappedValue: viewModel)
+           self.backgroundColor = backgroundColor
+       }
 
-    }
+    
     
     var body: some View {
         NavigationStack {
@@ -32,7 +36,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                             .padding(.bottom, 250)
                      
                         NavigationLink(destination: TabBar()) {
-                            Color.blue
+                           backgroundColor
                                 .frame(maxWidth: 300, maxHeight: 50)
                                 .cornerRadius(10)
                                 .overlay(
@@ -46,6 +50,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     .navigationBarBackButtonHidden()
                     .onAppear {
                         viewModel.completeSet()
+                        viewModel.resetReps()
                     }
                 } else {
                         VStack {
@@ -59,7 +64,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                             }
                                         }) {
                                             RoundedRectangle(cornerRadius: 10)
-                                                .fill(index == viewModel.currentSetIndex ? Constants.acidGreen : Color.secondary.opacity(0.15))
+                                                .fill(index == viewModel.currentSetIndex ? backgroundColor : Color.secondary.opacity(0.15))
                                                 .frame(maxWidth: 60, maxHeight: 55)
                                                 .overlay(
                                                     Text("\(repetition)")
@@ -68,7 +73,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                                 )
                                         }
                                         Text(index < viewModel.currenSessionWeight.count ? "\(viewModel.currenSessionWeight[index])kg" : "")
-                                            .font(.caption)
+                                            .font(.subheadline)
                                             .foregroundColor(.primary)
                                             .frame(height: 20)
                                     }
@@ -117,6 +122,8 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 HStack {
                                     Toggle("", isOn: $viewModel.isWeightAdded)
                                         .labelsHidden()
+                                        .toggleStyle(.switch)
+                                        .tint(Color(.systemBlue))
                                     Text(R.string.localizable.addWeight())
                                 }
                                 Picker("Weight", selection: $viewModel.selectedWeightIndex) {
@@ -158,7 +165,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                     .frame(maxWidth: 300, maxHeight: 50)
                                     .cornerRadius(10)
                                 }
-                                .background(.blue)
+                                .background(Constants.acidGreen)
                                 .cornerRadius(10)
                                 
                             }

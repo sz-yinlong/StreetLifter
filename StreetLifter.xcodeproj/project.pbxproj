@@ -88,13 +88,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AC4918692B47CD59003DA896 /* Motion */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Motion;
-			sourceTree = "<group>";
-		};
 		AD079395901922C4A5C979AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +118,6 @@
 		FAA22AB92A9487BD00D138AB /* StreetLifter */ = {
 			isa = PBXGroup;
 			children = (
-				AC4918692B47CD59003DA896 /* Motion */,
 				ACB8C4D42B185FC2004B64F4 /* Localizable.strings */,
 				ACB8C4CC2B185C19004B64F4 /* R.generated.swift */,
 				FAF7B61B2A9A2C5A00249317 /* Models */,
