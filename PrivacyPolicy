@@ -1,29 +1,4 @@
-
-# StreetLifter
-
-StreetLifter is an iOS application designed for street workout enthusiasts. It focuses on tracking and improving performance in exercises like pull-ups and dips with the ability to add weights.
-
-<img width="160" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/bdd76c7c-ac25-49ba-b29f-010b36dd9579">
-<img width="160" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/69d0434c-2e73-480b-832a-a732e6cddc20">
-<img width="160" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/7bc39285-eacb-426f-b6fc-d7c1abbb5574">
-<img width="160" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/478068d2-419c-45aa-83ea-9c5575e17663">
-<img width="160" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/ab061052-c120-41eb-8ce1-2568fe494f63">
-
-
-## Features
-
-
-- **Exercise Tracking:** Keep track of your pull-ups and dips sessions.
-- **Progress Monitoring:** View your progress over time with session history.
-- **Customizable Workouts:** Adjust reps, sets and weights according to your training needs.
-
-## Stack 
--Architecture: **MVVM**
-
--Built with **SwiftUI**/**Combine**/**SwiftCharts**
-
-
-## Privacy Policy**
+**Privacy Policy**
 
 Artem Bariev built the StreetLifter app as a Free app. This SERVICE is provided by Artem Bariev at no cost and is intended for use as is.
 
