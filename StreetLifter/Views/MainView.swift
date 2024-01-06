@@ -66,14 +66,15 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                     Text(title)
                         .font(.headline)
                         .fontWeight(.medium)
-                        .foregroundStyle(.black)
+                        .foregroundColor(.primary)
+                        
                 }
                 .padding(.vertical, 10)
                 .padding(.leading, 16)
                 Spacer()
             
                 Image(systemName: "chevron.right")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.primary)
                     .font(.title3)
                     .offset(x: -10, y: 28)
             }
@@ -81,11 +82,11 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
             VStack(alignment: .leading) {
                 Text(R.string.localizable.lastSession())
                     .font(.callout)
-                    .foregroundStyle(.tertiary)
+                    .foregroundStyle(.secondary)
                     
                 HStack(spacing: 5) {
                     Text("\(reps)")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.white)
                         .font(.title3)
                      
                     Text(R.string.localizable.repsCaps())
@@ -95,7 +96,7 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             }.padding(EdgeInsets(top: 0, leading: 16, bottom: 5, trailing: 0))
         }
-        .background(.white)
+        .background(Color(.systemGray6))
         .cornerRadius(20)
         .navigationBarBackButtonHidden(true)
     }

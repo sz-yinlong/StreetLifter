@@ -34,7 +34,7 @@ struct ProgramView: View {
                                 
                              
                                     if viewModel.selectedLevel == level.level {
-                                        Image(systemName: "checkmark").foregroundColor(.blue)
+                                        Image(systemName: "checkmark").foregroundColor(Constants.acidGreen)
                                     } else {
                                         Image(systemName: "checkmark").foregroundColor(.clear)
                                     }

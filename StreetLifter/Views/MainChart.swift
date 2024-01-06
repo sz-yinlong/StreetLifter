@@ -31,7 +31,7 @@ struct MainChart: View {
                 Text(R.string.localizable.progress())
                     .font(.headline)
                     .fontWeight(.medium)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.primary)
                 Spacer()
             }
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 16))
@@ -41,7 +41,7 @@ struct MainChart: View {
                         x: .value("Date", session.date),
                         y: .value("Total Reps", session.totalReps)
                     )
-                    .cornerRadius(3)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
                     .foregroundStyle(by: .value("Session Type", session.sessionType))
                     .symbol(by: .value("Total Reps", session.sessionType))
                     .position(by: .value("Session Type", session.sessionType))
@@ -59,8 +59,8 @@ struct MainChart: View {
                 "Dips": Constants.robinEggBlue
             ])
         }
-        .background(.white)
-        .cornerRadius(15)
+        .background(Color(.systemGray6))
+        .cornerRadius(20)
     }
 }
 

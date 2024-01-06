@@ -7,7 +7,7 @@ struct StreetLifterApp: App {
     var body: some Scene {
         WindowGroup {
         TabBar()
-                .environment(\.colorScheme, .light)
+                .environment(\.colorScheme, .dark)
                 .environmentObject(TrainingSessionsManager())
         }
     }

@@ -17,6 +17,7 @@ struct TabBar: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
+            .accentColor(Constants.acidGreen)
         }
     }
 }

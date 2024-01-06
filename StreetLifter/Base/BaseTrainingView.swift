@@ -9,15 +9,12 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
     
     @Environment(\.dismiss) var dismiss
     
-    var backgroundColor: Color
     var showProgramView: (() -> Void)?
     
-    init(viewModel: ViewModel, backgroundColor: Color = .secondary) {
+    init(viewModel: ViewModel) {
         let storage = TrainingSessionStorage()
-       
         _viewModel = StateObject(wrappedValue: viewModel)
-       
-        self.backgroundColor = backgroundColor
+
     }
     
     var body: some View {
@@ -62,7 +59,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                             }
                                         }) {
                                             RoundedRectangle(cornerRadius: 10)
-                                                .fill(index == viewModel.currentSetIndex ? backgroundColor : Color.secondary.opacity(0.15))
+                                                .fill(index == viewModel.currentSetIndex ? Constants.acidGreen : Color.secondary.opacity(0.15))
                                                 .frame(maxWidth: 60, maxHeight: 55)
                                                 .overlay(
                                                     Text("\(repetition)")
@@ -100,7 +97,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 .padding(.leading, 10)
                                 Spacer()
                                 
-                                Text(R.string.localizable.reps())
+                                Text(R.string.localizable.repsCaps())
                                 
                                 Spacer()
                                 
@@ -163,15 +160,18 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                                 }
                                 .background(.blue)
                                 .cornerRadius(10)
+                                
                             }
                     }
+                        
                     .padding()
                 }
             } else {}
         }
         .navigationBarBackButtonHidden()
         .fontDesign(.rounded)
-        .background(Color(.systemBackground))
+        
+        
             
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -194,7 +194,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     ProgramView().environmentObject(viewModel)
                 }
             }
-        }
+        } .accentColor(Constants.acidGreen)
 
         .onAppear {
             viewModel.startNewSession()

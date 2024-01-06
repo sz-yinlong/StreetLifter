@@ -27,6 +27,7 @@ struct StreakView: View {
                     .overlay(
                         Text(day.day)
                             .font(.footnote)
+                            .foregroundStyle(Color.primary)
                     )
                 
                     .onTapGesture {
