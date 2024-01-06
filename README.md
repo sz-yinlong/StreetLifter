@@ -20,14 +20,8 @@ StreetLifter is an iOS application designed for street workout enthusiasts. It f
 
 -Built with **SwiftUI**/**Combine**/**SwiftCharts**
 
-## Installation
 
-To run StreetLifter on your local machine, clone the repository and open it in Xcode.
-
-```bash
-git clone https://github.com/sz-yinlong/StreetLifter.git
-
-**Privacy Policy**
+## Privacy Policy**
 
 Artem Bariev built the StreetLifter app as a Free app. This SERVICE is provided by Artem Bariev at no cost and is intended for use as is.
 
