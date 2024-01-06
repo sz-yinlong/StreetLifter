@@ -3,10 +3,11 @@
 
 StreetLifter is an iOS application designed for street workout enthusiasts. It focuses on tracking and improving performance in exercises like pull-ups and dips with the ability to add weights.
 
-<img width="200" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/c699836a-7b5f-4174-949b-faba54ecd931">
-<img width="200" alt="Pullups" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/f7725f95-5b63-4cb3-a7c5-5af3bad0fe25">
-<img width="200" alt="Dips" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/2ef76c62-4194-40f4-adc8-03f335d64861">
-<img width="200" alt="Done" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/0601c00e-aa39-4ba4-9e88-e69f0310b02b">
+<img width="180" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/bdd76c7c-ac25-49ba-b29f-010b36dd9579">
+<img width="180" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/69d0434c-2e73-480b-832a-a732e6cddc20">
+<img width="180" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/478068d2-419c-45aa-83ea-9c5575e17663">
+<img width="180" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/ab061052-c120-41eb-8ce1-2568fe494f63">
+<img width="180" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/7bc39285-eacb-426f-b6fc-d7c1abbb5574">
 
 ## Features
 
