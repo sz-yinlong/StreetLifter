@@ -5,6 +5,7 @@
 
 import Foundation
 import RswiftResources
+import UIKit
 
 private class BundleFinder {}
 let R = _R(bundle: Bundle(for: BundleFinder.self))
@@ -12,8 +13,7 @@ let R = _R(bundle: Bundle(for: BundleFinder.self))
 struct _R {
   let bundle: Foundation.Bundle
   var string: string { .init(bundle: bundle, preferredLanguages: nil, locale: nil) }
-  var color: color { .init(bundle: bundle) }
-  var image: image { .init(bundle: bundle) }
+  var storyboard: storyboard { .init(bundle: bundle) }
 
   func string(bundle: Foundation.Bundle) -> string {
     .init(bundle: bundle, preferredLanguages: nil, locale: nil)
@@ -24,14 +24,11 @@ struct _R {
   func string(preferredLanguages: [String], locale: Locale? = nil) -> string {
     .init(bundle: bundle, preferredLanguages: preferredLanguages, locale: locale)
   }
-  func color(bundle: Foundation.Bundle) -> color {
-    .init(bundle: bundle)
-  }
-  func image(bundle: Foundation.Bundle) -> image {
+  func storyboard(bundle: Foundation.Bundle) -> storyboard {
     .init(bundle: bundle)
   }
   func validate() throws {
-
+    try self.storyboard.validate()
   }
 
   struct project {
@@ -420,34 +417,27 @@ struct _R {
     }
   }
 
-  /// This `_R.color` struct is generated, and contains static references to 1 colors.
-  struct color {
+  /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.
+  struct storyboard {
     let bundle: Foundation.Bundle
+    var launchScreen: launchScreen { .init(bundle: bundle) }
 
-    /// Color `AccentColor`.
-    var accentColor: RswiftResources.ColorResource { .init(name: "AccentColor", path: [], bundle: bundle) }
-  }
+    func launchScreen(bundle: Foundation.Bundle) -> launchScreen {
+      .init(bundle: bundle)
+    }
+    func validate() throws {
+      try self.launchScreen.validate()
+    }
 
-  /// This `_R.image` struct is generated, and contains static references to 6 images.
-  struct image {
-    let bundle: Foundation.Bundle
 
-    /// Image `Image`.
-    var image: RswiftResources.ImageResource { .init(name: "Image", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+    /// Storyboard `LaunchScreen`.
+    struct launchScreen: RswiftResources.StoryboardReference {
+      let bundle: Foundation.Bundle
 
-    /// Image `dips`.
-    var dips: RswiftResources.ImageResource { .init(name: "dips", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
-
-    /// Image `dips2`.
-    var dips2: RswiftResources.ImageResource { .init(name: "dips2", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
-
-    /// Image `metalTexture`.
-    var metalTexture: RswiftResources.ImageResource { .init(name: "metalTexture", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
-
-    /// Image `pull-ups`.
-    var pullUps: RswiftResources.ImageResource { .init(name: "pull-ups", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
-
-    /// Image `pullup`.
-    var pullup: RswiftResources.ImageResource { .init(name: "pullup", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+      let name = "LaunchScreen"
+      func validate() throws {
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "medal.fill") == nil { throw RswiftResources.ValidationError("[R.swift] System image named 'medal.fill' is used in storyboard 'LaunchScreen', but couldn't be loaded.") } }
+      }
+    }
   }
 }

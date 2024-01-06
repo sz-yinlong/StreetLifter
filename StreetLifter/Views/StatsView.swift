@@ -16,7 +16,7 @@ struct StatsView: View {
                         List {
                             Section(header: Text(R.string.localizable.trainingHistory())
                                 .font(.subheadline)
-                                .foregroundStyle(.secondary))
+                                .foregroundStyle(Color.primary))
                             {
                                 ForEach(trainingSessions, id: \.id) { session in
                                     HStack {

@@ -186,7 +186,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                     dismiss()
                 } label: {
                     Image(systemName: "chevron.backward")
-                }
+                } 
                 .fontWeight(.medium)
             }
             ToolbarItem(placement: .topBarTrailing) {
@@ -198,7 +198,7 @@ struct BaseTrainingView<ViewModel: BaseTrainingViewModel, TrainingViewModelProto
                 .padding(.trailing, 8)
             
                 .sheet(isPresented: $showingLevels) {
-                    ProgramView().environmentObject(viewModel)
+                    ProgramView().environment(\.colorScheme, .dark).environmentObject(viewModel)
                 }
             }
         } .accentColor(Constants.acidGreen)

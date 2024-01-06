@@ -21,10 +21,12 @@ struct StatsPageTabView: View {
                 StatsView(trainingSessions: trainingSessionsManager.pullupsViewModel.trainingSessions, chartColor: Constants.bitterSweet)
                     .tag(0)
                     .navigationTitle(R.string.localizable.pullups())
+                    .foregroundStyle(Color.primary)
 
                 StatsView(trainingSessions: trainingSessionsManager.dipsViewModel.trainingSessions, chartColor: Constants.robinEggBlue)
                     .tag(1)
                     .navigationTitle(R.string.localizable.dips())
+                    .foregroundStyle(Color.primary)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Скрыть индикаторы страниц
             .navigationBarBackButtonHidden()

@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct ProgramView: View {
-
-    
+ 
 
     @EnvironmentObject var viewModel: BaseTrainingViewModel
    
     var body: some View {
-       
-        
         NavigationView {
             List {
                 ForEach(viewModel.trainingLevels, id: \.title) { section in
@@ -32,14 +29,11 @@ struct ProgramView: View {
                                 }
                                 .padding(.trailing, 10)
                                 
-                             
-                                    if viewModel.selectedLevel == level.level {
-                                        Image(systemName: "checkmark").foregroundColor(Constants.acidGreen)
-                                    } else {
-                                        Image(systemName: "checkmark").foregroundColor(.clear)
-                                    }
-                                
-
+                                if viewModel.selectedLevel == level.level {
+                                    Image(systemName: "checkmark").foregroundColor(Constants.acidGreen)
+                                } else {
+                                    Image(systemName: "checkmark").foregroundColor(.clear)
+                                }
                             }
 
                             .sensoryFeedback(.selection, trigger: viewModel.selectedLevel)
@@ -50,15 +44,17 @@ struct ProgramView: View {
                                     print("Выбранный уровень: \(viewModel.selectedLevel)")
                                     self.viewModel.objectWillChange.send()
                                 }
-                               
                             }
                         }
                     }
                 }
             }
-            
+            .background(Color(.systemGray6))
             .navigationTitle(R.string.localizable.trainingProgram())
+          
+       
         }
+      
     }
 }
 

@@ -21,7 +21,7 @@ struct StreakView: View {
 
         HStack(spacing: 8) {
             ForEach($workoutDays, id: \.day) { $day in
-                RoundedRectangle(cornerRadius: 15)
+                RoundedRectangle(cornerRadius: 14)
                     .fill(day.isCompleted ? Constants.acidGreen : Color.secondary.opacity(0.2))
                     .aspectRatio(1, contentMode: .fit)
                     .overlay(

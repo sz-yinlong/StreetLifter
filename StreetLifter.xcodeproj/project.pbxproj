@@ -19,10 +19,11 @@
 		ACB8C4D22B185FC2004B64F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACB8C4D42B185FC2004B64F4 /* Localizable.strings */; };
 		ACCDD1FE2B1F8E61005A21FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCDD1FD2B1F8E61005A21FC /* Constants.swift */; };
 		ACCDD2022B206349005A21FC /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCDD2012B206349005A21FC /* TabBar.swift */; };
+		ACF4447C2B49912100C1C2BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF4447B2B49912100C1C2BB /* LaunchScreen.storyboard */; };
+		ACF4447D2B49979F00C1C2BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA22ABE2A9487BF00D138AB /* Assets.xcassets */; };
 		FA5849DE2A949ACD004EF41D /* PullupsTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5849DD2A949ACD004EF41D /* PullupsTrainingView.swift */; };
 		FAA22ABB2A9487BD00D138AB /* StreetLifterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA22ABA2A9487BD00D138AB /* StreetLifterApp.swift */; };
 		FAA22ABD2A9487BD00D138AB /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA22ABC2A9487BD00D138AB /* SplashView.swift */; };
-		FAA22ABF2A9487BF00D138AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA22ABE2A9487BF00D138AB /* Assets.xcassets */; };
 		FAA22AC22A9487BF00D138AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA22AC12A9487BF00D138AB /* Preview Assets.xcassets */; };
 		FAF7B6012A962BBA00249317 /* BaseTrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7B6002A962BBA00249317 /* BaseTrainingViewModel.swift */; };
 		FAF7B6082A96751900249317 /* BaseTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7B6072A96751900249317 /* BaseTrainingView.swift */; };
@@ -50,6 +51,7 @@
 		ACB8C4D52B185FC5004B64F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		ACCDD1FD2B1F8E61005A21FC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ACCDD2012B206349005A21FC /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		ACF4447B2B49912100C1C2BB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFA13FFD029671D8F8F889E0 /* Pods-StreetLifter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetLifter.debug.xcconfig"; path = "Target Support Files/Pods-StreetLifter/Pods-StreetLifter.debug.xcconfig"; sourceTree = "<group>"; };
 		FA5849DD2A949ACD004EF41D /* PullupsTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullupsTrainingView.swift; sourceTree = "<group>"; };
 		FAA22AB72A9487BD00D138AB /* StreetLifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetLifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				FAF7B6102A974C1E00249317 /* Protocols */,
 				FAA22AC02A9487BF00D138AB /* Preview Content */,
 				FAA22ABA2A9487BD00D138AB /* StreetLifterApp.swift */,
+				ACF4447B2B49912100C1C2BB /* LaunchScreen.storyboard */,
 			);
 			path = StreetLifter;
 			sourceTree = "<group>";
@@ -266,8 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA22AC22A9487BF00D138AB /* Preview Assets.xcassets in Resources */,
+				ACF4447C2B49912100C1C2BB /* LaunchScreen.storyboard in Resources */,
+				ACF4447D2B49979F00C1C2BB /* Assets.xcassets in Resources */,
 				ACB8C4D22B185FC2004B64F4 /* Localizable.strings in Resources */,
-				FAA22ABF2A9487BF00D138AB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,19 +501,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DFA13FFD029671D8F8F889E0 /* Pods-StreetLifter.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StreetLifter/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z89GNZYVP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = StreetLifter;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -517,9 +525,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.StreetLifter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -527,19 +538,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AFF1F45337964277926B103 /* Pods-StreetLifter.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StreetLifter/Preview Content\"";
 				DEVELOPMENT_TEAM = 9Z89GNZYVP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = StreetLifter;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -547,9 +562,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.StreetLifter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

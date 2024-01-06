@@ -5,18 +5,33 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
     @State private var selectedWeek: Int = 0
-
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }()
+    @State private var today = Date()
+ 
     var body: some View {
         NavigationStack {
             VStack {
+                
                 HStack {
-                    Text(R.string.localizable.training())
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding(.leading, 16)
-                        
+                    VStack(alignment: .leading, spacing: 5){
+                        Text(Self.dateFormatter.string(from: today))
+                    
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.secondary)
+                        Text(R.string.localizable.training())
+                            .font(.title)
+                            .fontWeight(.bold)
+                
+                    }
+        
                     Spacer()
                 }
+                .padding(.leading, 16)
                 .padding(.top, 16)
                 StreakView()
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -41,7 +56,6 @@ struct MainView: View {
         .background(Constants.trainingBackgroundGradient.ignoresSafeArea(.all))
         .accentColor(Constants.buttonColor)
         .navigationBarBackButtonHidden()
-        
     }
 }
       
@@ -87,18 +101,20 @@ func exerciseButton<Destination: View>(destination: Destination, title: String, 
                     Text("\(reps)")
                         .foregroundStyle(.white)
                         .font(.title3)
+                        .fontDesign(.rounded)
                      
                     Text(R.string.localizable.reps())
                         .foregroundStyle(.secondary)
                         .offset(y: 0.3)
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-            }.padding(EdgeInsets(top: 0, leading: 16, bottom: 5, trailing: 0))
+            }
+            
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 5, trailing: 0))
         }
         .background(Color(.systemGray6))
         .cornerRadius(20)
         .navigationBarBackButtonHidden(true)
-        .fontDesign(.rounded)
     }
 }
 
