@@ -52,6 +52,7 @@
 		ACCDD1FD2B1F8E61005A21FC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ACCDD2012B206349005A21FC /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		ACF4447B2B49912100C1C2BB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ACF4447F2B499D4B00C1C2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DFA13FFD029671D8F8F889E0 /* Pods-StreetLifter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetLifter.debug.xcconfig"; path = "Target Support Files/Pods-StreetLifter/Pods-StreetLifter.debug.xcconfig"; sourceTree = "<group>"; };
 		FA5849DD2A949ACD004EF41D /* PullupsTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullupsTrainingView.swift; sourceTree = "<group>"; };
 		FAA22AB72A9487BD00D138AB /* StreetLifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetLifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +121,11 @@
 		FAA22AB92A9487BD00D138AB /* StreetLifter */ = {
 			isa = PBXGroup;
 			children = (
+				FAA22AC12A9487BF00D138AB /* Preview Assets.xcassets */,
+				FAA22ABA2A9487BD00D138AB /* StreetLifterApp.swift */,
+				ACF4447B2B49912100C1C2BB /* LaunchScreen.storyboard */,
+				FAA22ABE2A9487BF00D138AB /* Assets.xcassets */,
+				ACF4447F2B499D4B00C1C2BB /* Info.plist */,
 				ACB8C4D42B185FC2004B64F4 /* Localizable.strings */,
 				ACB8C4CC2B185C19004B64F4 /* R.generated.swift */,
 				FAF7B61B2A9A2C5A00249317 /* Models */,
@@ -128,8 +134,6 @@
 				FAF7B6042A9656C000249317 /* ViewModels */,
 				FAF7B6102A974C1E00249317 /* Protocols */,
 				FAA22AC02A9487BF00D138AB /* Preview Content */,
-				FAA22ABA2A9487BD00D138AB /* StreetLifterApp.swift */,
-				ACF4447B2B49912100C1C2BB /* LaunchScreen.storyboard */,
 			);
 			path = StreetLifter;
 			sourceTree = "<group>";
@@ -137,8 +141,6 @@
 		FAA22AC02A9487BF00D138AB /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				FAA22AC12A9487BF00D138AB /* Preview Assets.xcassets */,
-				FAA22ABE2A9487BF00D138AB /* Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -511,6 +513,7 @@
 				DEVELOPMENT_TEAM = 9Z89GNZYVP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StreetLifter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StreetLifter;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -548,6 +551,7 @@
 				DEVELOPMENT_TEAM = 9Z89GNZYVP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StreetLifter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StreetLifter;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
