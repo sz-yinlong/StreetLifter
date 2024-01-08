@@ -104,8 +104,8 @@ class BaseTrainingViewModel: ObservableObject {
     }
     
     func resetReps() {
-               reps = 0
-           }
+        reps = 0
+    }
 
     func saveWeightForCurrentSession() {
         let weightToAdd = isWeightAdded ? tempSelectedWeight : noWeight

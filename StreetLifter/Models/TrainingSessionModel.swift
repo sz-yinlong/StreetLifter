@@ -49,3 +49,8 @@ struct TrainingLevel: Hashable, Identifiable {
     let level: String
     var sets: [Int]
 }
+
+struct WorkoutDay {
+    let day: String
+    var isCompleted: Bool
+}

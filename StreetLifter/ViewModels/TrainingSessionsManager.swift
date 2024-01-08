@@ -1,10 +1,8 @@
 import Combine
 
 class TrainingSessionsManager: ObservableObject {
-    
     @Published var pullupsViewModel: BaseTrainingViewModel
     @Published var dipsViewModel: BaseTrainingViewModel
-    
     
     init() {
         let programData = TrainingProgramData()
