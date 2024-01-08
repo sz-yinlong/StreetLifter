@@ -18,7 +18,6 @@ struct StreakView: View {
         WorkoutDay(day: R.string.localizable.sun(), isCompleted: false),
     ]
     var body: some View {
-
         HStack(spacing: 8) {
             ForEach($workoutDays, id: \.day) { $day in
                 RoundedRectangle(cornerRadius: 14)
@@ -29,28 +28,22 @@ struct StreakView: View {
                             .font(.footnote)
                             .foregroundStyle(Color.primary)
                     )
-                
+
                     .onTapGesture {
                         day.isCompleted.toggle()
-                      
                     }
                     .animation(.bouncy, value: day.isCompleted)
                     .sensoryFeedback(.success, trigger: day.isCompleted)
             }
         }
-        
         .padding(.vertical, 8)
         .padding(.horizontal, 8)
         .background(Material.thin, in: RoundedRectangle(cornerRadius: 20))
     }
 }
-        
+
 #Preview {
     TabBar()
         .environmentObject(TrainingSessionsManager())
 }
 
-struct WorkoutDay {
-    let day: String
-    var isCompleted: Bool
-}

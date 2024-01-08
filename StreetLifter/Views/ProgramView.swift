@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ProgramView: View {
- 
-
     @EnvironmentObject var viewModel: BaseTrainingViewModel
-   
+
     var body: some View {
         NavigationView {
             List {
@@ -28,7 +26,7 @@ struct ProgramView: View {
                                     }
                                 }
                                 .padding(.trailing, 10)
-                                
+
                                 if viewModel.selectedLevel == level.level {
                                     Image(systemName: "checkmark").foregroundColor(Constants.acidGreen)
                                 } else {
@@ -51,10 +49,7 @@ struct ProgramView: View {
             }
             .background(Color(.systemGray6))
             .navigationTitle(R.string.localizable.trainingProgram())
-          
-       
         }
-      
     }
 }
 

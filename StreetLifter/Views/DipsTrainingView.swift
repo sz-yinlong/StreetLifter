@@ -9,12 +9,10 @@ struct DipsTrainingView: View {
             viewModel: trainingSessionsManager.dipsViewModel,
             backgroundColor: Constants.robinEggBlue
         )
-            .toolbar(.hidden, for: .tabBar)
-            .navigationTitle(R.string.localizable.dips())
-            .sheet(isPresented: $showingLevels) {
-                ProgramView().environmentObject(trainingSessionsManager.dipsViewModel)
-            }
+        .toolbar(.hidden, for: .tabBar)
+        .navigationTitle(R.string.localizable.dips())
+        .sheet(isPresented: $showingLevels) {
+            ProgramView().environmentObject(trainingSessionsManager.dipsViewModel)
+        }
     }
 }
-
-

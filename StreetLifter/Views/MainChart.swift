@@ -25,7 +25,6 @@ struct MainChart: View {
     }
 
     var body: some View {
-        
         VStack(alignment: .leading) {
             HStack {
                 Text(R.string.localizable.progress())
@@ -45,7 +44,6 @@ struct MainChart: View {
                     .foregroundStyle(by: .value("Session Type", session.sessionType))
                     .symbol(by: .value("Total Reps", session.sessionType))
                     .position(by: .value("Session Type", session.sessionType))
-                
                 }
             }
             .chartScrollableAxes(.horizontal)

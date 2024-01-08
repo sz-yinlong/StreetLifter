@@ -10,14 +10,14 @@ struct MainView: View {
         formatter.dateStyle = .long
         return formatter
     }()
+
     @State private var today = Date()
  
     var body: some View {
         NavigationStack {
             VStack {
-                
                 HStack {
-                    VStack(alignment: .leading, spacing: 5){
+                    VStack(alignment: .leading, spacing: 5) {
                         Text(Self.dateFormatter.string(from: today))
                     
                             .font(.subheadline)
@@ -26,7 +26,6 @@ struct MainView: View {
                         Text(R.string.localizable.training())
                             .font(.title)
                             .fontWeight(.bold)
-                
                     }
         
                     Spacer()
