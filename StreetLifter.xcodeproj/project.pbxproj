@@ -182,6 +182,7 @@
 		FAF7B6052A9656D700249317 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				ACCDD1FD2B1F8E61005A21FC /* Constants.swift */,
 				FAF7B6072A96751900249317 /* BaseTrainingView.swift */,
 			);
 			path = Base;
@@ -196,7 +197,6 @@
 				AC8515A42B3717FC002CFA45 /* ProgramView.swift */,
 				AC8B575B2B2C582700BADC48 /* StatsPageTabView.swift */,
 				ACCDD2012B206349005A21FC /* TabBar.swift */,
-				ACCDD1FD2B1F8E61005A21FC /* Constants.swift */,
 				FA5849DD2A949ACD004EF41D /* PullupsTrainingView.swift */,
 				FAF7B6092A9679C300249317 /* DipsTrainingView.swift */,
 				AC8B57552B2C406200BADC48 /* StatsView.swift */,

@@ -60,7 +60,7 @@ struct MainView: View {
             .padding(.top, 0)
         }
         .background(Constants.trainingBackgroundGradient.ignoresSafeArea(.all))
-        .accentColor(Constants.buttonColor)
+        .accentColor(.secondary)
         .navigationBarBackButtonHidden()
     }
 }
