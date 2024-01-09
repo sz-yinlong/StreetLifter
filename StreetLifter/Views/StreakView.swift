@@ -17,6 +17,7 @@ struct StreakView: View {
         WorkoutDay(day: R.string.localizable.sat(), isCompleted: false),
         WorkoutDay(day: R.string.localizable.sun(), isCompleted: false),
     ]
+    
     var body: some View {
         HStack(spacing: 8) {
             ForEach($workoutDays, id: \.day) { $day in
@@ -36,8 +37,7 @@ struct StreakView: View {
                     .sensoryFeedback(.success, trigger: day.isCompleted)
             }
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 8)
+        .padding(8)
         .background(Material.thin, in: RoundedRectangle(cornerRadius: 20))
     }
 }

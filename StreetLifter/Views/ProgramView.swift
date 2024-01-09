@@ -26,20 +26,19 @@ struct ProgramView: View {
                                     }
                                 }
                                 .padding(.trailing, 10)
-
+                                
                                 if viewModel.selectedLevel == level.level {
                                     Image(systemName: "checkmark").foregroundColor(Constants.acidGreen)
                                 } else {
                                     Image(systemName: "checkmark").foregroundColor(.clear)
                                 }
                             }
-
                             .sensoryFeedback(.selection, trigger: viewModel.selectedLevel)
                             .contentShape(Rectangle())
                             .onTapGesture {
                                 withAnimation {
                                     viewModel.selectedLevel = level.level
-                                    print("Выбранный уровень: \(viewModel.selectedLevel)")
+                
                                     self.viewModel.objectWillChange.send()
                                 }
                             }
@@ -50,12 +49,5 @@ struct ProgramView: View {
             .background(Color(.systemGray6))
             .navigationTitle(R.string.localizable.trainingProgram())
         }
-    }
-}
-
-struct TrainingProgram_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgramView()
-            .environmentObject(TrainingSessionsManager())
     }
 }
