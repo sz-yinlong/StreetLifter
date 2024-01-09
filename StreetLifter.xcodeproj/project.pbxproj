@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B3C6075CBBE088A652052A5 /* Pods_StreetLifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039D711BABADB351AB8F3881 /* Pods_StreetLifter.framework */; };
 		AC12428A2B262A46000ED27A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1242892B262A46000ED27A /* MainView.swift */; };
+		AC5364DF2B4D67F4009C4A40 /* ExerciseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5364DE2B4D67F4009C4A40 /* ExerciseButton.swift */; };
 		AC6B89E72B3C37B900169FB3 /* TrainingProgramData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */; };
 		AC8515A52B3717FC002CFA45 /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8515A42B3717FC002CFA45 /* ProgramView.swift */; };
 		AC8515A72B382A02002CFA45 /* StreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8515A62B382A02002CFA45 /* StreakView.swift */; };
@@ -38,6 +39,7 @@
 		039D711BABADB351AB8F3881 /* Pods_StreetLifter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreetLifter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFF1F45337964277926B103 /* Pods-StreetLifter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetLifter.release.xcconfig"; path = "Target Support Files/Pods-StreetLifter/Pods-StreetLifter.release.xcconfig"; sourceTree = "<group>"; };
 		AC1242892B262A46000ED27A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AC5364DE2B4D67F4009C4A40 /* ExerciseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseButton.swift; sourceTree = "<group>"; };
 		AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramData.swift; sourceTree = "<group>"; };
 		AC8515A42B3717FC002CFA45 /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
 		AC8515A62B382A02002CFA45 /* StreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		AC5364E02B4D682E009C4A40 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				AC5364DE2B4D67F4009C4A40 /* ExerciseButton.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
 		AD079395901922C4A5C979AA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +143,7 @@
 		FAA22AB92A9487BD00D138AB /* StreetLifter */ = {
 			isa = PBXGroup;
 			children = (
+				AC5364E02B4D682E009C4A40 /* Reusable */,
 				AC00665B2B4C30F800910E5F /* Storage */,
 				AC00665A2B4C30E600910E5F /* Data */,
 				FAA22AC12A9487BF00D138AB /* Preview Assets.xcassets */,
@@ -354,6 +365,7 @@
 				AC8515A72B382A02002CFA45 /* StreakView.swift in Sources */,
 				ACB8C4CD2B185C19004B64F4 /* R.generated.swift in Sources */,
 				FAF7B60E2A97400A00249317 /* TrainingViewModelProtocol.swift in Sources */,
+				AC5364DF2B4D67F4009C4A40 /* ExerciseButton.swift in Sources */,
 				AC8B57582B2C439500BADC48 /* StatsChart.swift in Sources */,
 				AC8B57562B2C406200BADC48 /* StatsView.swift in Sources */,
 				FAA22ABB2A9487BD00D138AB /* StreetLifterApp.swift in Sources */,
