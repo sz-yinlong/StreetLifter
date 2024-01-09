@@ -2,10 +2,10 @@ import Foundation
 
 struct TrainingSession: Hashable, Identifiable {
     var id = UUID()
-    let date: String
-    let reps: [Int]
-    let weight: [Int]
-    let totalReps: Int
+    var date: String
+    var reps: [Int]
+    var weight: [Int]
+    var totalReps: Int
     
     var combinedRepsAndWeight: [RepsAndWeight] {
            return Array(zip(reps, weight)).map { RepsAndWeight(reps: $0, weight: $1) }

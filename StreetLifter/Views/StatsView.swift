@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct StatsView: View {
-    var trainingSessions: [TrainingSession]
+   @State  var trainingSessions: [TrainingSession]
     var chartColor: Color
 
     var body: some View {
@@ -11,7 +11,7 @@ struct StatsView: View {
                     StatsChart(trainingSessions: trainingSessions)
                         .foregroundStyle(chartColor)
                     Spacer()
-                    TrainingHistoryList(trainingSessions: trainingSessions)
+                    TrainingHistoryList(trainingSessions: $trainingSessions)
                 }
             }
         }
@@ -19,8 +19,8 @@ struct StatsView: View {
 }
 
 struct TrainingHistoryList: View {
-    var trainingSessions: [TrainingSession]
-
+    @Binding var trainingSessions: [TrainingSession]
+    
     var body: some View {
         VStack {
             List {
@@ -31,12 +31,16 @@ struct TrainingHistoryList: View {
                     ForEach(trainingSessions, id: \.id) { session in
                         TrainingSessionRow(session: session)
                     }
+                    .onDelete { indexSet in
+                        trainingSessions.remove(atOffsets: indexSet)
+                    }
                 }
             }
             .padding(.trailing, 1)
             .listStyle(.inset)
         }
     }
+   
 }
 
 struct TrainingSessionRow: View {
@@ -54,7 +58,6 @@ struct TrainingSessionRow: View {
 
 struct RepsAndWeightView: View {
     var combinedRepsAndWeight: [RepsAndWeight]
-    
     var body: some View {
         HStack(spacing: 8) {
             ForEach(combinedRepsAndWeight, id: \.id) { repsAndWeight in
