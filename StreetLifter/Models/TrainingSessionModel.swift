@@ -54,3 +54,9 @@ struct WorkoutDay {
     let day: String
     var isCompleted: Bool
 }
+
+struct CombinedTrainingSession {
+    var date: String
+    var totalReps: Int
+    var sessionType: String // "Pullups" или "Dips"
+}

@@ -1,28 +1,33 @@
 import Charts
 import SwiftUI
 
-struct CombinedTrainingSession {
-    var date: String
-    var totalReps: Int
-    var sessionType: String // "Pullups" или "Dips"
-}
-
 struct MainChart: View {
+    @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
+
     var pullupsTrainingSession: [TrainingSession]?
     var dipsTrainingSession: [TrainingSession]?
 
-    @EnvironmentObject var trainingSessionManager: TrainingSessionsManager
+    // MARK: - Computed properties
 
     var combinedSessions: [CombinedTrainingSession] {
         var sessions = [CombinedTrainingSession]()
         if let pullupsSessions = pullupsTrainingSession {
-            sessions += pullupsSessions.map { CombinedTrainingSession(date: $0.date, totalReps: $0.totalReps, sessionType: "Pullups") }
+            sessions += pullupsSessions.map { CombinedTrainingSession(
+                date: $0.date,
+                totalReps: $0.totalReps,
+                sessionType: "Pullups")
+            }
         }
         if let dipsSessions = dipsTrainingSession {
-            sessions += dipsSessions.map { CombinedTrainingSession(date: $0.date, totalReps: $0.totalReps, sessionType: "Dips") }
+            sessions += dipsSessions.map { CombinedTrainingSession(
+                date: $0.date,
+                totalReps: $0.totalReps,
+                sessionType: "Dips") }
         }
         return sessions
     }
+
+    // MARK: - Body
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,16 +39,18 @@ struct MainChart: View {
                 Spacer()
             }
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 16))
+
+            // MARK: - Chart
+
             Chart {
                 ForEach(combinedSessions, id: \.date) { session in
                     BarMark(
                         x: .value("Date", session.date),
-                        y: .value("Total Reps", session.totalReps)
-                    )
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .foregroundStyle(by: .value("Session Type", session.sessionType))
-                    .symbol(by: .value("Total Reps", session.sessionType))
-                    .position(by: .value("Session Type", session.sessionType))
+                        y: .value("Total Reps", session.totalReps))
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .foregroundStyle(by: .value("Session Type", session.sessionType))
+                        .symbol(by: .value("Total Reps", session.sessionType))
+                        .position(by: .value("Session Type", session.sessionType))
                 }
             }
             .chartScrollableAxes(.horizontal)
@@ -61,6 +68,8 @@ struct MainChart: View {
         .cornerRadius(20)
     }
 }
+
+// MARK: - Preview
 
 struct CHART_Previews: PreviewProvider {
     static var previews: some View {
