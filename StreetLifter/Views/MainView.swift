@@ -24,7 +24,7 @@ struct MainView: View {
                     }
                     Spacer()
                 }
-                .padding(.leading, 16)
+                .padding(.leading, 20)
                 .padding(.top, 16)
 
                 // MARK: - Streak
@@ -85,7 +85,7 @@ func destinationView(for exerciseType: ExerciseType) -> some View {
 extension MainView {
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .long
+        formatter.dateFormat = "EEEE d MMM"
         return formatter
     }()
 }

@@ -13,8 +13,8 @@ enum Constants {
     static let buttonMaxWidth = CGFloat(350)
     static let buttonMaxHeight = CGFloat(120)
     static let buttonCornerRadius = CGFloat(10)
-    static let fontPrimary = CGFloat(12)
-    static let fontSecondary = CGFloat(10)
+    static let fontPrimary = CGFloat(16)
+    static let fontSecondary = CGFloat(14)
     static let fontDate = CGFloat(14)
     static let opacity = CGFloat(0.1)
 
