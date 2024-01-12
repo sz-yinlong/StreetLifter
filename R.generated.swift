@@ -282,12 +282,12 @@ struct _R {
       /// Locales: en, ru
       var mon: RswiftResources.StringResource { .init(key: "mon", tableName: "Localizable", source: source, developmentValue: "Mon", comment: nil) }
 
-      /// en translation: No data available
+      /// en translation: Such empty 🫥  Let's exercise first!
       ///
       /// Key: noData
       ///
       /// Locales: en, ru
-      var noData: RswiftResources.StringResource { .init(key: "noData", tableName: "Localizable", source: source, developmentValue: "No data available", comment: nil) }
+      var noData: RswiftResources.StringResource { .init(key: "noData", tableName: "Localizable", source: source, developmentValue: "Such empty 🫥 \nLet's exercise first!", comment: nil) }
 
       /// en translation: Pro
       ///

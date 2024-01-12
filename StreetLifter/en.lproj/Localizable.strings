@@ -33,6 +33,8 @@
 "lastSession" = "Last session";
 "stats" = "Stats";
 "trainingProgram" = "Training Program";
+"noData" = "Such empty 🫥 \nLet's exercise first!";
+
 
 "mon" = "Mon";
 "tue" = "Tue";

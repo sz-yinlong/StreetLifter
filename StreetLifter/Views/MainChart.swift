@@ -26,6 +26,22 @@ struct MainChart: View {
         }
         return sessions
     }
+    
+    var chartPlaceholder: some View {
+        VStack {
+            Spacer()
+            Text(R.string.localizable.noData())
+                .font(.title2)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+            Spacer() 
+        }
+        .frame(maxWidth: .infinity, minHeight: 200)
+        .background(Color(.systemGray6))
+        .cornerRadius(20)
+        .padding(EdgeInsets(top: 5, leading: 16, bottom: 16, trailing: 16))
+    }
+
 
     // MARK: - Body
 
@@ -39,30 +55,34 @@ struct MainChart: View {
                 Spacer()
             }
             .padding(EdgeInsets(top: 10, leading: 16, bottom: 0, trailing: 16))
-
+            
             // MARK: - Chart
-
-            Chart {
-                ForEach(combinedSessions, id: \.date) { session in
-                    BarMark(
-                        x: .value("Date", session.date),
-                        y: .value("Total Reps", session.totalReps))
+            if combinedSessions.isEmpty {
+              chartPlaceholder
+            }
+            else {
+                Chart {
+                    ForEach(combinedSessions, id: \.date) { session in
+                        BarMark(
+                            x: .value("Date", session.date),
+                            y: .value("Total Reps", session.totalReps))
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .foregroundStyle(by: .value("Session Type", session.sessionType))
                         .symbol(by: .value("Total Reps", session.sessionType))
                         .position(by: .value("Session Type", session.sessionType))
+                    }
                 }
+                .chartScrollableAxes(.horizontal)
+                .chartXVisibleDomain(length: 7)
+                .chartYScale(type: .linear)
+                .chartYScale(range: .plotDimension())
+                .padding(EdgeInsets(top: 5, leading: 16, bottom: 16, trailing: 16))
+                .chartLegend(.hidden)
+                .chartForegroundStyleScale([
+                    "Pullups": Constants.bitterSweet,
+                    "Dips": Constants.robinEggBlue
+                ])
             }
-            .chartScrollableAxes(.horizontal)
-            .chartXVisibleDomain(length: 7)
-            .chartYScale(type: .linear)
-            .chartYScale(range: .plotDimension())
-            .padding(EdgeInsets(top: 5, leading: 16, bottom: 16, trailing: 16))
-            .chartLegend(.hidden)
-            .chartForegroundStyleScale([
-                "Pullups": Constants.bitterSweet,
-                "Dips": Constants.robinEggBlue
-            ])
         }
         .background(Color(.systemGray6))
         .cornerRadius(20)
