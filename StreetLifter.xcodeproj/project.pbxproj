@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4B3C6075CBBE088A652052A5 /* Pods_StreetLifter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039D711BABADB351AB8F3881 /* Pods_StreetLifter.framework */; };
 		AC12428A2B262A46000ED27A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1242892B262A46000ED27A /* MainView.swift */; };
-		AC3D8B2B2B5137AC00F3099D /* Datemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D8B2A2B5137AC00F3099D /* Datemanager.swift */; };
 		AC5364DF2B4D67F4009C4A40 /* ExerciseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5364DE2B4D67F4009C4A40 /* ExerciseButton.swift */; };
 		AC6B89E72B3C37B900169FB3 /* TrainingProgramData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */; };
 		AC8515A52B3717FC002CFA45 /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8515A42B3717FC002CFA45 /* ProgramView.swift */; };
@@ -40,7 +39,6 @@
 		039D711BABADB351AB8F3881 /* Pods_StreetLifter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreetLifter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFF1F45337964277926B103 /* Pods-StreetLifter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetLifter.release.xcconfig"; path = "Target Support Files/Pods-StreetLifter/Pods-StreetLifter.release.xcconfig"; sourceTree = "<group>"; };
 		AC1242892B262A46000ED27A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		AC3D8B2A2B5137AC00F3099D /* Datemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datemanager.swift; sourceTree = "<group>"; };
 		AC5364DE2B4D67F4009C4A40 /* ExerciseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseButton.swift; sourceTree = "<group>"; };
 		AC6B89E62B3C37B900169FB3 /* TrainingProgramData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgramData.swift; sourceTree = "<group>"; };
 		AC8515A42B3717FC002CFA45 /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 				AC00665A2B4C30E600910E5F /* Data */,
 				FAA22AC12A9487BF00D138AB /* Preview Assets.xcassets */,
 				FAA22ABA2A9487BD00D138AB /* StreetLifterApp.swift */,
-				AC3D8B2A2B5137AC00F3099D /* Datemanager.swift */,
 				ACF4447B2B49912100C1C2BB /* LaunchScreen.storyboard */,
 				FAA22ABE2A9487BF00D138AB /* Assets.xcassets */,
 				ACF4447F2B499D4B00C1C2BB /* Info.plist */,
@@ -370,7 +367,6 @@
 				FAF7B60E2A97400A00249317 /* TrainingViewModelProtocol.swift in Sources */,
 				AC5364DF2B4D67F4009C4A40 /* ExerciseButton.swift in Sources */,
 				AC8B57582B2C439500BADC48 /* StatsChart.swift in Sources */,
-				AC3D8B2B2B5137AC00F3099D /* Datemanager.swift in Sources */,
 				AC8B57562B2C406200BADC48 /* StatsView.swift in Sources */,
 				FAA22ABB2A9487BD00D138AB /* StreetLifterApp.swift in Sources */,
 				FAF7B61A2A9A2C0D00249317 /* TrainingSessionModel.swift in Sources */,

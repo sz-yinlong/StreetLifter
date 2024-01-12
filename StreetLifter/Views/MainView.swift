@@ -29,7 +29,7 @@ struct MainView: View {
 
                 // MARK: - Streak
 
-                StreakView(trainingSessions:trainingSessionManager.pullupsViewModel.trainingSessions)
+                StreakView()
                     .padding(.horizontal, 16)
 
                 // MARK: - Chart
