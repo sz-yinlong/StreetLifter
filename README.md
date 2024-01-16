@@ -1,7 +1,7 @@
 
 # StreetLifter
-https://apps.apple.com/ru/app/streetlifter/id6475625381
-StreetLifter is an iOS application designed for street workout enthusiasts. It focuses on tracking and improving performance in exercises like pull-ups and dips with the ability to add weights.
+
+StreetLifter is an iOS application designed for street workout enthusiasts. It focuses on tracking and improving performance in exercises like pull-ups and dips with the ability to add weights. https://apps.apple.com/ru/app/streetlifter/id6475625381
 
 <img width="160" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/bdd76c7c-ac25-49ba-b29f-010b36dd9579">
 <img width="160" alt="Main" src="https://github.com/sz-yinlong/StreetLifter/assets/120241674/69d0434c-2e73-480b-832a-a732e6cddc20">
